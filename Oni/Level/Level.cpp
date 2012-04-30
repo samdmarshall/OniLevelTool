@@ -9,12 +9,35 @@
 
 #include "Level.h"
 
-OniLevel::OniLevel() {}
+OniLevel::OniLevel() {
+	this->header = (LevelHeader *)malloc(sizeof(LevelHeader));
+}
+
+OniLevel::~OniLevel() {
+	free(this->name);
+	free(this->header);
+	free(this->instance_descriptors);
+	free(this->name_descriptors);
+	free(this->template_descriptors);
+	free(this->data_table);
+	free(this->names_table);
+}
 
 bool OniLevel::LoadPath(char *path) {
 	FILE *file_ = fopen(path,"rb");
 	if (file_) {
-		this->header = (LevelHeader *)malloc(sizeof(LevelHeader)*1);
+		char *pos;
+		char path_delimiter;
+		#ifdef _WIN32
+			path_delimiter = '\\';
+		#else
+			path_delimiter = '/';
+		#endif
+		pos = strrchr(path, path_delimiter)+1;
+		int32_t p_length = (int32_t)(pos-path);
+		this->name = (char *)malloc(sizeof(char)*p_length);
+		memcpy(this->name, &path[p_length], (strlen(path)-(pos-path)));
+		
 		fread(this->header,sizeof(LevelHeader),1,file_);
 		
 		this->instance_descriptors = (OniInstanceStruct *)malloc(sizeof(OniInstanceStruct)*this->header->instance_count);

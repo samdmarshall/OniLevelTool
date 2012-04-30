@@ -36,7 +36,7 @@ struct LevelHeader {
 
 class OniLevel {
 	public:
-	char *name[];
+	char *name;
 	
 	LevelHeader *header;
 	
@@ -48,5 +48,6 @@ class OniLevel {
 	char *names_table;
 	
 	OniLevel();
+	~OniLevel();
 	bool LoadPath(char *path);
 };

@@ -18,5 +18,6 @@ public:
 	char *data;
 	
 	OniTag();
+	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
 };
