@@ -11,6 +11,7 @@
 		227B48D1154E1D0E0062C139 /* OniInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B48D0154E1D0E0062C139 /* OniInstance.cpp */; };
 		227B48D4154E1D1C0062C139 /* OniName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B48D3154E1D1C0062C139 /* OniName.cpp */; };
 		227B48D7154E1D260062C139 /* OniTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B48D6154E1D260062C139 /* OniTemplate.cpp */; };
+		227B4A52154EE55E0062C139 /* OniTag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B4A51154EE55E0062C139 /* OniTag.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,8 @@
 		227B48D5154E1D260062C139 /* OniTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OniTemplate.h; path = Oni/Level/OniTemplate.h; sourceTree = "<group>"; };
 		227B48D6154E1D260062C139 /* OniTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OniTemplate.cpp; path = Oni/Level/OniTemplate.cpp; sourceTree = "<group>"; };
 		227B48E8154E1DC10062C139 /* headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
+		227B4A50154EE55E0062C139 /* OniTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OniTag.h; path = Oni/Components/OniTag.h; sourceTree = "<group>"; };
+		227B4A51154EE55E0062C139 /* OniTag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OniTag.cpp; path = Oni/Components/OniTag.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +70,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				227B4A53154EE5640062C139 /* Components */,
 				227B485C154E150B0062C139 /* Level Code */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				227B48E8154E1DC10062C139 /* headers.h */,
@@ -95,6 +99,15 @@
 				227B48D6154E1D260062C139 /* OniTemplate.cpp */,
 			);
 			name = "Level Code";
+			sourceTree = "<group>";
+		};
+		227B4A53154EE5640062C139 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				227B4A50154EE55E0062C139 /* OniTag.h */,
+				227B4A51154EE55E0062C139 /* OniTag.cpp */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
@@ -160,6 +173,7 @@
 				227B48D1154E1D0E0062C139 /* OniInstance.cpp in Sources */,
 				227B48D4154E1D1C0062C139 /* OniName.cpp in Sources */,
 				227B48D7154E1D260062C139 /* OniTemplate.cpp in Sources */,
+				227B4A52154EE55E0062C139 /* OniTag.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

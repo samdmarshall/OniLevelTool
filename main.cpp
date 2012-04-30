@@ -1,5 +1,6 @@
 #include "headers.h"
 
+#include "OniTag.h"
 #include "Level.h"
 
 int main (int argc, char * const argv[]) {
@@ -13,6 +14,12 @@ int main (int argc, char * const argv[]) {
 			OniLevel *level = new OniLevel;
 			bool status = level->LoadPath(argv[1]);
 			printf("Success: %s\n", status ? "Yes" : "No");
+			
+			for (int32_t i = 0; i < level->header->instance_count; i++) {
+				OniTag *tag = new OniTag;
+				tag->LoadFrom(&level->instance_descriptors[i], level->data_table, level->names_table);
+				delete tag;
+			}
 		}
 	}
     return 0;

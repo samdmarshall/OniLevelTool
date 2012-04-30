@@ -9,10 +9,3 @@
 
 #include "OniInstance.h"
 
-void OniInstance::LoadData(int *data_buffer) {
-	
-}
-
-void OniInstance::LoadName(int *name_buffer) {
-	
-}

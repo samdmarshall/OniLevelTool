@@ -9,6 +9,8 @@
 
 #include "headers.h"
 
+#ifndef _OniInstanceStruct
+#define _OniInstanceStruct
 struct OniInstanceStruct {
 	int32_t template_tag;
 	int32_t data_offset;
@@ -16,14 +18,4 @@ struct OniInstanceStruct {
 	int32_t data_size;
 	int32_t flags;
 };
-
-class OniInstance {
-public:
-	char *type[];
-	char *name;
-	int *data;
-	
-	OniInstance();
-	void LoadData(int *data_buffer);
-	void LoadName(int *name_buffer);
-};
+#endif
