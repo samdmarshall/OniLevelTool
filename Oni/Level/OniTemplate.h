@@ -9,7 +9,7 @@
 
 #include "headers.h"
 
-class OniTemplate {
+struct OniTemplateStruct {
 	int64_t checksum;
 	int32_t name;
 	int32_t instances;

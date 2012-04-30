@@ -9,7 +9,7 @@
 
 #include "headers.h"
 
-class OniName {
+struct OniNameStruct {
 	int32_t instance_number;
 	int32_t instance_pointer;
 };

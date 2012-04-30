@@ -11,7 +11,7 @@ int main (int argc, char * const argv[]) {
 			printf("Display help docs here\n");
 		} else {
 			OniLevel *level = new OniLevel;
-			bool status = level->Load(argv[1]);
+			bool status = level->LoadPath(argv[1]);
 			printf("Success: %s\n", status ? "Yes" : "No");
 		}
 	}

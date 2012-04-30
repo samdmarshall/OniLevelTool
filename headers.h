@@ -8,4 +8,5 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include <stdint.h>

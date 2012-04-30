@@ -11,13 +11,13 @@
 
 OniLevel::OniLevel() {}
 
-bool OniLevel::Load(char *path) {
+bool OniLevel::LoadPath(char *path) {
 	FILE *file_ = fopen(path,"rb");
 	if (file_) {
 		fread(&this->header,sizeof(this->header),1,file_);
-		fread(this->instance_descriptors,sizeof(OniInstance),this->header.instance_count,file_);
-		fread(this->name_descriptors,sizeof(OniName),this->header.name_count,file_);
-		fread(this->template_descriptors,sizeof(OniTemplate),this->header.template_count,file_);
+		fread(this->instance_descriptors,sizeof(OniInstanceStruct),this->header.instance_count,file_);
+		fread(this->name_descriptors,sizeof(OniNameStruct),this->header.name_count,file_);
+		fread(this->template_descriptors,sizeof(OniTemplateStruct),this->header.template_count,file_);
 		
 		data_table = (int *)malloc(sizeof(this->header.data_size));
 		fpos_t data_pos = this->header.data_offset;
@@ -35,3 +35,4 @@ bool OniLevel::Load(char *path) {
 		return false;
 	}
 }
+

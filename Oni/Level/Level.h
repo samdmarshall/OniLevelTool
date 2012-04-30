@@ -40,14 +40,14 @@ class OniLevel {
 	
 	LevelHeader header;
 	
-	OniInstance *instance_descriptors[];
-	OniName *name_descriptors[];
-	OniTemplate *template_descriptors[];
+	OniInstanceStruct *instance_descriptors[];
+	OniNameStruct *name_descriptors[];
+	OniTemplateStruct *template_descriptors[];
 	
 	int *data_table;
 	int *names_table;
 	
 	OniLevel();
-	bool Load(char *path);
+	bool LoadPath(char *path);
 	
 };
