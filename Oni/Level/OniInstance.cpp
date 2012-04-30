@@ -8,4 +8,3 @@
  */
 
 #include "OniInstance.h"
-

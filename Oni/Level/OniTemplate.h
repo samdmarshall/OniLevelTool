@@ -11,6 +11,6 @@
 
 class OniTemplate {
 	int64_t checksum;
-	char *name[4];
+	int32_t name;
 	int32_t instances;
 };

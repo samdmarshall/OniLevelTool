@@ -1,4 +1,4 @@
-#include <iostream>
+#include "headers.h"
 
 #include "Level.h"
 
@@ -10,7 +10,9 @@ int main (int argc, char * const argv[]) {
 		if (strcmp(argv[1], "--help") == 0) {
 			printf("Display help docs here\n");
 		} else {
-			
+			OniLevel *level = new OniLevel;
+			bool status = level->Load(argv[1]);
+			printf("Success: %s\n", status ? "Yes" : "No");
 		}
 	}
     return 0;

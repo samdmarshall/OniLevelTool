@@ -13,11 +13,9 @@
 #include "OniName.h"
 #include "OniTemplate.h"
 
-class Level {
-	char *name[];
-	
+struct LevelHeader {
 	int64_t checksum;
-	char version[4];
+	int32_t version;
 	int64_t signature;
 	
 	int32_t instance_count;
@@ -30,8 +28,26 @@ class Level {
 	int32_t names_offset;
 	int32_t names_size;
 	
+	int32_t unused_1;
+	int32_t unused_2;
+	int32_t unused_3;
+	int32_t unused_4;
+};
+
+class OniLevel {
+	public:
+	char *name[];
+	
+	LevelHeader header;
+	
 	OniInstance *instance_descriptors[];
 	OniName *name_descriptors[];
 	OniTemplate *template_descriptors[];
+	
+	int *data_table;
+	int *names_table;
+	
+	OniLevel();
+	bool Load(char *path);
 	
 };

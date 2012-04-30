@@ -10,7 +10,7 @@
 #include "headers.h"
 
 class OniInstance {
-	char *template_tag[4];
+	int32_t template_tag;
 	int32_t data_offset;
 	int32_t name_offset;
 	int32_t data_size;
