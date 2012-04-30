@@ -15,7 +15,8 @@ public:
 	char type[5];
 	char name[64];
 	int32_t flags;
-	char *data;
+	char *instance_data;
+	char *raw_data;
 	
 	OniTag();
 	~OniTag();
