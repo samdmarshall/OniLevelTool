@@ -12,7 +12,7 @@
 
 class OniTag {
 public:
-	char type[4];
+	char type[5];
 	char name[64];
 	int32_t flags;
 	char *data;
