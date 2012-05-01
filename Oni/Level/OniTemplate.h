@@ -120,7 +120,7 @@ typedef enum OniTemplateTags {
 	tm_TStr = 0x72745354  // "rtST"
 };
 
-static inline bool isTagOfType(char tag[4], OniTemplateTags tm) {
+static inline bool isTagOfType(char tag[5], OniTemplateTags tm) {
 	char read_tm[5] = { ((tm>>24)&0xFF), ((tm>>16)&0xFF), ((tm>>8)&0xFF), ((tm>>0)&0xFF), '\0'};
 	return (strcmp(tag, read_tm)==0);
 }
