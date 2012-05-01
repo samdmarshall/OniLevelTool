@@ -23,6 +23,10 @@
 		227B50821550A7B10062C139 /* AKBP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50811550A7B10062C139 /* AKBP.cpp */; };
 		227B50861550A8250062C139 /* AKEV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50851550A8250062C139 /* AKEV.cpp */; };
 		227B508C1550A9360062C139 /* AKOT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B508B1550A9360062C139 /* AKOT.cpp */; };
+		227B50921550AA760062C139 /* AKVA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50911550AA760062C139 /* AKVA.cpp */; };
+		227B50961550AD610062C139 /* BINA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50951550AD610062C139 /* BINA.cpp */; };
+		227B509A1550ADDF0062C139 /* CBPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50991550ADDF0062C139 /* CBPI.cpp */; };
+		227B50A71550AED00062C139 /* CBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50A61550AED00062C139 /* CBPM.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -75,6 +79,14 @@
 		227B50851550A8250062C139 /* AKEV.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AKEV.cpp; sourceTree = "<group>"; };
 		227B508A1550A9360062C139 /* AKOT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKOT.h; sourceTree = "<group>"; };
 		227B508B1550A9360062C139 /* AKOT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AKOT.cpp; sourceTree = "<group>"; };
+		227B50901550AA760062C139 /* AKVA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKVA.h; sourceTree = "<group>"; };
+		227B50911550AA760062C139 /* AKVA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AKVA.cpp; sourceTree = "<group>"; };
+		227B50941550AD610062C139 /* BINA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINA.h; sourceTree = "<group>"; };
+		227B50951550AD610062C139 /* BINA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BINA.cpp; sourceTree = "<group>"; };
+		227B50981550ADDF0062C139 /* CBPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPI.h; sourceTree = "<group>"; };
+		227B50991550ADDF0062C139 /* CBPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPI.cpp; sourceTree = "<group>"; };
+		227B50A51550AED00062C139 /* CBPM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPM.h; sourceTree = "<group>"; };
+		227B50A61550AED00062C139 /* CBPM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPM.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +181,14 @@
 				227B50851550A8250062C139 /* AKEV.cpp */,
 				227B508A1550A9360062C139 /* AKOT.h */,
 				227B508B1550A9360062C139 /* AKOT.cpp */,
+				227B50901550AA760062C139 /* AKVA.h */,
+				227B50911550AA760062C139 /* AKVA.cpp */,
+				227B50941550AD610062C139 /* BINA.h */,
+				227B50951550AD610062C139 /* BINA.cpp */,
+				227B50981550ADDF0062C139 /* CBPI.h */,
+				227B50991550ADDF0062C139 /* CBPI.cpp */,
+				227B50A51550AED00062C139 /* CBPM.h */,
+				227B50A61550AED00062C139 /* CBPM.cpp */,
 			);
 			name = Tags;
 			path = Oni/Resources/Tags;
@@ -249,6 +269,10 @@
 				227B50821550A7B10062C139 /* AKBP.cpp in Sources */,
 				227B50861550A8250062C139 /* AKEV.cpp in Sources */,
 				227B508C1550A9360062C139 /* AKOT.cpp in Sources */,
+				227B50921550AA760062C139 /* AKVA.cpp in Sources */,
+				227B50961550AD610062C139 /* BINA.cpp in Sources */,
+				227B509A1550ADDF0062C139 /* CBPI.cpp in Sources */,
+				227B50A71550AED00062C139 /* CBPM.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
