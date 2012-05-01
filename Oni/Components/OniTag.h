@@ -9,6 +9,7 @@
 
 #include "headers.h"
 #include "OniInstance.h"
+#include "OniTemplate.h"
 
 class OniTag {
 public:

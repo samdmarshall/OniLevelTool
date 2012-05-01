@@ -28,10 +28,7 @@ struct LevelHeader {
 	int32_t names_offset;
 	int32_t names_size;
 	
-	int32_t unused_1;
-	int32_t unused_2;
-	int32_t unused_3;
-	int32_t unused_4;
+	int32_t unused[4];
 };
 
 class OniLevel {
