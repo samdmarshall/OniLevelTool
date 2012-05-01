@@ -12,6 +12,12 @@
 		227B48D4154E1D1C0062C139 /* OniName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B48D3154E1D1C0062C139 /* OniName.cpp */; };
 		227B48D7154E1D260062C139 /* OniTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B48D6154E1D260062C139 /* OniTemplate.cpp */; };
 		227B4A52154EE55E0062C139 /* OniTag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B4A51154EE55E0062C139 /* OniTag.cpp */; };
+		227B502515508DF10062C139 /* ABNA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B502415508DF10062C139 /* ABNA.cpp */; };
+		227B502815508E060062C139 /* OniTM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B502715508E060062C139 /* OniTM.cpp */; };
+		227B5055155090CD0062C139 /* AGQC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B5054155090CD0062C139 /* AGQC.cpp */; };
+		227B5060155094720062C139 /* AGQG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B505F155094720062C139 /* AGQG.cpp */; };
+		227B506D155096160062C139 /* AGQR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B506C155096160062C139 /* AGQR.cpp */; };
+		227B50731550979C0062C139 /* AISA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50721550979C0062C139 /* AISA.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -42,6 +48,18 @@
 		227B48E8154E1DC10062C139 /* headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
 		227B4A50154EE55E0062C139 /* OniTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OniTag.h; path = Oni/Components/OniTag.h; sourceTree = "<group>"; };
 		227B4A51154EE55E0062C139 /* OniTag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OniTag.cpp; path = Oni/Components/OniTag.cpp; sourceTree = "<group>"; };
+		227B502315508DF10062C139 /* ABNA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABNA.h; sourceTree = "<group>"; };
+		227B502415508DF10062C139 /* ABNA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ABNA.cpp; sourceTree = "<group>"; };
+		227B502615508E060062C139 /* OniTM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OniTM.h; sourceTree = "<group>"; };
+		227B502715508E060062C139 /* OniTM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OniTM.cpp; sourceTree = "<group>"; };
+		227B5053155090CD0062C139 /* AGQC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGQC.h; sourceTree = "<group>"; };
+		227B5054155090CD0062C139 /* AGQC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AGQC.cpp; sourceTree = "<group>"; };
+		227B505E155094720062C139 /* AGQG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGQG.h; sourceTree = "<group>"; };
+		227B505F155094720062C139 /* AGQG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AGQG.cpp; sourceTree = "<group>"; };
+		227B506B155096160062C139 /* AGQR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGQR.h; sourceTree = "<group>"; };
+		227B506C155096160062C139 /* AGQR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AGQR.cpp; sourceTree = "<group>"; };
+		227B50711550979C0062C139 /* AISA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISA.h; sourceTree = "<group>"; };
+		227B50721550979C0062C139 /* AISA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AISA.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +88,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				227B502215508DBD0062C139 /* Tags */,
 				227B4A53154EE5640062C139 /* Components */,
 				227B485C154E150B0062C139 /* Level Code */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
@@ -108,6 +127,26 @@
 				227B4A51154EE55E0062C139 /* OniTag.cpp */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		227B502215508DBD0062C139 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				227B502315508DF10062C139 /* ABNA.h */,
+				227B502415508DF10062C139 /* ABNA.cpp */,
+				227B502615508E060062C139 /* OniTM.h */,
+				227B502715508E060062C139 /* OniTM.cpp */,
+				227B5053155090CD0062C139 /* AGQC.h */,
+				227B5054155090CD0062C139 /* AGQC.cpp */,
+				227B505E155094720062C139 /* AGQG.h */,
+				227B505F155094720062C139 /* AGQG.cpp */,
+				227B506B155096160062C139 /* AGQR.h */,
+				227B506C155096160062C139 /* AGQR.cpp */,
+				227B50711550979C0062C139 /* AISA.h */,
+				227B50721550979C0062C139 /* AISA.cpp */,
+			);
+			name = Tags;
+			path = Oni/Resources/Tags;
 			sourceTree = "<group>";
 		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
@@ -174,6 +213,12 @@
 				227B48D4154E1D1C0062C139 /* OniName.cpp in Sources */,
 				227B48D7154E1D260062C139 /* OniTemplate.cpp in Sources */,
 				227B4A52154EE55E0062C139 /* OniTag.cpp in Sources */,
+				227B502515508DF10062C139 /* ABNA.cpp in Sources */,
+				227B502815508E060062C139 /* OniTM.cpp in Sources */,
+				227B5055155090CD0062C139 /* AGQC.cpp in Sources */,
+				227B5060155094720062C139 /* AGQG.cpp in Sources */,
+				227B506D155096160062C139 /* AGQR.cpp in Sources */,
+				227B50731550979C0062C139 /* AISA.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

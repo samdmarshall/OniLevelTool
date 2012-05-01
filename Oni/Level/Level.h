@@ -43,7 +43,7 @@ class OniLevel {
 	
 	char *data_table;
 	char *names_table;
-	
+		
 	OniLevel();
 	~OniLevel();
 	bool LoadPath(char *path);
