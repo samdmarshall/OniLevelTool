@@ -19,6 +19,9 @@ public:
 	char *instance_data;
 	char *raw_data;
 	
+	char instance_id[4];
+	char file_id[4];
+	
 	OniTag();
 	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
