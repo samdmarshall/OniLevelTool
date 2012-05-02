@@ -34,6 +34,11 @@
 		227B50C91550B4520062C139 /* ENVP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50C81550B4520062C139 /* ENVP.cpp */; };
 		227B50CF1550B5730062C139 /* FILM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50CE1550B5730062C139 /* FILM.cpp */; };
 		227B50D51550B6650062C139 /* HPge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50D41550B6650062C139 /* HPge.cpp */; };
+		227B50E51550BF8C0062C139 /* IGHH.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50E41550BF8C0062C139 /* IGHH.cpp */; };
+		227B50E91550C1400062C139 /* Impt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50E81550C1400062C139 /* Impt.cpp */; };
+		227B50F51550C4C00062C139 /* IGPA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50F41550C4C00062C139 /* IGPA.cpp */; };
+		227B50FB1550C5320062C139 /* IGPG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50FA1550C5320062C139 /* IGPG.cpp */; };
+		227B51011550C6560062C139 /* IGSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51001550C6560062C139 /* IGSA.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -108,6 +113,17 @@
 		227B50CE1550B5730062C139 /* FILM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FILM.cpp; sourceTree = "<group>"; };
 		227B50D31550B6650062C139 /* HPge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPge.h; sourceTree = "<group>"; };
 		227B50D41550B6650062C139 /* HPge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HPge.cpp; sourceTree = "<group>"; };
+		227B50DA1550B7540062C139 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
+		227B50E31550BF8C0062C139 /* IGHH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGHH.h; sourceTree = "<group>"; };
+		227B50E41550BF8C0062C139 /* IGHH.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGHH.cpp; sourceTree = "<group>"; };
+		227B50E71550C1400062C139 /* Impt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Impt.h; sourceTree = "<group>"; };
+		227B50E81550C1400062C139 /* Impt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Impt.cpp; sourceTree = "<group>"; };
+		227B50F31550C4C00062C139 /* IGPA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPA.h; sourceTree = "<group>"; };
+		227B50F41550C4C00062C139 /* IGPA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGPA.cpp; sourceTree = "<group>"; };
+		227B50F91550C5320062C139 /* IGPG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPG.h; sourceTree = "<group>"; };
+		227B50FA1550C5320062C139 /* IGPG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGPG.cpp; sourceTree = "<group>"; };
+		227B50FF1550C6560062C139 /* IGSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSA.h; sourceTree = "<group>"; };
+		227B51001550C6560062C139 /* IGSA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGSA.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +196,7 @@
 		227B502215508DBD0062C139 /* Tags */ = {
 			isa = PBXGroup;
 			children = (
+				227B50DA1550B7540062C139 /* Tags.h */,
 				227B502615508E060062C139 /* OniTM.h */,
 				227B502715508E060062C139 /* OniTM.cpp */,
 				227B502315508DF10062C139 /* ABNA.h */,
@@ -224,6 +241,16 @@
 				227B50CE1550B5730062C139 /* FILM.cpp */,
 				227B50D31550B6650062C139 /* HPge.h */,
 				227B50D41550B6650062C139 /* HPge.cpp */,
+				227B50E31550BF8C0062C139 /* IGHH.h */,
+				227B50E41550BF8C0062C139 /* IGHH.cpp */,
+				227B50F31550C4C00062C139 /* IGPA.h */,
+				227B50F41550C4C00062C139 /* IGPA.cpp */,
+				227B50F91550C5320062C139 /* IGPG.h */,
+				227B50FA1550C5320062C139 /* IGPG.cpp */,
+				227B50FF1550C6560062C139 /* IGSA.h */,
+				227B51001550C6560062C139 /* IGSA.cpp */,
+				227B50E71550C1400062C139 /* Impt.h */,
+				227B50E81550C1400062C139 /* Impt.cpp */,
 			);
 			name = Tags;
 			path = Oni/Resources/Tags;
@@ -315,6 +342,11 @@
 				227B50C91550B4520062C139 /* ENVP.cpp in Sources */,
 				227B50CF1550B5730062C139 /* FILM.cpp in Sources */,
 				227B50D51550B6650062C139 /* HPge.cpp in Sources */,
+				227B50E51550BF8C0062C139 /* IGHH.cpp in Sources */,
+				227B50E91550C1400062C139 /* Impt.cpp in Sources */,
+				227B50F51550C4C00062C139 /* IGPA.cpp in Sources */,
+				227B50FB1550C5320062C139 /* IGPG.cpp in Sources */,
+				227B51011550C6560062C139 /* IGSA.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

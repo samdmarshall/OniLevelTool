@@ -7,3 +7,19 @@
  *
  */
 
+#include "OniTM.h"
+
+#ifndef _HPge
+#define _HPge
+
+struct HPgeDataStruct {
+	char unused[4];
+	int32_t IGPG_link;
+	char dead[16];
+};
+#endif
+
+class HPge : public OniTM {
+public:
+	HPgeDataStruct *data;
+};
