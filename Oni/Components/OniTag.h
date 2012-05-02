@@ -11,6 +11,8 @@
 #include "OniInstance.h"
 #include "OniTemplate.h"
 
+#ifndef _OniTag
+#define _OniTag
 class OniTag {
 public:
 	char type[5];
@@ -22,3 +24,4 @@ public:
 	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
 };
+#endif

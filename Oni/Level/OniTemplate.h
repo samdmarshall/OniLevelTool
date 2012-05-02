@@ -120,6 +120,8 @@ typedef enum OniTemplateTags {
 	tm_TStr = 0x72745354  // "rtST"
 };
 
+const static OniTemplateTags tm_types[98] = {tm_ABNA, tm_AGQC, tm_AGQG, tm_AGQR, tm_AISA, tm_AKAA, tm_AKBA, tm_AKBP, tm_AKEV, tm_AKOT, tm_AKVA, tm_BINA, tm_CBPI, tm_CBPM, tm_CONS, tm_CRSA, tm_DOOR, tm_DPge, tm_ENVP, tm_FILM, tm_HPge, tm_IDXA, tm_IGHH, tm_IGPA, tm_IGPG, tm_IGSA, tm_IGSt, tm_Impt, tm_IPge, tm_KeyI, tm_M3GA, tm_M3GM, tm_Mtrl, tm_OBAN, tm_OBOA, tm_OFGA, tm_ONCC, tm_ONCP, tm_ONCV, tm_ONGS, tm_ONIA, tm_ONLD, tm_ONLV, tm_ONOA, tm_ONSK, tm_ONVL, tm_ONWC, tm_OPge, tm_OSBD, tm_OTIT, tm_OTLF, tm_PLEA, tm_PNTA, tm_PSpc, tm_PSpL, tm_PSUI, tm_QTNA, tm_SNDD, tm_SUBT, tm_TRAC, tm_TRAM, tm_TRAS, tm_TRBS, tm_TRCM, tm_TRGA, tm_TRGE, tm_TRIA, tm_TRIG, tm_TRMA, tm_TRSC, tm_TRTA, tm_TSFF, tm_TSFL, tm_TSFT, tm_TSGA, tm_TURR, tm_TXAN, tm_TXCA, tm_TXMA, tm_TXMB, tm_TXMP, tm_TxtC, tm_VCRA, tm_WMCL, tm_WMDD, tm_WMM_, tm_WMMB, tm_WPge, tm_AGDB, tm_AITR, tm_AKDA, tm_OBDC, tm_ONFA, tm_ONMA, tm_ONSA, tm_ONTA, tm_StNA, tm_TStr};
+
 static inline bool isTagOfType(char tag[5], OniTemplateTags tm) {
 	char read_tm[5] = { ((tm>>24)&0xFF), ((tm>>16)&0xFF), ((tm>>8)&0xFF), ((tm>>0)&0xFF), '\0'};
 	return (strcmp(tag, read_tm)==0);
