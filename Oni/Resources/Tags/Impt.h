@@ -19,9 +19,9 @@ struct ImptDataStruct {
 	char dead[12];
 };
 
-#endif
 
 class Impt : public OniTM {
 public:
 	ImptDataStruct *data;
 };
+#endif

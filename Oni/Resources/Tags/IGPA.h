@@ -21,10 +21,10 @@ struct IPGADataStruct {
 	int32_t IGPG_link;
 };
 
-#endif
 
 class IGPA : public OniTM {
 public:
 	IPGAHeaderStruct *head;
 	IPGADataStruct *data;
 };
+#endif

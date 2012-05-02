@@ -16,9 +16,9 @@ struct BINAHeaderStruct {
 	int32_t data_offset;
 	char unused[16];
 };
-#endif
 
 class BINA : public OniTM {
 public:
 	BINAHeaderStruct *head;
 };
+#endif

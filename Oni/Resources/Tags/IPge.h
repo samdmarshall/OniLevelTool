@@ -18,9 +18,9 @@ struct IPgeDataStruct {
 	char dead[16];
 };
 
-#endif
 
 class IPge : public OniTM {
 public:
 	IPgeDataStruct *data;
 };
+#endif

@@ -22,10 +22,9 @@ struct AKBPDataStruct {
 	int32_t AKBP_front;
 };
 
-#endif
-
 class AKBP : public OniTM {
 public:
 	AKBPHeaderStruct *head;
 	AKBPDataStruct *data;	
 };
+#endif

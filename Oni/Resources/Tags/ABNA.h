@@ -23,10 +23,10 @@ struct ABNADataStruct {
 	int32_t back_index;
 };
 
-#endif
 
 class ABNA : public OniTM {
 public:
 	ABNAHeaderStruct *head;
 	ABNADataStruct *data;
 };
+#endif

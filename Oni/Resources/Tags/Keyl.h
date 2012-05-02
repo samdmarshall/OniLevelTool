@@ -26,9 +26,9 @@ struct KeylDataStruct {
 	char dead[16];
 };
 
-#endif
 
 class Keyl : public OniTM {
 public:
 	KeylDataStruct *data;
 };
+#endif

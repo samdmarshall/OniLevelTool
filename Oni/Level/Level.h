@@ -8,6 +8,7 @@
  */
 
 #include "headers.h"
+#include "OniTag.h"
 
 #include "OniInstance.h"
 #include "OniName.h"
@@ -43,8 +44,13 @@ class OniLevel {
 	
 	char *data_table;
 	char *names_table;
-		
+	
+	std::vector<OniTag *> tags;
+	
 	OniLevel();
 	~OniLevel();
 	bool LoadPath(char *path);
+	void LoadTags();
+	void ExportTagToPath(OniTag *tag, char *path);
+	void ExportAllTags();
 };

@@ -30,9 +30,9 @@ struct CBPIDataStruct {
 	CBPIKillStruct killed[19];
 	char dead[20];
 };
-#endif
 
 class CBPI : public OniTM {
 public:
 	CBPIDataStruct *data;
 };
+#endif

@@ -50,10 +50,10 @@ struct CRSADataStruct {
 	CRSABoneMatrix bone[19];
 	CRSABoundingBox box;
 };
-#endif
 
 class CRSA : public OniTM {
 public:
 	CRSAHeaderStruct *head;
 	CRSADataStruct *data;
 };
+#endif

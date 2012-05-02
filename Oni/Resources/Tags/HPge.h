@@ -17,9 +17,9 @@ struct HPgeDataStruct {
 	int32_t IGPG_link;
 	char dead[16];
 };
-#endif
 
 class HPge : public OniTM {
 public:
 	HPgeDataStruct *data;
 };
+#endif

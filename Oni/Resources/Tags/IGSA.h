@@ -21,10 +21,10 @@ struct IGSADataStruct {
 	int32_t IGSt_link;
 };
 
-#endif
 
 class IGSA : public OniTM {
 public:
 	IGSAHeaderStruct *head;
 	IGSADataStruct *data;
 };
+#endif

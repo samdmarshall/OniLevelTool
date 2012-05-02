@@ -19,9 +19,9 @@ struct MtrlDataStruct {
 	char dead[12];
 };
 
-#endif
 
 class Mtrl : public OniTM {
 public:
 	MtrlDataStruct *data;
 };
+#endif

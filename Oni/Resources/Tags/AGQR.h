@@ -21,10 +21,10 @@ struct AGQRDataStruct {
 	char dead[2];
 };
 
-#endif
 
 class AGQR : public OniTM {
 public:
 	AGQRHeaderStruct *head;
 	AGQRDataStruct *data;
 };
+#endif

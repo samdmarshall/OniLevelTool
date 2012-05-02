@@ -25,9 +25,9 @@ struct M3GMDataStruct {
 	char unused[20];
 };
 
-#endif
 
 class M3GM : public OniTM {
 public:
 	M3GMDataStruct *data;
 };
+#endif

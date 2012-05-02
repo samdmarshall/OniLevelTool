@@ -35,10 +35,10 @@ struct FILMDataStruct {
 	int32_t ignored;
 };
 
-#endif
 
 class FILM : public OniTM {
 public:
 	FILMHeaderStruct *head;
 	FILMDataStruct *data;
 };
+#endif

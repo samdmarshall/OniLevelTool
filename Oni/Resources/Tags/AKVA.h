@@ -48,10 +48,10 @@ struct AKVADataStruct {
 	float slope_distance;
 	float slope_height;
 };
-#endif
 
 class AKVA : public OniTM {
 public:
 	AKVAHeaderStruct *head;
 	AKVADataStruct *data;
 };
+#endif

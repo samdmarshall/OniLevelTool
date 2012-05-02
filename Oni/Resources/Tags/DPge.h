@@ -21,9 +21,9 @@ struct DPgeDataStruct {
 	int32_t IGPG_link;
 	char dead2[28];
 };
-#endif
 
 class DPge : public OniTM {
 public:
 	DPgeDataStruct *data;
 };
+#endif

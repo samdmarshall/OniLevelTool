@@ -30,10 +30,10 @@ struct IGHHDataStruct {
 	int16_t px_top;
 };
 
-#endif
 
 class IGHH : public OniTM {
 public:
 	IGHHHeaderStruct *head;
 	IGHHDataStruct *data;
 };
+#endif

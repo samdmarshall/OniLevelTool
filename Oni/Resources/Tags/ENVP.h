@@ -45,10 +45,10 @@ struct ENVPDataStruct {
 	float y_scale;
 	int32_t runtime[10];
 };
-#endif
 
 class ENVP : public OniTM {
 public:
 	ENVPHeaderStruct *head;
 	ENVPDataStruct *data;
 };
+#endif

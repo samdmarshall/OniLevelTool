@@ -13,12 +13,14 @@ int main (int argc, char * const argv[]) {
 		} else {
 			OniLevel *level = new OniLevel;
 			bool status = level->LoadPath(argv[1]);
-			printf("Success: %s\n", status ? "Yes" : "No");
-			
-			for (int32_t i = 0; i < level->header->instance_count; i++) {
-				OniTag *tag = new OniTag;
-				tag->LoadFrom(&level->instance_descriptors[i], level->data_table, level->names_table);
-				delete tag;
+			printf("Load Success: %s\n", status ? "Yes" : "No");
+			if (status) {
+				level->LoadTags();
+				for (int32_t i = 0; i < level->tags.size(); i++) {
+					OniTag *tag = level->tags.at(i);
+					std::cout << tag->type << " - " << tag->name << " - " << tag->flags << std::endl;
+					delete tag;
+				}
 			}
 		}
 	}

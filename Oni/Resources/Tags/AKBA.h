@@ -27,10 +27,10 @@ struct AKBADataStruct {
 	int32_t unused3;
 };
 
-#endif
 
 class AKBA : public OniTM {
 public:
 	AKBAHeaderStruct *head;
 	AKBADataStruct *data;	
 };
+#endif

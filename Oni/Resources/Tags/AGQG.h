@@ -35,10 +35,10 @@ struct AGQGDataStruct {
 	int32_t flags;
 	int32_t object_id;
 };
-#endif
 
 class AGQG : public OniTM {
 public:
 	AGQGHeaderStruct *head;
 	AGQGDataStruct *data;
 };
+#endif

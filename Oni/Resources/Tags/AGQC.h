@@ -25,10 +25,10 @@ struct AGQCDataStruct {
 	float pos_y;
 	float pos_z;
 };
-#endif
 
 class AGQC : public OniTM {
 public:
 	AGQCHeaderStruct *head;
 	AGQCDataStruct *data;
 };
+#endif

@@ -19,9 +19,9 @@ struct AKOTDataStruct {
 	int32_t IDXA_link2;
 	char unused[4];
 };
-#endif
 
 class AKOT : public OniTM {
 public:
 	AKOTDataStruct *data;	
 };
+#endif

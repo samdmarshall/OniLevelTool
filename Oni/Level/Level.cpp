@@ -60,8 +60,34 @@ bool OniLevel::LoadPath(char *path) {
 		fread(this->names_table,sizeof(char)*this->header->names_size,1,file_);
 		
 		fclose(file_);
+		
 		return true;
 	} else {
 		return false;
+	}
+}
+
+void OniLevel::LoadTags() {
+	if (!this->tags.empty()) {
+		this->tags.clear();
+	}
+	for (int32_t i = 0; i < this->header->instance_count; i++) {
+		OniTag *a_tag = new OniTag;
+		a_tag->LoadFrom(&this->instance_descriptors[i], this->data_table, this->names_table);
+		this->tags.push_back(a_tag);
+	}
+}
+
+void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
+	
+}
+
+void OniLevel::ExportAllTags() {
+	if (!this->tags.empty()) {
+		for (int32_t i = 0; i < this->tags.size(); i++) {
+			OniTag *a_tag = this->tags.at(i);
+			//this->ExportTagToPath(a_tag, "some_path");
+			delete a_tag;
+		}
 	}
 }

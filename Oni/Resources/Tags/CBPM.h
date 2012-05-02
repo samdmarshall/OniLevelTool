@@ -19,9 +19,9 @@ struct CBPMDataStruct {
 	CBPMLinkStruct material[19];
 	char dead[12];
 };
-#endif
 
 class CBPM : public OniTM {
 public:
 	CBPMDataStruct *data;
 };
+#endif

@@ -25,9 +25,9 @@ struct IGPGDataStruct {
 	char unused[28];
 };
 
-#endif
 
 class IGPG : public OniTM {
 public:
 	IGPGDataStruct *data;
 };
+#endif

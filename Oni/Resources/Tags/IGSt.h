@@ -22,9 +22,9 @@ struct IGStDataStruct {
 	char unused[8];
 };
 
-#endif
 
 class IGSt : public OniTM {
 public:
 	IGStDataStruct *data;
 };
+#endif

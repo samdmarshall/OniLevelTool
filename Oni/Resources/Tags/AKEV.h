@@ -38,9 +38,9 @@ struct AKEVDataStruct {
 	char unused[24];
 	float ignored;
 };
-#endif
 
 class AKEV : public OniTM {
 public:
 	AKEVDataStruct *data;
 };
+#endif

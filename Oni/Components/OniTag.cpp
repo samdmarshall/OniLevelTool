@@ -29,7 +29,4 @@ void OniTag::LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *n
 		
 	this->instance_data = (char *)malloc(sizeof(char)*(data_struct->data_size+8));
 	memcpy(this->instance_data, &data_buffer[data_struct->data_offset-8],data_struct->data_size+8);
-	
-	
-	
 }

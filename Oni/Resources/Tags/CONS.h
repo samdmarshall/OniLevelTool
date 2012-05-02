@@ -32,9 +32,8 @@ struct CONSDataStruct {
 	char dead[16];
 };
 
-#endif
-
 class CONS : public OniTM {
 public:
 	CONSDataStruct *data;
 };
+#endif

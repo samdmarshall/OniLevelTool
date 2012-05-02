@@ -21,10 +21,10 @@ struct AKAADataStruct {
 	int32_t AGQG_id;
 	int32_t unused;
 };
-#endif
 
 class AKAA : public OniTM {
 public:
 	AKAAHeaderStruct *head;
 	AKAADataStruct *data;	
 };
+#endif

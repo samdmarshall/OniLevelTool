@@ -21,10 +21,10 @@ struct M3GADataStruct {
 	int32_t M3GM_link;
 };
 
-#endif
 
 class M3GA : public OniTM {
 public:
 	M3GAHeaderStruct *head;
 	M3GADataStruct *data;
 };
+#endif

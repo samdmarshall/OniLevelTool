@@ -15,12 +15,13 @@ struct OniTMStruct {
 	char res_id[4];
 	char level_id[4];
 };
-#endif
 
 class OniTM {
 public:
 	char type[5];
 	OniTMStruct *header;
+	
 	OniTM();
 	~OniTM();
 };
+#endif

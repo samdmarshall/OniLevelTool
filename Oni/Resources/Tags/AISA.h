@@ -50,10 +50,10 @@ struct AISADataStruct {
 	int8_t unused6;
 	int8_t unused7;
 };
-#endif
 
 class AISA : public OniTM {
 public:
 	AISAHeaderStruct *head;
 	AISADataStruct *data;
 };
+#endif

@@ -26,9 +26,9 @@ struct DOORDataStruct {
 	int32_t runtime2;
 	char dead[20];
 };
-#endif
 
 class DOOR : public OniTM {
 public:
 	DOORDataStruct *data;
 };
+#endif
