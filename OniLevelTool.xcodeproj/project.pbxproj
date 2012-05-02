@@ -27,6 +27,13 @@
 		227B50961550AD610062C139 /* BINA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50951550AD610062C139 /* BINA.cpp */; };
 		227B509A1550ADDF0062C139 /* CBPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50991550ADDF0062C139 /* CBPI.cpp */; };
 		227B50A71550AED00062C139 /* CBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50A61550AED00062C139 /* CBPM.cpp */; };
+		227B50AE1550AFBC0062C139 /* CONS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50AD1550AFBC0062C139 /* CONS.cpp */; };
+		227B50B81550B13D0062C139 /* CRSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50B71550B13D0062C139 /* CRSA.cpp */; };
+		227B50BE1550B2EE0062C139 /* DOOR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50BD1550B2EE0062C139 /* DOOR.cpp */; };
+		227B50C21550B3AE0062C139 /* DPge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50C11550B3AE0062C139 /* DPge.cpp */; };
+		227B50C91550B4520062C139 /* ENVP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50C81550B4520062C139 /* ENVP.cpp */; };
+		227B50CF1550B5730062C139 /* FILM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50CE1550B5730062C139 /* FILM.cpp */; };
+		227B50D51550B6650062C139 /* HPge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B50D41550B6650062C139 /* HPge.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -87,6 +94,20 @@
 		227B50991550ADDF0062C139 /* CBPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPI.cpp; sourceTree = "<group>"; };
 		227B50A51550AED00062C139 /* CBPM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPM.h; sourceTree = "<group>"; };
 		227B50A61550AED00062C139 /* CBPM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPM.cpp; sourceTree = "<group>"; };
+		227B50AC1550AFBC0062C139 /* CONS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CONS.h; sourceTree = "<group>"; };
+		227B50AD1550AFBC0062C139 /* CONS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CONS.cpp; sourceTree = "<group>"; };
+		227B50B61550B13D0062C139 /* CRSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSA.h; sourceTree = "<group>"; };
+		227B50B71550B13D0062C139 /* CRSA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRSA.cpp; sourceTree = "<group>"; };
+		227B50BC1550B2EE0062C139 /* DOOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOOR.h; sourceTree = "<group>"; };
+		227B50BD1550B2EE0062C139 /* DOOR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DOOR.cpp; sourceTree = "<group>"; };
+		227B50C01550B3AE0062C139 /* DPge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPge.h; sourceTree = "<group>"; };
+		227B50C11550B3AE0062C139 /* DPge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DPge.cpp; sourceTree = "<group>"; };
+		227B50C71550B4520062C139 /* ENVP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENVP.h; sourceTree = "<group>"; };
+		227B50C81550B4520062C139 /* ENVP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ENVP.cpp; sourceTree = "<group>"; };
+		227B50CD1550B5730062C139 /* FILM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FILM.h; sourceTree = "<group>"; };
+		227B50CE1550B5730062C139 /* FILM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FILM.cpp; sourceTree = "<group>"; };
+		227B50D31550B6650062C139 /* HPge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPge.h; sourceTree = "<group>"; };
+		227B50D41550B6650062C139 /* HPge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HPge.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +210,20 @@
 				227B50991550ADDF0062C139 /* CBPI.cpp */,
 				227B50A51550AED00062C139 /* CBPM.h */,
 				227B50A61550AED00062C139 /* CBPM.cpp */,
+				227B50AC1550AFBC0062C139 /* CONS.h */,
+				227B50AD1550AFBC0062C139 /* CONS.cpp */,
+				227B50B61550B13D0062C139 /* CRSA.h */,
+				227B50B71550B13D0062C139 /* CRSA.cpp */,
+				227B50BC1550B2EE0062C139 /* DOOR.h */,
+				227B50BD1550B2EE0062C139 /* DOOR.cpp */,
+				227B50C01550B3AE0062C139 /* DPge.h */,
+				227B50C11550B3AE0062C139 /* DPge.cpp */,
+				227B50C71550B4520062C139 /* ENVP.h */,
+				227B50C81550B4520062C139 /* ENVP.cpp */,
+				227B50CD1550B5730062C139 /* FILM.h */,
+				227B50CE1550B5730062C139 /* FILM.cpp */,
+				227B50D31550B6650062C139 /* HPge.h */,
+				227B50D41550B6650062C139 /* HPge.cpp */,
 			);
 			name = Tags;
 			path = Oni/Resources/Tags;
@@ -273,6 +308,13 @@
 				227B50961550AD610062C139 /* BINA.cpp in Sources */,
 				227B509A1550ADDF0062C139 /* CBPI.cpp in Sources */,
 				227B50A71550AED00062C139 /* CBPM.cpp in Sources */,
+				227B50AE1550AFBC0062C139 /* CONS.cpp in Sources */,
+				227B50B81550B13D0062C139 /* CRSA.cpp in Sources */,
+				227B50BE1550B2EE0062C139 /* DOOR.cpp in Sources */,
+				227B50C21550B3AE0062C139 /* DPge.cpp in Sources */,
+				227B50C91550B4520062C139 /* ENVP.cpp in Sources */,
+				227B50CF1550B5730062C139 /* FILM.cpp in Sources */,
+				227B50D51550B6650062C139 /* HPge.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
