@@ -20,5 +20,11 @@ struct BINAHeaderStruct {
 class BINA : public OniTM {
 public:
 	BINAHeaderStruct *head;
+	char *data;
+	
+	BINA();
+	~BINA();
+	void Load(char *data);
+	void SetDataPath(char *path);
 };
 #endif

@@ -25,7 +25,5 @@ void ABNA::Load(char *data) {
 	memcpy(this->head, &data[sizeof(OniTMStruct)], sizeof(ABNAHeaderStruct));
 	
 	this->data = (ABNADataStruct *)malloc(sizeof(ABNADataStruct)*this->head->array_size);
-	for (int32_t i = 0; i < this->head->array_size; i++) {
-		memcpy(this->data, &data[(sizeof(OniTMStruct)+sizeof(ABNAHeaderStruct))+(sizeof(ABNADataStruct)*i)], sizeof(ABNADataStruct));
-	}
+	memcpy(this->data, &data[(sizeof(OniTMStruct)+sizeof(ABNAHeaderStruct))], sizeof(ABNADataStruct)*this->head->array_size);
 }

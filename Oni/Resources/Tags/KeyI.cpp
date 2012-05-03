@@ -1,5 +1,5 @@
 /*
- *  Keyl.cpp
+ *  KeyI.cpp
  *  OniLevelTool
  *
  *  Created by Sam Marshall on 5/1/12.
@@ -7,5 +7,5 @@
  *
  */
 
-#include "Keyl.h"
+#include "KeyI.h"
 

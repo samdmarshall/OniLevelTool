@@ -41,7 +41,7 @@
 		227B51011550C6560062C139 /* IGSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51001550C6560062C139 /* IGSA.cpp */; };
 		227B51071550C7F40062C139 /* IGSt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51061550C7F40062C139 /* IGSt.cpp */; };
 		227B510F1550C8EA0062C139 /* IPge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B510E1550C8EA0062C139 /* IPge.cpp */; };
-		227B51151550CA9F0062C139 /* Keyl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51141550CA9F0062C139 /* Keyl.cpp */; };
+		227B51151550CA9F0062C139 /* KeyI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51141550CA9F0062C139 /* KeyI.cpp */; };
 		227B511B1550CBF80062C139 /* M3GA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B511A1550CBF80062C139 /* M3GA.cpp */; };
 		227B51211550CCA70062C139 /* M3GM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51201550CCA70062C139 /* M3GM.cpp */; };
 		227B51271550CD3F0062C139 /* Mtrl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51261550CD3F0062C139 /* Mtrl.cpp */; };
@@ -49,6 +49,7 @@
 		227B515B1551739A0062C139 /* OBOA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B515A1551739A0062C139 /* OBOA.cpp */; };
 		227B515F155174B90062C139 /* OFGA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B515E155174B90062C139 /* OFGA.cpp */; };
 		227B51631551754F0062C139 /* ONCC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51621551754F0062C139 /* ONCC.cpp */; };
+		227B55B01552E9000062C139 /* IDXA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B55AF1552E9000062C139 /* IDXA.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -138,8 +139,8 @@
 		227B51061550C7F40062C139 /* IGSt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IGSt.cpp; sourceTree = "<group>"; };
 		227B510D1550C8EA0062C139 /* IPge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPge.h; sourceTree = "<group>"; };
 		227B510E1550C8EA0062C139 /* IPge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPge.cpp; sourceTree = "<group>"; };
-		227B51131550CA9F0062C139 /* Keyl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyl.h; sourceTree = "<group>"; };
-		227B51141550CA9F0062C139 /* Keyl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Keyl.cpp; sourceTree = "<group>"; };
+		227B51131550CA9F0062C139 /* KeyI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyI.h; sourceTree = "<group>"; };
+		227B51141550CA9F0062C139 /* KeyI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyI.cpp; sourceTree = "<group>"; };
 		227B51191550CBF80062C139 /* M3GA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3GA.h; sourceTree = "<group>"; };
 		227B511A1550CBF80062C139 /* M3GA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = M3GA.cpp; sourceTree = "<group>"; };
 		227B511F1550CCA70062C139 /* M3GM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3GM.h; sourceTree = "<group>"; };
@@ -154,6 +155,8 @@
 		227B515E155174B90062C139 /* OFGA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFGA.cpp; sourceTree = "<group>"; };
 		227B51611551754F0062C139 /* ONCC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONCC.h; sourceTree = "<group>"; };
 		227B51621551754F0062C139 /* ONCC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ONCC.cpp; sourceTree = "<group>"; };
+		227B55AE1552E9000062C139 /* IDXA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDXA.h; sourceTree = "<group>"; };
+		227B55AF1552E9000062C139 /* IDXA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IDXA.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,6 +278,8 @@
 				227B50D41550B6650062C139 /* HPge.cpp */,
 				227B50E31550BF8C0062C139 /* IGHH.h */,
 				227B50E41550BF8C0062C139 /* IGHH.cpp */,
+				227B55AE1552E9000062C139 /* IDXA.h */,
+				227B55AF1552E9000062C139 /* IDXA.cpp */,
 				227B50F31550C4C00062C139 /* IGPA.h */,
 				227B50F41550C4C00062C139 /* IGPA.cpp */,
 				227B50F91550C5320062C139 /* IGPG.h */,
@@ -287,8 +292,8 @@
 				227B50E81550C1400062C139 /* Impt.cpp */,
 				227B510D1550C8EA0062C139 /* IPge.h */,
 				227B510E1550C8EA0062C139 /* IPge.cpp */,
-				227B51131550CA9F0062C139 /* Keyl.h */,
-				227B51141550CA9F0062C139 /* Keyl.cpp */,
+				227B51131550CA9F0062C139 /* KeyI.h */,
+				227B51141550CA9F0062C139 /* KeyI.cpp */,
 				227B51191550CBF80062C139 /* M3GA.h */,
 				227B511A1550CBF80062C139 /* M3GA.cpp */,
 				227B511F1550CCA70062C139 /* M3GM.h */,
@@ -401,7 +406,7 @@
 				227B51011550C6560062C139 /* IGSA.cpp in Sources */,
 				227B51071550C7F40062C139 /* IGSt.cpp in Sources */,
 				227B510F1550C8EA0062C139 /* IPge.cpp in Sources */,
-				227B51151550CA9F0062C139 /* Keyl.cpp in Sources */,
+				227B51151550CA9F0062C139 /* KeyI.cpp in Sources */,
 				227B511B1550CBF80062C139 /* M3GA.cpp in Sources */,
 				227B51211550CCA70062C139 /* M3GM.cpp in Sources */,
 				227B51271550CD3F0062C139 /* Mtrl.cpp in Sources */,
@@ -409,6 +414,7 @@
 				227B515B1551739A0062C139 /* OBOA.cpp in Sources */,
 				227B515F155174B90062C139 /* OFGA.cpp in Sources */,
 				227B51631551754F0062C139 /* ONCC.cpp in Sources */,
+				227B55B01552E9000062C139 /* IDXA.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

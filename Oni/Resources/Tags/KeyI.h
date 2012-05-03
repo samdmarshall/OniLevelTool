@@ -1,5 +1,5 @@
 /*
- *  Keyl.h
+ *  KeyI.h
  *  OniLevelTool
  *
  *  Created by Sam Marshall on 5/1/12.
@@ -9,10 +9,10 @@
 
 #include "OniTM.h"
 
-#ifndef _Keyl
-#define _Keyl
+#ifndef _KeyI
+#define _KeyI
 
-struct KeylDataStruct {
+struct KeyIDataStruct {
 	int32_t TXMP_link1;
 	int32_t TXMP_link2;
 	int32_t TXMP_link3;
@@ -27,8 +27,8 @@ struct KeylDataStruct {
 };
 
 
-class Keyl : public OniTM {
+class KeyI : public OniTM {
 public:
-	KeylDataStruct *data;
+	KeyIDataStruct *data;
 };
 #endif

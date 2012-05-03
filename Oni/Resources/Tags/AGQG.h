@@ -40,5 +40,8 @@ class AGQG : public OniTM {
 public:
 	AGQGHeaderStruct *head;
 	AGQGDataStruct *data;
+	AGQG();
+	~AGQG();
+	void Load(char *data);
 };
 #endif

@@ -15,6 +15,9 @@ OniLevel::OniLevel() {
 
 OniLevel::~OniLevel() {
 	free(this->name);
+	free(this->level_path);
+	free(this->raw_path);
+	free(this->sep_path);
 	free(this->header);
 	free(this->instance_descriptors);
 	free(this->name_descriptors);
@@ -38,6 +41,17 @@ bool OniLevel::LoadPath(char *path) {
 		this->name = (char *)malloc(sizeof(char)*p_length);
 		memcpy(this->name, &path[p_length], (strlen(path)-(pos-path)));
 		
+		this->level_path = (char *)malloc(sizeof(char)*strlen(path));
+		strcpy(this->level_path, path);
+		
+		this->raw_path = (char *)malloc(sizeof(char)*strlen(path));
+		strncpy(this->raw_path, path, strlen(path)-3);
+		strcat(this->raw_path, "raw");
+		
+		this->sep_path = (char *)malloc(sizeof(char)*strlen(path));
+		strncpy(this->sep_path, path, strlen(path)-3);
+		strcat(this->sep_path, "sep");
+				
 		fread(this->header,sizeof(LevelHeader),1,file_);
 		
 		this->instance_descriptors = (OniInstanceStruct *)malloc(sizeof(OniInstanceStruct)*this->header->instance_count);

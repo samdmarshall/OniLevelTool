@@ -16,10 +16,6 @@ int main (int argc, char * const argv[]) {
 			printf("Load Success: %s\n", status ? "Yes" : "No");
 			if (status) {
 				level->LoadTags();
-				for (int32_t i = 0; i < level->tags.size(); i++) {
-					level->tags.at(i)->FormatTag();
-				}
-				
 			}
 		}
 	}

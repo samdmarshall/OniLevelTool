@@ -35,6 +35,9 @@ struct LevelHeader {
 class OniLevel {
 	public:
 	char *name;
+	char *level_path;
+	char *raw_path;
+	char *sep_path;
 	
 	LevelHeader *header;
 	

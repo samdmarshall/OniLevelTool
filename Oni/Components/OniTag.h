@@ -22,13 +22,12 @@ public:
 	char type[5];
 	char name[64];
 	int32_t flags;
-	char *instance_data;
 	
 	OniTM *tm_tag;
 			
 	OniTag();
 	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
-	void FormatTag();
+	void FormatTag(char *i_data);
 };
 #endif
