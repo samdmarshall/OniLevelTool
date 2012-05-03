@@ -11,7 +11,6 @@
 #include <typeinfo>
 
 OniTag::OniTag() {
-	this->external_data = false;
 }
 
 OniTag::~OniTag() {
@@ -40,6 +39,7 @@ void OniTag::FormatTag(char *i_data) {
 		if (isTagOfType(this->type, tm_types[i]))
 			break;
 	}
+	this->external_data = false;
 	switch (i) {
 		case  0: { this->tm_tag = dynamic_cast<ABNA*>(new ABNA); break; }
 		case  1: { this->tm_tag = dynamic_cast<AGQC*>(new AGQC); break; }
