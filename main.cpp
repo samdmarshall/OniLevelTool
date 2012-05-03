@@ -17,10 +17,9 @@ int main (int argc, char * const argv[]) {
 			if (status) {
 				level->LoadTags();
 				for (int32_t i = 0; i < level->tags.size(); i++) {
-					OniTag *tag = level->tags.at(i);
-					std::cout << tag->type << " - " << tag->name << " - " << tag->flags << std::endl;
-					delete tag;
+					level->tags.at(i)->FormatTag();
 				}
+				
 			}
 		}
 	}

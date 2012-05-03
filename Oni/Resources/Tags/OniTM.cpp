@@ -9,10 +9,10 @@
 
 #include "OniTM.h"
 
-OniTM::OniTM() {
+/*OniTM::OniTM() {
 	this->header = (OniTMStruct *)malloc(sizeof(OniTMStruct));
 }
 
 OniTM::~OniTM() {
 	free(this->header);
-}
+}*/

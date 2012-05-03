@@ -125,5 +125,6 @@ const static OniTemplateTags tm_types[98] = {tm_ABNA, tm_AGQC, tm_AGQG, tm_AGQR,
 static inline bool isTagOfType(char tag[5], OniTemplateTags tm) {
 	char read_tm[5] = { ((tm>>24)&0xFF), ((tm>>16)&0xFF), ((tm>>8)&0xFF), ((tm>>0)&0xFF), '\0'};
 	return (strcmp(tag, read_tm)==0);
-}
+};
+
 #endif       

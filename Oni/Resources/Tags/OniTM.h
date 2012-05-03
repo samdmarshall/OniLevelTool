@@ -21,7 +21,8 @@ public:
 	char type[5];
 	OniTMStruct *header;
 	
-	OniTM();
-	~OniTM();
+	OniTM() {};
+	~OniTM() {};
+	virtual void Load(char *data) {};
 };
 #endif

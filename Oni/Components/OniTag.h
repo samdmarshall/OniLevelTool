@@ -15,6 +15,8 @@
 
 #ifndef _OniTag
 #define _OniTag
+
+
 class OniTag {
 public:
 	char type[5];
@@ -22,8 +24,11 @@ public:
 	int32_t flags;
 	char *instance_data;
 	
+	OniTM *tm_tag;
+			
 	OniTag();
 	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
+	void FormatTag();
 };
 #endif

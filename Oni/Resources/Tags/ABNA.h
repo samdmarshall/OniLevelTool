@@ -28,5 +28,9 @@ class ABNA : public OniTM {
 public:
 	ABNAHeaderStruct *head;
 	ABNADataStruct *data;
+	
+	ABNA();
+	~ABNA();
+	void Load(char *data);
 };
 #endif
