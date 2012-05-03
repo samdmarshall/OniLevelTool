@@ -11,13 +11,18 @@
 
 OniLevel::OniLevel() {
 	this->header = (LevelHeader *)malloc(sizeof(LevelHeader));
+	this->has_raw = false;
+	this->has_sep = false;
 }
 
 OniLevel::~OniLevel() {
 	free(this->name);
 	free(this->level_path);
-	free(this->raw_path);
-	free(this->sep_path);
+	if (this->type == DAT) {
+		free(this->raw_path);
+		if (this->platform == DemoMac)
+			free(this->sep_path);
+	}
 	free(this->header);
 	free(this->instance_descriptors);
 	free(this->name_descriptors);
@@ -27,6 +32,7 @@ OniLevel::~OniLevel() {
 }
 
 bool OniLevel::LoadPath(char *path) {
+	bool status = false;
 	FILE *file_ = fopen(path,"rb");
 	if (file_) {
 		char *pos;
@@ -44,15 +50,29 @@ bool OniLevel::LoadPath(char *path) {
 		this->level_path = (char *)malloc(sizeof(char)*strlen(path));
 		strcpy(this->level_path, path);
 		
-		this->raw_path = (char *)malloc(sizeof(char)*strlen(path));
-		strncpy(this->raw_path, path, strlen(path)-3);
-		strcat(this->raw_path, "raw");
-		
-		this->sep_path = (char *)malloc(sizeof(char)*strlen(path));
-		strncpy(this->sep_path, path, strlen(path)-3);
-		strcat(this->sep_path, "sep");
-				
 		fread(this->header,sizeof(LevelHeader),1,file_);
+		this->platform = ((this->header->checksum == 1052091493724257ULL) ? DemoMac : PC);
+		this->type = ((this->header->version == 1448227633) ? DAT : ONI);
+		
+		if (this->type == DAT) {
+			this->raw_path = (char *)malloc(sizeof(char)*strlen(path));
+			strncpy(this->raw_path, path, strlen(path)-3);
+			strcat(this->raw_path, "raw");
+			FILE *raw_ = fopen(this->raw_path, "rb");
+			if (raw_)
+				this->has_raw = true;
+			fclose(raw_);
+
+			if (this->platform == DemoMac) {
+				this->sep_path = (char *)malloc(sizeof(char)*strlen(path));
+				strncpy(this->sep_path, path, strlen(path)-3);
+				strcat(this->sep_path, "sep");
+				FILE *sep_ = fopen(this->sep_path, "rb");
+				if (sep_)
+					this->has_sep = true;
+				fclose(sep_);
+			}
+		}
 		
 		this->instance_descriptors = (OniInstanceStruct *)malloc(sizeof(OniInstanceStruct)*this->header->instance_count);
 		fread(this->instance_descriptors,sizeof(OniInstanceStruct),this->header->instance_count,file_);
@@ -73,35 +93,42 @@ bool OniLevel::LoadPath(char *path) {
 		fsetpos(file_,&names_pos);
 		fread(this->names_table,sizeof(char)*this->header->names_size,1,file_);
 		
-		fclose(file_);
-		
-		return true;
-	} else {
-		return false;
+		status = true;
 	}
+	fclose(file_);
+	return status;
 }
 
 void OniLevel::LoadTags() {
-	if (!this->tags.empty()) {
-		this->tags.clear();
-	}
-	for (int32_t i = 0; i < this->header->instance_count; i++) {
-		OniTag *a_tag = new OniTag;
-		a_tag->LoadFrom(&this->instance_descriptors[i], this->data_table, this->names_table);
-		this->tags.push_back(a_tag);
+	if (this->platform != OPundefined) {
+		if (!this->tags.empty()) {
+			this->tags.clear();
+		}
+		for (int32_t i = 0; i < this->header->instance_count; i++) {
+			OniTag *a_tag = new OniTag;
+			a_tag->LoadFrom(&this->instance_descriptors[i], this->data_table, this->names_table);
+			if (a_tag->external_data) {
+
+			}
+			this->tags.push_back(a_tag);
+		}
 	}
 }
 
 void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
-	
+	if (this->platform != OPundefined) {
+		
+	}
 }
 
 void OniLevel::ExportAllTags() {
-	if (!this->tags.empty()) {
-		for (int32_t i = 0; i < this->tags.size(); i++) {
-			OniTag *a_tag = this->tags.at(i);
-			//this->ExportTagToPath(a_tag, "some_path");
-			delete a_tag;
+	if (this->platform != OPundefined) {
+		if (!this->tags.empty()) {
+			for (int32_t i = 0; i < this->tags.size(); i++) {
+				OniTag *a_tag = this->tags.at(i);
+				//this->ExportTagToPath(a_tag, "some_path");
+				delete a_tag;
+			}
 		}
 	}
 }

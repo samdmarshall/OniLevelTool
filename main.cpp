@@ -13,10 +13,13 @@ int main (int argc, char * const argv[]) {
 		} else {
 			OniLevel *level = new OniLevel;
 			bool status = level->LoadPath(argv[1]);
-			printf("Load Success: %s\n", status ? "Yes" : "No");
+			printf("Load Success: %s\n\n", status ? "Yes" : "No");
 			if (status) {
-				level->LoadTags();
+				printf("      Name: %s\n",level->name);
+				printf("  Platform: %s\n", ((level->platform-1) ? "Mac/Demo" : "PC"));
+				printf("Level Type: %s\n", ((level->type-1) ? "oni" : "dat"));
 			}
+			level->LoadTags();
 		}
 	}
     return 0;

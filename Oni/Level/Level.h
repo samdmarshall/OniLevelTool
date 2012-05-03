@@ -32,14 +32,33 @@ struct LevelHeader {
 	int32_t unused[4];
 };
 
+typedef enum OniPlatform {
+	OPundefined = 0,
+	PC = 1,
+	DemoMac = 2
+};
+
+typedef enum LevelType {
+	LTundefined = 0,
+	DAT = 1,
+	ONI = 2
+};
+
 class OniLevel {
 	public:
 	char *name;
+	
 	char *level_path;
 	char *raw_path;
 	char *sep_path;
 	
+	bool has_raw;
+	bool has_sep;
+	
 	LevelHeader *header;
+	
+	OniPlatform platform;
+	LevelType type;
 	
 	OniInstanceStruct *instance_descriptors;
 	OniNameStruct *name_descriptors;

@@ -24,6 +24,8 @@ public:
 	int32_t flags;
 	
 	OniTM *tm_tag;
+	
+	bool external_data;
 			
 	OniTag();
 	~OniTag();

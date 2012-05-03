@@ -10,7 +10,9 @@
 #include "OniTag.h"
 #include <typeinfo>
 
-OniTag::OniTag() {}
+OniTag::OniTag() {
+	this->external_data = false;
+}
 
 OniTag::~OniTag() {
 }
@@ -50,7 +52,7 @@ void OniTag::FormatTag(char *i_data) {
 		case  8: { this->tm_tag = dynamic_cast<AKEV*>(new AKEV); break; }
 		case  9: { this->tm_tag = dynamic_cast<AKOT*>(new AKOT); break; }
 		case 10: { this->tm_tag = dynamic_cast<AKVA*>(new AKVA); break; }
-		case 11: { this->tm_tag = dynamic_cast<BINA*>(new BINA); break; }
+		case 11: { this->tm_tag = dynamic_cast<BINA*>(new BINA); this->external_data = true; break; }
 		case 12: { this->tm_tag = dynamic_cast<CBPI*>(new CBPI); break; }
 		case 13: { this->tm_tag = dynamic_cast<CBPM*>(new CBPM); break; }
 		case 14: { this->tm_tag = dynamic_cast<CONS*>(new CONS); break; }
