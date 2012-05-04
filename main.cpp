@@ -20,6 +20,7 @@ int main (int argc, char * const argv[]) {
 				printf("Level Type: %s\n", ((level->type-1) ? "oni" : "dat"));
 			}
 			level->LoadTags();
+			level->ExportAllTags();
 		}
 	}
     return 0;

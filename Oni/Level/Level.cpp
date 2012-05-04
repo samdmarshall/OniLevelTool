@@ -126,7 +126,7 @@ void OniLevel::LoadTags() {
 			OniTag *a_tag = new OniTag;
 			a_tag->LoadFrom(&this->instance_descriptors[i], this->data_table, this->names_table);
 			if (a_tag->external_data) {
-
+				//a_tag->LoadExternal(this->raw_path, this->sep_path, )
 			}
 			this->tags.push_back(a_tag);
 		}
@@ -135,18 +135,51 @@ void OniLevel::LoadTags() {
 
 void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 	if (this->platform != OPundefined) {
-		
+		if (strcmp(tag->name, "unnamed\0") != 0) {
+			char *file_path = (char *)malloc(sizeof(char)*(strlen(path)+strlen(tag->name)+6));
+			strcpy(file_path, path);
+			strcat(file_path, "/");
+			strcat(file_path, tag->name);
+			strcat(file_path, ".oni\0");
+			FILE *export_tag = fopen(file_path, "w+");
+			if (export_tag) {
+				LevelHeader *output_header = this->CreateHeader(tag);
+				fwrite(output_header, 1, sizeof(LevelHeader), export_tag);
+				free(&output_header);
+				
+				uint64_t tag_size = tag->GetDataLength();
+				char *export_data = tag->GetExportDataLength(tag_size);
+				fwrite(export_data,1,tag_size,export_tag);
+				free(export_tag);
+			}
+			fclose(export_tag);
+			free(file_path);
+		}
 	}
 }
 
 void OniLevel::ExportAllTags() {
 	if (this->platform != OPundefined) {
 		if (!this->tags.empty()) {
-			for (int32_t i = 0; i < this->tags.size(); i++) {
-				OniTag *a_tag = this->tags.at(i);
-				//this->ExportTagToPath(a_tag, "some_path");
-				delete a_tag;
+			char *temp_ = (char *)malloc(sizeof(char)*(strlen(this->level_path)-4));
+			strncpy(temp_, this->level_path, strlen(this->level_path)-4);
+			if (mkdir(temp_ ,0777) == 0) {
+				for (int32_t i = 0; i < this->tags.size(); i++) {
+					OniTag *a_tag = this->tags.at(i);
+					this->ExportTagToPath(a_tag, temp_);
+					delete a_tag;
+				}
 			}
+			free(temp_);
 		}
 	}
+}
+
+LevelHeader* OniLevel::CreateHeader(OniTag *tag) {
+	LevelHeader *new_header = (LevelHeader *)malloc(sizeof(LevelHeader));
+	new_header->checksum = 1052091763926815ULL;
+	new_header->version = 1448227634;
+	new_header->signature = 2251868534472768ULL;
+	
+	return new_header;
 }

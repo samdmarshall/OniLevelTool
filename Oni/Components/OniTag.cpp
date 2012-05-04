@@ -25,7 +25,7 @@ void OniTag::LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *n
 	if (!hasInstanceFlag(this->flags, OIF_Unique))
 		memcpy(this->name, &name_buffer[data_struct->name_offset],64);
 	else
-		strncpy(this->name, "unnamed", 64);
+		strncpy(this->name, "unnamed\0", 64);
 		
 	char *instance_data = (char *)malloc(sizeof(char)*(data_struct->data_size+8));
 	memcpy(instance_data, &data_buffer[data_struct->data_offset-8],data_struct->data_size+8);
@@ -142,4 +142,14 @@ void OniTag::FormatTag(char *i_data) {
 		default: { this->tm_tag = dynamic_cast<OniTM*>(new OniTM); break; }
 	}
 	this->tm_tag->Load(i_data);
+}
+
+uint64_t OniTag::GetDataLength() {
+	return 1;
+}
+
+char* OniTag::GetExportDataLength(uint64_t length) {
+	char *data = (char *)malloc(sizeof(char)*length);
+	data[0] = 'a';
+	return data;
 }
