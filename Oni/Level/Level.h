@@ -78,5 +78,5 @@ class OniLevel {
 	void LoadTags();
 	void ExportTagToPath(OniTag *tag, char *path);
 	void ExportAllTags();
-	LevelHeader* CreateHeader(OniTag *tag);
+	LevelHeader* CreateOniHeader(OniTag *tag);
 };

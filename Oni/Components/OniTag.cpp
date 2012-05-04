@@ -153,3 +153,7 @@ char* OniTag::GetExportDataLength(uint64_t length) {
 	data[0] = 'a';
 	return data;
 }
+
+int32_t OniTag::GetInstanceCount() {
+	return this->tm_tag->instance_count;
+}

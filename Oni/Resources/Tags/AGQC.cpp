@@ -26,4 +26,6 @@ void AGQC::Load(char *data) {
 	
 	this->data = (AGQCDataStruct *)malloc(sizeof(AGQCDataStruct)*this->head->array_size);
 	memcpy(this->data, &data[(sizeof(OniTMStruct)+sizeof(AGQCHeaderStruct))], sizeof(AGQCDataStruct)*this->head->array_size);
+	
+	this->instance_count = this->head->array_size;
 }

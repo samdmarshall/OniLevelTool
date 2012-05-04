@@ -141,7 +141,9 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 			strcat(file_path, "/");
 			strcat(file_path, tag->name);
 			strcat(file_path, ".oni\0");
-			FILE *export_tag = fopen(file_path, "w+");
+			
+			//printf("%i\n\n");
+			/*FILE *export_tag = fopen(file_path, "w+");
 			if (export_tag) {
 				LevelHeader *output_header = this->CreateHeader(tag);
 				fwrite(output_header, 1, sizeof(LevelHeader), export_tag);
@@ -152,7 +154,7 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				fwrite(export_data,1,tag_size,export_tag);
 				free(export_data);
 			}
-			fclose(export_tag);
+			fclose(export_tag);*/
 			free(file_path);
 		}
 	}
@@ -174,11 +176,27 @@ void OniLevel::ExportAllTags() {
 	}
 }
 
-LevelHeader* OniLevel::CreateHeader(OniTag *tag) {
+LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 	LevelHeader *new_header = (LevelHeader *)malloc(sizeof(LevelHeader));
-	new_header->checksum = 1052091763926815ULL;
+	new_header->checksum = this->header->checksum;
 	new_header->version = 1448227634;
-	new_header->signature = 2251868534472768ULL;
+	new_header->signature = this->header->signature;
+	
+	new_header->instance_count = tag->GetInstanceCount();
+	new_header->name_count = 0;
+	new_header->template_count = 0;
+	
+	new_header->data_offset = 0;
+	new_header->data_size = 0;
+	
+	new_header->names_offset = 0;
+	new_header->names_size = 0;
+	
+	new_header->raw_offset = 0;
+	new_header->raw_size = 0;
+	
+	new_header->unused[0] = 0;
+	new_header->unused[1] = 0;
 	
 	return new_header;
 }

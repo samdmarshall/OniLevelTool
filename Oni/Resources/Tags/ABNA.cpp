@@ -26,4 +26,15 @@ void ABNA::Load(char *data) {
 	
 	this->data = (ABNADataStruct *)malloc(sizeof(ABNADataStruct)*this->head->array_size);
 	memcpy(this->data, &data[(sizeof(OniTMStruct)+sizeof(ABNAHeaderStruct))], sizeof(ABNADataStruct)*this->head->array_size);
+	
+	this->instance_count = this->head->array_size*2;
+}
+
+int32_t* ABNA::GetInstanceIDs() {
+	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
+	for (int32_t i = 0; i < this->head->array_size; i++) {
+		instances[(2*i)] = this->data[i].AGQG_id;
+		instances[(2*i)+1] = this->data[i].PLEA_id;
+	}
+	return instances;
 }

@@ -32,5 +32,6 @@ public:
 	ABNA();
 	~ABNA();
 	void Load(char *data);
+	int32_t* GetInstanceIDs();
 };
 #endif

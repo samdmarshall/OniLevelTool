@@ -21,8 +21,11 @@ public:
 	char type[5];
 	OniTMStruct *header;
 	
+	int32_t instance_count;
+	
 	OniTM() {};
 	~OniTM() {};
 	virtual void Load(char *data) {};
+	virtual int32_t* GetInstanceIDs() { return NULL; };
 };
 #endif

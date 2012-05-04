@@ -157,6 +157,7 @@
 		227B51621551754F0062C139 /* ONCC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ONCC.cpp; sourceTree = "<group>"; };
 		227B55AE1552E9000062C139 /* IDXA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDXA.h; sourceTree = "<group>"; };
 		227B55AF1552E9000062C139 /* IDXA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IDXA.cpp; sourceTree = "<group>"; };
+		227B575D155436820062C139 /* Maths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Maths.h; path = Oni/Resources/Maths.h; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +191,7 @@
 				227B485C154E150B0062C139 /* Level */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				227B48E8154E1DC10062C139 /* headers.h */,
+				227B575D155436820062C139 /* Maths.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
