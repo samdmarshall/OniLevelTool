@@ -145,12 +145,12 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 			if (export_tag) {
 				LevelHeader *output_header = this->CreateHeader(tag);
 				fwrite(output_header, 1, sizeof(LevelHeader), export_tag);
-				free(&output_header);
+				free(output_header);
 				
 				uint64_t tag_size = tag->GetDataLength();
 				char *export_data = tag->GetExportDataLength(tag_size);
 				fwrite(export_data,1,tag_size,export_tag);
-				free(export_tag);
+				free(export_data);
 			}
 			fclose(export_tag);
 			free(file_path);
@@ -167,7 +167,6 @@ void OniLevel::ExportAllTags() {
 				for (int32_t i = 0; i < this->tags.size(); i++) {
 					OniTag *a_tag = this->tags.at(i);
 					this->ExportTagToPath(a_tag, temp_);
-					delete a_tag;
 				}
 			}
 			free(temp_);

@@ -29,7 +29,10 @@ struct LevelHeader {
 	int32_t names_offset;
 	int32_t names_size;
 	
-	int32_t unused[4];
+	int32_t raw_offset;
+	int32_t raw_size;
+	
+	int32_t unused[2];
 };
 
 typedef enum OniPlatform {
