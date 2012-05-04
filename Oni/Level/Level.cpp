@@ -138,7 +138,11 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 		if (strcmp(tag->name, "unnamed\0") != 0) {
 			char *file_path = (char *)malloc(sizeof(char)*(strlen(path)+strlen(tag->name)+6));
 			strcpy(file_path, path);
-			strcat(file_path, "/");
+			#ifdef _WIN32
+				strcat(file_path, "\\");
+			#else
+				strcat(file_path, "/");
+			#endif
 			strcat(file_path, tag->name);
 			strcat(file_path, ".oni\0");
 			
