@@ -146,7 +146,6 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 			strcat(file_path, tag->name);
 			strcat(file_path, ".oni\0");
 			
-			//printf("%i\n\n");
 			/*FILE *export_tag = fopen(file_path, "w+");
 			if (export_tag) {
 				LevelHeader *output_header = this->CreateHeader(tag);
@@ -169,7 +168,13 @@ void OniLevel::ExportAllTags() {
 		if (!this->tags.empty()) {
 			char *temp_ = (char *)malloc(sizeof(char)*(strlen(this->level_path)-4));
 			strncpy(temp_, this->level_path, strlen(this->level_path)-4);
-			if (mkdir(temp_ ,0777) == 0) {
+			int32_t mkdir_result;
+			#ifdef _WIN32
+				mkdir_result =  _mkdir(temp_);
+			#else
+				mkdir_result = mkdir(temp_ ,0777);
+			#endif
+			if (mkdir_result == 0) {
 				for (int32_t i = 0; i < this->tags.size(); i++) {
 					OniTag *a_tag = this->tags.at(i);
 					this->ExportTagToPath(a_tag, temp_);
