@@ -23,7 +23,7 @@ public:
 	
 	int32_t instance_count;
 	
-	OniTM() {};
+	OniTM() { this->instance_count = 0; };
 	~OniTM() {};
 	virtual void Load(char *data) {};
 	virtual int32_t* GetInstanceIDs() { return 0; };

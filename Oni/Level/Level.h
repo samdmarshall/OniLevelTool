@@ -86,6 +86,8 @@ class OniLevel {
 	void ExportAllTags();
 	LevelHeader* CreateOniHeader(OniTag *tag);
 	int32_t GetInstanceCount(OniTag *tag);
-	int32_t ComputeDataOffset();
+	int32_t ComputeNamesOffset();
 	int32_t ComputeDataSize();
+	int32_t ComputeNamesSize();
+	int32_t ComputeRawSize() ;
 };
