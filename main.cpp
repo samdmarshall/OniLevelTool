@@ -18,9 +18,9 @@ int main (int argc, char * const argv[]) {
 				printf("      Name: %s\n",level->name);
 				printf("  Platform: %s\n", ((level->platform-1) ? "Mac/Demo" : "PC"));
 				printf("Level Type: %s\n", ((level->type-1) ? "oni" : "dat"));
+				level->LoadTags();
+				level->ExportAllTags();
 			}
-			level->LoadTags();
-			level->ExportAllTags();
 		}
 	}
     return 0;

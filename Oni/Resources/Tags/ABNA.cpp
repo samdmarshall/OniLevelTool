@@ -38,3 +38,20 @@ int32_t* ABNA::GetInstanceIDs() {
 	}
 	return instances;
 }
+
+uint64_t ABNA::DataSize() {
+	return sizeof(OniTMStruct) + sizeof(ABNAHeaderStruct) + (sizeof(ABNADataStruct)*this->head->array_size);
+}
+
+char* ABNA::ExportData() {
+	char *edata = (char *)malloc(sizeof(char)*this->DataSize());
+	int32_t position = sizeof(OniTMStruct);
+	memcpy(edata, this->header, sizeof(OniTMStruct));
+	memcpy(&edata[position], this->head, sizeof(ABNAHeaderStruct));
+	position = position + sizeof(ABNAHeaderStruct);
+	for (int32_t i = 0; i < this->head->array_size; i++) {
+		memcpy(&edata[position], &data[i], sizeof(ABNADataStruct));
+		position = position + sizeof(ABNADataStruct);
+	}
+	return edata;
+}

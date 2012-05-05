@@ -32,7 +32,6 @@ public:
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
 	void FormatTag(char *i_data);
 	uint64_t GetDataLength();
-	char* GetExportDataLength(uint64_t length);
-	int32_t GetInstanceCount();
+	char* GetExportData();
 };
 #endif

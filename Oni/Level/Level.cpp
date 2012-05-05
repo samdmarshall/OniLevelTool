@@ -54,13 +54,13 @@ bool OniLevel::LoadPath(char *path) {
 		
 		size_t read_length = fread(this->header,sizeof(LevelHeader),1,file_);
 		if (read_length) {
-			if (this->header->checksum == 1052091493724257ULL) { this->platform = DemoMac; }
-			else if (this->header->checksum == 1052091763926815ULL) { this->platform = PC; }
+			if (this->header->checksum == DemoMacPlatformChecksum) { this->platform = DemoMac; }
+			else if (this->header->checksum == PCPlatformChecksum) { this->platform = PC; }
 			else { this->platform = OPundefined; }
 			
 			if (this->platform != OPundefined) {
-				if (this->header->version == 1448227633) { this->type = DAT; }
-				else if (this->header->version == 1448227634) { this->type = ONI; }
+				if (this->header->version == DATFileVersion) { this->type = DAT; }
+				else if (this->header->version == ONIFileVersion) { this->type = ONI; }
 				else { this->type = LTundefined; }
 				
 				if (this->type == DAT) {
@@ -146,18 +146,25 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 			strcat(file_path, tag->name);
 			strcat(file_path, ".oni\0");
 			
-			/*FILE *export_tag = fopen(file_path, "w+");
-			if (export_tag) {
-				LevelHeader *output_header = this->CreateHeader(tag);
-				fwrite(output_header, 1, sizeof(LevelHeader), export_tag);
+			FILE *export_tag_ = fopen(file_path, "w+");
+			if (export_tag_) {
+				LevelHeader *output_header = this->CreateOniHeader(tag);
+				fwrite(output_header, 1, sizeof(LevelHeader), export_tag_);
 				free(output_header);
 				
-				uint64_t tag_size = tag->GetDataLength();
-				char *export_data = tag->GetExportDataLength(tag_size);
-				fwrite(export_data,1,tag_size,export_tag);
-				free(export_data);
+				// write names table
+				
+				// write data table
+				/*for (int32_t i = 0; i < this->export_tags.size(); i++) {
+					char *data = tag->GetExportData();
+					fwrite(data, 1, sizeof(tag->GetDataLength()), export_tag_);
+					free(data);
+				}*/
+				
+				// write raw
 			}
-			fclose(export_tag);*/
+			fclose(export_tag_);
+			std::cout << file_path << std::endl;
 			free(file_path);
 		}
 	}
@@ -170,7 +177,7 @@ void OniLevel::ExportAllTags() {
 			strncpy(temp_, this->level_path, strlen(this->level_path)-4);
 			int32_t mkdir_result;
 			#ifdef _WIN32
-				mkdir_result =  _mkdir(temp_);
+				mkdir_result = _mkdir(temp_);
 			#else
 				mkdir_result = mkdir(temp_ ,0777);
 			#endif
@@ -179,6 +186,8 @@ void OniLevel::ExportAllTags() {
 					OniTag *a_tag = this->tags.at(i);
 					this->ExportTagToPath(a_tag, temp_);
 				}
+			} else {
+				std::cout << "Export directory for \"" << this->name << "\" already exists." << std::endl;
 			}
 			free(temp_);
 		}
@@ -188,24 +197,58 @@ void OniLevel::ExportAllTags() {
 LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 	LevelHeader *new_header = (LevelHeader *)malloc(sizeof(LevelHeader));
 	new_header->checksum = this->header->checksum;
-	new_header->version = 1448227634;
+	new_header->version = ONIFileVersion;
 	new_header->signature = this->header->signature;
 	
-	new_header->instance_count = tag->GetInstanceCount();
-	new_header->name_count = 0;
-	new_header->template_count = 0;
+	if (!this->export_tags.empty()) { this->export_tags.clear(); }
+	new_header->instance_count = this->GetInstanceCount(tag);
+	new_header->name_count = 0; // always zero
+	new_header->template_count = 0; // always zero
 	
-	new_header->data_offset = 0;
-	new_header->data_size = 0;
+	new_header->data_offset = this->ComputeDataOffset(); 
+	new_header->data_size = this->ComputeDataSize(); 
 	
 	new_header->names_offset = 0;
 	new_header->names_size = 0;
 	
-	new_header->raw_offset = 0;
+	new_header->raw_offset = 0; // end of normal dat file
 	new_header->raw_size = 0;
 	
 	new_header->unused[0] = 0;
 	new_header->unused[1] = 0;
 	
 	return new_header;
+}
+
+int32_t OniLevel::GetInstanceCount(OniTag *tag) {
+	int32_t count = tag->tm_tag->instance_count;
+	if (count) {
+		this->export_tags.push_back(tag);
+		int32_t *instance_ids = (int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
+		instance_ids = tag->tm_tag->GetInstanceIDs();
+		for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
+			//for (int32_t j = 0; j < this->tags.size(); j++) {
+				printf("%i\n", instance_ids[i]/*, CharToInt(this->tags.at(j)->tm_tag->header->res_id)*/);
+				/*if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
+					printf("Found %i linked to %i\n",instance_ids[i],CharToInt(tag->tm_tag->header->res_id));
+					count = count + this->GetInstanceCount(this->tags.at(j));
+					break;
+				}*/
+			//}
+		}
+		free(instance_ids);
+	}
+	return count;
+}
+
+int32_t OniLevel::ComputeDataOffset() {
+	return 20*this->export_tags.size();
+}
+
+int32_t OniLevel::ComputeDataSize() {
+	int32_t total = 0;
+	for (int32_t i = 0; i < this->export_tags.size(); i++) {
+		total = total + this->export_tags.at(i)->GetDataLength();
+	}
+	return total;
 }

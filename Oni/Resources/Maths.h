@@ -7,8 +7,10 @@
  *
  */
 
-#include <math>
+#include <math.h>
 
+#ifndef _MathsHeader
+#define _MathsHeader
 static inline int32_t CharToInt(char cnum[4]) {
 	int32_t num = 0;
 	num |= ( cnum[0] << 24 );
@@ -17,3 +19,5 @@ static inline int32_t CharToInt(char cnum[4]) {
 	num |= ( cnum[3]       );
 	return num;
 };
+
+#endif

@@ -14,6 +14,11 @@
 #include "OniName.h"
 #include "OniTemplate.h"
 
+#define DemoMacPlatformChecksum (int64_t)1052091493724257ULL
+#define PCPlatformChecksum (int64_t)1052091763926815ULL
+#define DATFileVersion (int32_t)1448227633
+#define ONIFileVersion (int32_t)1448227634
+
 struct LevelHeader {
 	int64_t checksum;
 	int32_t version;
@@ -71,6 +76,7 @@ class OniLevel {
 	char *names_table;
 	
 	std::vector<OniTag *> tags;
+	std::vector<OniTag *> export_tags;
 	
 	OniLevel();
 	~OniLevel();
@@ -79,4 +85,7 @@ class OniLevel {
 	void ExportTagToPath(OniTag *tag, char *path);
 	void ExportAllTags();
 	LevelHeader* CreateOniHeader(OniTag *tag);
+	int32_t GetInstanceCount(OniTag *tag);
+	int32_t ComputeDataOffset();
+	int32_t ComputeDataSize();
 };

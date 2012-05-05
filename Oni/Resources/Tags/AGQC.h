@@ -34,5 +34,8 @@ public:
 	AGQC();
 	~AGQC();
 	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	uint64_t DataSize();
+	char* ExportData();
 };
 #endif

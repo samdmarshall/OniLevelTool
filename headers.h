@@ -7,6 +7,8 @@
  *
  */
 
+#pragma pack(1)
+
 #include <iostream>
 #include <fstream>
 #include <stdint.h>
@@ -17,6 +19,8 @@
 
 #include <sys/stat.h>
 #include <sys/types.h>
+
+#include "Maths.h"
 
 #ifdef _WIN32
 #include <direct.h>

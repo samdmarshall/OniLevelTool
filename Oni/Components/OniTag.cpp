@@ -145,15 +145,9 @@ void OniTag::FormatTag(char *i_data) {
 }
 
 uint64_t OniTag::GetDataLength() {
-	return 1;
+	return this->tm_tag->DataSize();
 }
 
-char* OniTag::GetExportDataLength(uint64_t length) {
-	char *data = (char *)malloc(sizeof(char)*length);
-	data[0] = 'a';
-	return data;
-}
-
-int32_t OniTag::GetInstanceCount() {
-	return this->tm_tag->instance_count;
+char* OniTag::GetExportData() {
+	return this->tm_tag->ExportData();;
 }
