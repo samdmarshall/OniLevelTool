@@ -190,6 +190,10 @@ void OniLevel::ExportAllTags() {
 			if (mkdir_result == 0) {
 				for (int32_t i = 0; i < this->tags.size(); i++) {
 					OniTag *a_tag = this->tags.at(i);
+					
+					// before we ship to export, remapping has to be done to the instance ids. 
+					
+					
 					this->ExportTagToPath(a_tag, temp_);
 				}
 			} else {
@@ -213,7 +217,6 @@ LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 	new_header->names_offset = this->ComputeNamesOffset();
 	new_header->names_size = this->ComputeNamesSize();
 	
-	
 	new_header->data_offset = new_header->names_offset+new_header->names_size; 
 	new_header->data_size = this->ComputeDataSize(); 
 		
@@ -233,14 +236,14 @@ int32_t OniLevel::GetInstanceCount(OniTag *tag) {
 		int32_t *instance_ids = (int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
 		instance_ids = tag->tm_tag->GetInstanceIDs();
 		for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
-			//for (int32_t j = 0; j < this->tags.size(); j++) {
-				printf("%i\n", instance_ids[i]/*, CharToInt(this->tags.at(j)->tm_tag->header->res_id)*/);
-				/*if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
+			for (int32_t j = 0; j < this->tags.size(); j++) {
+				printf("%i %i\n", instance_ids[i], CharToInt(this->tags.at(j)->tm_tag->header->res_id));
+				if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
 					printf("Found %i linked to %i\n",instance_ids[i],CharToInt(tag->tm_tag->header->res_id));
 					count = count + this->GetInstanceCount(this->tags.at(j));
 					break;
-				}*/
-			//}
+				}
+			}
 		}
 		free(instance_ids);
 	}
@@ -262,11 +265,16 @@ int32_t OniLevel::ComputeDataSize() {
 int32_t OniLevel::ComputeNamesSize() {
 	int32_t length = 0;
 	for (int32_t i = 0; i < this->export_tags.size(); i++) {
-		length = length + strlen(this->export_tags.at(i)->name);
+		if (strcmp(this->export_tags.at(i)->name, "unnamed") != 0)
+			length = length + strlen(this->export_tags.at(i)->name);
 	}
 	return length;
 }
 
 int32_t OniLevel::ComputeRawSize() {
-	return 0;
+	int32_t length = 0;
+	for (int32_t i = 0; i < this->export_tags.size(); i++) {
+		length = length + this->export_tags.at(i)->tm_tag->raw_size;
+	}
+	return length;
 }

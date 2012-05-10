@@ -49,7 +49,7 @@ char* AGQC::ExportData() {
 	memcpy(&edata[position], this->head, sizeof(AGQCHeaderStruct));
 	position = position + sizeof(AGQCHeaderStruct);
 	for (int32_t i = 0; i < this->head->array_size; i++) {
-		memcpy(&edata[position], &data[i], sizeof(AGQCDataStruct));
+		memcpy(&edata[position], &this->data[i], sizeof(AGQCDataStruct));
 		position = position + sizeof(AGQCDataStruct);
 	}
 	return edata;

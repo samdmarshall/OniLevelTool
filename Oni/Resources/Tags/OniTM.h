@@ -23,6 +23,9 @@ public:
 	
 	int32_t instance_count;
 	
+	char *raw_data;
+	int32_t raw_size;
+	
 	OniTM() { this->instance_count = 0; };
 	~OniTM() {};
 	virtual void Load(char *data) {};
