@@ -33,9 +33,9 @@ public:
 	
 	ResIDMapper remap;
 		
-	OniTM() { this->instance_count = 0; };
-	~OniTM() {};
-	virtual void Load(char *data) {};
+	OniTM() { this->header = (OniTMStruct *)malloc(sizeof(OniTMStruct)); this->instance_count = 0; };
+	~OniTM() { free(this->header); };
+	virtual void Load(char *data) { memcpy(this->header, &data, sizeof(OniTMStruct)); };
 	virtual int32_t* GetInstanceIDs() { return 0; };
 	virtual int32_t DataSize() { return 0; };
 	virtual char* ExportData() { return 0; };

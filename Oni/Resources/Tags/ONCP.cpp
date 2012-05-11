@@ -31,7 +31,7 @@ void ONCP::Load(char *data) {
 }
 
 int32_t* ONCP::GetInstanceIDs() {
-	return NULL;
+	return 0;
 }
 
 int32_t ONCP::DataSize() {

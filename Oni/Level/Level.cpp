@@ -161,15 +161,15 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				
 				uint64_t pos = 0;
 				
-				char *write_out = (char *)malloc(file_size);
+				char *write_out = (char *)malloc(sizeof(char)*file_size);
 				memcpy(&write_out[pos], &output_header, sizeof(LevelHeader));
 				pos = pos + sizeof(LevelHeader);
 				
 				// we need to alphabetize the names.
 				
 				// write instance descriptors
-				for (int32_t i = 0; i < this->export_tags.size(); i++) {
-					OniInstanceStruct an_instance = {CharToInt(this->export_tags.at(i).tag->type), this->export_tags.at(i).data_offset, this->export_tags.at(i).name_offset, this->export_tags.at(i).tag->GetDataLength(), this->export_tags.at(i).tag->flags};
+				/*for (int32_t i = 0; i < this->export_tags.size(); i++) {
+					OniInstanceStruct an_instance = {CharToInt(this->export_tags.at(i).tag->type), this->export_tags.at(i).data_offset, this->export_tags.at(i).names.new_offset, this->export_tags.at(i).tag->GetDataLength(), this->export_tags.at(i).tag->flags};
 					memcpy(&write_out[pos], &an_instance, sizeof(OniInstanceStruct));
 					pos = pos + sizeof(OniInstanceStruct);
 					this->export_tags.at(i).tag->tm_tag->remap.new_id = i+1;
@@ -185,7 +185,7 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 							pos = pos + name_length;
 						}
 					}
-				}
+				}*/
 				
 				// write data table
 				//for (int32_t i = 0; i < this->export_tags.size(); i++) {	
@@ -257,22 +257,24 @@ LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 }
 
 int32_t OniLevel::GetInstanceCount(OniTag *tag) {
-	int32_t count = tag->tm_tag->instance_count;
+	int32_t count = tag->tm_tag->instance_count+1;
 	if (count) {
-		this->export_tags.push_back((Exporter){GetResID(tag->tm_tag->header->res_id),tag});
-		int32_t *instance_ids = (int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
-		instance_ids = tag->tm_tag->GetInstanceIDs();
-		for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
-			for (int32_t j = 0; j < this->tags.size(); j++) {
-				printf("%i %i\n", instance_ids[i], CharToInt(this->tags.at(j)->tm_tag->header->res_id));
-				if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
-					printf("Found %i linked to %i\n",instance_ids[i],CharToInt(tag->tm_tag->header->res_id));
-					count = count + this->GetInstanceCount(this->tags.at(j));
-					break;
+		this->export_tags.push_back((Exporter){GetResID(tag->tm_tag->header->res_id), tag, (NameRemapper){0,0}, 0});
+		if (tag->tm_tag->instance_count) {
+			int32_t *instance_ids = (int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
+			instance_ids = tag->tm_tag->GetInstanceIDs();
+			for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
+				for (int32_t j = 0; j < this->tags.size(); j++) {
+					printf("%i %i\n", instance_ids[i], CharToInt(this->tags.at(j)->tm_tag->header->res_id));
+					if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
+						printf("Found %i linked to %i\n",instance_ids[i],CharToInt(tag->tm_tag->header->res_id));
+						count = count + this->GetInstanceCount(this->tags.at(j));
+						break;
+					}
 				}
 			}
+			free(instance_ids);
 		}
-		free(instance_ids);
 	}
 	return count;
 }
@@ -294,10 +296,10 @@ int32_t OniLevel::ComputeNamesSize() {
 	int32_t length = 0;
 	for (int32_t i = 0; i < this->export_tags.size(); i++) {
 		if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
-			this->export_tags.at(i).name_offset = length;
+			this->export_tags.at(i).names.old_offset = length;
 			length = length + strlen(this->export_tags.at(i).tag->name);
 		} else {
-			this->export_tags.at(i).name_offset = 0;
+			this->export_tags.at(i).names.old_offset = 0;
 		}
 	}
 	return length;

@@ -12,10 +12,15 @@
 #ifndef _Exporter
 #define _Exporter
 
+struct NameRemapper {
+	int32_t old_offset;
+	int32_t new_offset;
+};
+
 struct Exporter {
 	int32_t res_id;
 	OniTag *tag;
-	int32_t name_offset;
+	NameRemapper names;
 	int32_t data_offset;
 };
 

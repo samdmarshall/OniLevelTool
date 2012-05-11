@@ -18,7 +18,6 @@ OniTag::~OniTag() {
 
 void OniTag::LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer) {
 	memcpy(this->type, &data_struct->template_tag, 4);
-	//this->type[4]='\0';
 	
 	this->flags = data_struct->flags;
 	
@@ -78,8 +77,8 @@ void OniTag::FormatTag(char *i_data) {
 		case 34: { this->tm_tag = dynamic_cast<OBOA*>(new OBOA); break; }
 		case 35: { this->tm_tag = dynamic_cast<OFGA*>(new OFGA); break; }
 		case 36: { this->tm_tag = dynamic_cast<ONCC*>(new ONCC); break; }
-	  /*case 37: { this->tm_tag = dynamic_cast<ONCP*>(new ONCP); break; }
-		case 38: { this->tm_tag = dynamic_cast<ONCV*>(new ONCV); break; }
+	  	case 37: { this->tm_tag = dynamic_cast<ONCP*>(new ONCP); break; }
+		/*case 38: { this->tm_tag = dynamic_cast<ONCV*>(new ONCV); break; }
 		case 39: { this->tm_tag = dynamic_cast<ONGS*>(new ONGS); break; }
 		case 40: { this->tm_tag = dynamic_cast<ONIA*>(new ONIA); break; }
 		case 41: { this->tm_tag = dynamic_cast<ONLD*>(new ONLD); break; }
@@ -142,7 +141,7 @@ void OniTag::FormatTag(char *i_data) {
 		default: { this->tm_tag = dynamic_cast<OniTM*>(new OniTM); break; }
 	}
 	this->tm_tag->Load(i_data);
-	this->tm_tag->remap = (ResIDMapper){ GetResID(this->tm_tag->header->res_id), 0};
+	this->tm_tag->remap = (ResIDMapper){GetResID(this->tm_tag->header->res_id), 0};
 }
 
 int32_t OniTag::GetDataLength() {

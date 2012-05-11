@@ -16,7 +16,6 @@
 #ifndef _OniTag
 #define _OniTag
 
-
 class OniTag {
 public:
 	char type[4];
@@ -26,7 +25,7 @@ public:
 	OniTM *tm_tag;
 	
 	bool external_data;
-			
+	
 	OniTag();
 	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
