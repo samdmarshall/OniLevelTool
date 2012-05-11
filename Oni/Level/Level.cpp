@@ -165,25 +165,23 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				memcpy(&write_out[pos], &output_header, sizeof(LevelHeader));
 				pos = pos + sizeof(LevelHeader);
 				
-				//fwrite(output_header, 1, sizeof(LevelHeader), export_tag_file);
 				
 				// write instance descriptors
 				for (int32_t i = 0; i < this->export_tags.size(); i++) {
-					memcpy(&write_out[pos], (void*)CharToInt(this->export_tags.at(i).tag->type), 4);
+					OniInstanceStruct an_instance = {CharToInt(this->export_tags.at(i).tag->type), this->export_tags.at(i).data_offset, this->export_tags.at(i).name_offset, this->export_tags.at(i).tag->GetDataLength(), this->export_tags.at(i).tag->flags};
+					memcpy(&write_out[pos], &an_instance, sizeof(OniInstanceStruct));
+					pos = pos + sizeof(OniInstanceStruct);
+					
+					/*memcpy(&write_out[pos], (void*)CharToInt(this->export_tags.at(i).tag->type), 4);
 					pos = pos + 4;
-					//fwrite((void*)CharToInt(this->export_tags.at(i).tag->type), 4, 1, export_tag_file);
 					memcpy(&write_out[pos], &this->export_tags.at(i).data_offset, 4);
 					pos = pos + 4;
-					//fwrite(&this->export_tags.at(i).data_offset, 4, 1, export_tag_file);
 					memcpy(&write_out[pos], &this->export_tags.at(i).name_offset, 4);
 					pos = pos + 4;
-					//fwrite(&this->export_tags.at(i).name_offset, 4, 1, export_tag_file);
 					memcpy(&write_out[pos], (void*)this->export_tags.at(i).tag->GetDataLength(), 4);
 					pos = pos + 4;
-					//fwrite((void*)this->export_tags.at(i).tag->GetDataLength(), 4, 1, export_tag_file);
 					memcpy(&write_out[pos], &this->export_tags.at(i).tag->flags, 4);
-					pos = pos + 4;
-					//fwrite(&this->export_tags.at(i).tag->flags, 4, 1, export_tag_file);
+					pos = pos + 4;*/
 				}
 				
 				// write names table
@@ -194,7 +192,6 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 							int32_t name_length = strlen(this->export_tags.at(i).tag->name);
 							memcpy(&write_out[pos], &this->export_tags.at(i).tag->name, name_length);
 							pos = pos + name_length;
-							//fwrite(this->export_tags.at(i).tag->name, strlen(this->export_tags.at(i).tag->name), 1, export_tag_file);
 						}
 					}
 				}
