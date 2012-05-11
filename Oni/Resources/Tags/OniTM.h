@@ -16,9 +16,14 @@ struct OniTMStruct {
 	char level_id[4];
 };
 
+struct ResIDMapper {
+	int32_t old_id;
+	int32_t new_id;
+};
+
 class OniTM {
 public:
-	char type[5];
+	char type[4];
 	OniTMStruct *header;
 	
 	int32_t instance_count;
@@ -26,6 +31,8 @@ public:
 	char *raw_data;
 	int32_t raw_size;
 	
+	ResIDMapper remap;
+		
 	OniTM() { this->instance_count = 0; };
 	~OniTM() {};
 	virtual void Load(char *data) {};

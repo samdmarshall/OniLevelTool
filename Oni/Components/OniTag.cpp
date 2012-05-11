@@ -142,6 +142,7 @@ void OniTag::FormatTag(char *i_data) {
 		default: { this->tm_tag = dynamic_cast<OniTM*>(new OniTM); break; }
 	}
 	this->tm_tag->Load(i_data);
+	this->tm_tag->remap = (ResIDMapper){ GetResID(this->tm_tag->header->res_id), 0};
 }
 
 int32_t OniTag::GetDataLength() {

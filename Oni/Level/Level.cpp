@@ -165,23 +165,14 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				memcpy(&write_out[pos], &output_header, sizeof(LevelHeader));
 				pos = pos + sizeof(LevelHeader);
 				
+				// we need to alphabetize the names.
 				
 				// write instance descriptors
 				for (int32_t i = 0; i < this->export_tags.size(); i++) {
 					OniInstanceStruct an_instance = {CharToInt(this->export_tags.at(i).tag->type), this->export_tags.at(i).data_offset, this->export_tags.at(i).name_offset, this->export_tags.at(i).tag->GetDataLength(), this->export_tags.at(i).tag->flags};
 					memcpy(&write_out[pos], &an_instance, sizeof(OniInstanceStruct));
 					pos = pos + sizeof(OniInstanceStruct);
-					
-					/*memcpy(&write_out[pos], (void*)CharToInt(this->export_tags.at(i).tag->type), 4);
-					pos = pos + 4;
-					memcpy(&write_out[pos], &this->export_tags.at(i).data_offset, 4);
-					pos = pos + 4;
-					memcpy(&write_out[pos], &this->export_tags.at(i).name_offset, 4);
-					pos = pos + 4;
-					memcpy(&write_out[pos], (void*)this->export_tags.at(i).tag->GetDataLength(), 4);
-					pos = pos + 4;
-					memcpy(&write_out[pos], &this->export_tags.at(i).tag->flags, 4);
-					pos = pos + 4;*/
+					this->export_tags.at(i).tag->tm_tag->remap.new_id = i+1;
 				}
 				
 				// write names table
@@ -197,11 +188,8 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				}
 				
 				// write data table
-				/*for (int32_t i = 0; i < this->export_tags.size(); i++) {
-					char *data = tag->GetExportData();
-					fwrite(data, 1, sizeof(tag->GetDataLength()), export_tag_);
-					free(data);
-				}*/
+				//for (int32_t i = 0; i < this->export_tags.size(); i++) {	
+				//}
 				
 				// write raw
 				
@@ -232,11 +220,7 @@ void OniLevel::ExportAllTags() {
 			#endif
 			if (mkdir_result == 0) {
 				for (int32_t i = 0; i < this->tags.size(); i++) {
-					OniTag *a_tag = this->tags.at(i);
-					
-					// before we ship to export, remapping has to be done to the instance ids. 
-					
-					
+					OniTag *a_tag = this->tags.at(i);					
 					this->ExportTagToPath(a_tag, temp_);
 				}
 			} else {
