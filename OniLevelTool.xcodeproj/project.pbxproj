@@ -51,6 +51,7 @@
 		227B51631551754F0062C139 /* ONCC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B51621551754F0062C139 /* ONCC.cpp */; };
 		227B55B01552E9000062C139 /* IDXA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227B55AF1552E9000062C139 /* IDXA.cpp */; };
 		227E6924155D69D7003D4400 /* ONCP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227E6923155D69D7003D4400 /* ONCP.cpp */; };
+		227E6940155D73B3003D4400 /* Exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 227E693F155D73B3003D4400 /* Exporter.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* OniLevelTool.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* OniLevelTool.1 */; };
 /* End PBXBuildFile section */
@@ -161,6 +162,8 @@
 		227B575D155436820062C139 /* Maths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Maths.h; path = Oni/Resources/Maths.h; sourceTree = "<group>"; };
 		227E6922155D69D7003D4400 /* ONCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONCP.h; sourceTree = "<group>"; };
 		227E6923155D69D7003D4400 /* ONCP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ONCP.cpp; sourceTree = "<group>"; };
+		227E693E155D73B3003D4400 /* Exporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exporter.h; sourceTree = "<group>"; };
+		227E693F155D73B3003D4400 /* Exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exporter.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* OniLevelTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OniLevelTool; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* OniLevelTool.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OniLevelTool.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +194,7 @@
 			children = (
 				227B502215508DBD0062C139 /* Tags */,
 				227B4A53154EE5640062C139 /* Components */,
+				227E693D155D736D003D4400 /* Resources */,
 				227B485C154E150B0062C139 /* Level */,
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				227B48E8154E1DC10062C139 /* headers.h */,
@@ -320,6 +324,16 @@
 			path = Oni/Resources/Tags;
 			sourceTree = "<group>";
 		};
+		227E693D155D736D003D4400 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				227E693E155D73B3003D4400 /* Exporter.h */,
+				227E693F155D73B3003D4400 /* Exporter.cpp */,
+			);
+			name = Resources;
+			path = Oni/Resources;
+			sourceTree = "<group>";
+		};
 		C6859E8C029090F304C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +437,7 @@
 				227B51631551754F0062C139 /* ONCC.cpp in Sources */,
 				227B55B01552E9000062C139 /* IDXA.cpp in Sources */,
 				227E6924155D69D7003D4400 /* ONCP.cpp in Sources */,
+				227E6940155D73B3003D4400 /* Exporter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

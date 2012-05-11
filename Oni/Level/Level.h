@@ -13,6 +13,7 @@
 #include "OniInstance.h"
 #include "OniName.h"
 #include "OniTemplate.h"
+#include "Exporter.h"
 
 #define DemoMacPlatformChecksum (int64_t)1052091493724257ULL
 #define PCPlatformChecksum (int64_t)1052091763926815ULL
@@ -76,7 +77,9 @@ class OniLevel {
 	char *names_table;
 	
 	std::vector<OniTag *> tags;
-	std::vector<OniTag *> export_tags;
+	
+	std::vector<ExportResID> export_tags;
+	std::vector<ExportNames> export_names;
 	
 	OniLevel();
 	~OniLevel();
