@@ -26,4 +26,8 @@ static inline int32_t GetResID(char res[4]) {
 	return res_id;
 }
 
+static inline uint64_t GetFileSizeDelta(int64_t num) {
+	return (uint64_t)((num < 0) ? 0 : num);
+}
+
 #endif

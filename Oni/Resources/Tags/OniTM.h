@@ -30,7 +30,7 @@ public:
 	~OniTM() {};
 	virtual void Load(char *data) {};
 	virtual int32_t* GetInstanceIDs() { return 0; };
-	virtual uint64_t DataSize() { return 0; };
+	virtual int32_t DataSize() { return 0; };
 	virtual char* ExportData() { return 0; };
 };
 #endif

@@ -39,7 +39,7 @@ int32_t* ABNA::GetInstanceIDs() {
 	return instances;
 }
 
-uint64_t ABNA::DataSize() {
+int32_t ABNA::DataSize() {
 	return sizeof(OniTMStruct) + sizeof(ABNAHeaderStruct) + (sizeof(ABNADataStruct)*this->head->array_size);
 }
 

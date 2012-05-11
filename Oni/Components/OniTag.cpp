@@ -18,7 +18,7 @@ OniTag::~OniTag() {
 
 void OniTag::LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer) {
 	memcpy(this->type, &data_struct->template_tag, 4);
-	this->type[4]='\0';
+	//this->type[4]='\0';
 	
 	this->flags = data_struct->flags;
 	
@@ -144,7 +144,7 @@ void OniTag::FormatTag(char *i_data) {
 	this->tm_tag->Load(i_data);
 }
 
-uint64_t OniTag::GetDataLength() {
+int32_t OniTag::GetDataLength() {
 	return this->tm_tag->DataSize();
 }
 

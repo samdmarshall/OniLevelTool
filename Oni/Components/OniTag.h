@@ -19,7 +19,7 @@
 
 class OniTag {
 public:
-	char type[5];
+	char type[4];
 	char name[64];
 	int32_t flags;
 	
@@ -31,7 +31,7 @@ public:
 	~OniTag();
 	void LoadFrom(OniInstanceStruct *data_struct, char *data_buffer, char *name_buffer);
 	void FormatTag(char *i_data);
-	uint64_t GetDataLength();
+	int32_t GetDataLength();
 	char* GetExportData();
 };
 #endif

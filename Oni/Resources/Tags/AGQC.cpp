@@ -38,7 +38,7 @@ int32_t* AGQC::GetInstanceIDs() {
 	return instances;
 }
 
-uint64_t AGQC::DataSize() {
+int32_t AGQC::DataSize() {
 	return sizeof(OniTMStruct) + sizeof(AGQCHeaderStruct) + (sizeof(AGQCDataStruct)*this->head->array_size);
 }
 

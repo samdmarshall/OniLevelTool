@@ -34,7 +34,7 @@ int32_t* ONCP::GetInstanceIDs() {
 	return NULL;
 }
 
-uint64_t ONCP::DataSize() {
+int32_t ONCP::DataSize() {
 	return sizeof(OniTMStruct) + sizeof(ONCPHeaderStruct) + (sizeof(ONCPDataStruct)*this->head->array_size);
 }
 

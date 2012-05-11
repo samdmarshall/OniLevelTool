@@ -149,23 +149,52 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 			strcat(file_path, tag->name);
 			strcat(file_path, ".oni\0");
 			
-			FILE *export_tag_ = fopen(file_path, "w+");
-			if (export_tag_) {
+			FILE *export_tag_file = fopen(file_path, "w+");
+			if (export_tag_file) {
 				std::cout << file_path << std::endl;
 				
 				LevelHeader *output_header = this->CreateOniHeader(tag);
-				fwrite(output_header, 1, sizeof(LevelHeader), export_tag_);
-				free(output_header);
+				int64_t file_size = (sizeof(LevelHeader));
+				file_size = file_size + GetFileSizeDelta((output_header->names_offset - file_size) + output_header->names_size);
+				file_size = file_size + GetFileSizeDelta((output_header->data_offset - file_size) + output_header->data_size);
+				file_size = file_size + GetFileSizeDelta((output_header->raw_offset - file_size) + output_header->raw_size);
+				
+				uint64_t pos = 0;
+				
+				char *write_out = (char *)malloc(file_size);
+				memcpy(&write_out[pos], &output_header, sizeof(LevelHeader));
+				pos = pos + sizeof(LevelHeader);
+				
+				//fwrite(output_header, 1, sizeof(LevelHeader), export_tag_file);
 				
 				// write instance descriptors
-				
+				for (int32_t i = 0; i < this->export_tags.size(); i++) {
+					memcpy(&write_out[pos], (void*)CharToInt(this->export_tags.at(i).tag->type), 4);
+					pos = pos + 4;
+					//fwrite((void*)CharToInt(this->export_tags.at(i).tag->type), 4, 1, export_tag_file);
+					memcpy(&write_out[pos], &this->export_tags.at(i).data_offset, 4);
+					pos = pos + 4;
+					//fwrite(&this->export_tags.at(i).data_offset, 4, 1, export_tag_file);
+					memcpy(&write_out[pos], &this->export_tags.at(i).name_offset, 4);
+					pos = pos + 4;
+					//fwrite(&this->export_tags.at(i).name_offset, 4, 1, export_tag_file);
+					memcpy(&write_out[pos], (void*)this->export_tags.at(i).tag->GetDataLength(), 4);
+					pos = pos + 4;
+					//fwrite((void*)this->export_tags.at(i).tag->GetDataLength(), 4, 1, export_tag_file);
+					memcpy(&write_out[pos], &this->export_tags.at(i).tag->flags, 4);
+					pos = pos + 4;
+					//fwrite(&this->export_tags.at(i).tag->flags, 4, 1, export_tag_file);
+				}
 				
 				// write names table
-				for (int32_t i = 0; i < this->export_names.size(); i++) {
-					for (int32_t j = 0; j < this->export_tags.size(); j++) {
-						if (GetResID(this->export_tags.at(j).tag->tm_tag->header->res_id) == this->export_names.at(i).res_id) {
-							fwrite(this->export_tags.at(j).tag->name, strlen(this->export_tags.at(j).tag->name), 1, export_tag_);
-							break;
+				if (pos <= output_header->names_offset) {
+					pos = output_header->names_offset;
+					for (int32_t i = 0; i < this->export_tags.size(); i++) {
+						if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
+							int32_t name_length = strlen(this->export_tags.at(i).tag->name);
+							memcpy(&write_out[pos], &this->export_tags.at(i).tag->name, name_length);
+							pos = pos + name_length;
+							//fwrite(this->export_tags.at(i).tag->name, strlen(this->export_tags.at(i).tag->name), 1, export_tag_file);
 						}
 					}
 				}
@@ -178,12 +207,17 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				}*/
 				
 				// write raw
+				
+				
+				// write file
+				free(output_header);
+				fwrite(&write_out, file_size, 1, export_tag_file);
+				free(write_out);			
 			}
-			fclose(export_tag_);
+			fclose(export_tag_file);
 			free(file_path);
 			
 			this->export_tags.clear();
-			this->export_names.clear();
 		}
 	}
 }
@@ -244,7 +278,7 @@ LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 int32_t OniLevel::GetInstanceCount(OniTag *tag) {
 	int32_t count = tag->tm_tag->instance_count;
 	if (count) {
-		this->export_tags.push_back((ExportResID){GetResID(tag->tm_tag->header->res_id),tag});
+		this->export_tags.push_back((Exporter){GetResID(tag->tm_tag->header->res_id),tag});
 		int32_t *instance_ids = (int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
 		instance_ids = tag->tm_tag->GetInstanceIDs();
 		for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
@@ -269,20 +303,20 @@ int32_t OniLevel::ComputeNamesOffset() {
 int32_t OniLevel::ComputeDataSize() {
 	int32_t total = 0;
 	for (int32_t i = 0; i < this->export_tags.size(); i++) {
+		this->export_tags.at(i).data_offset = total;
 		total = total + this->export_tags.at(i).tag->GetDataLength();
 	}
 	return total;
 }
 
-int32_t OniLevel::ComputeNamesSize() {
-	if (!this->export_names.empty())
-		this->export_names.clear();
-	
+int32_t OniLevel::ComputeNamesSize() {	
 	int32_t length = 0;
 	for (int32_t i = 0; i < this->export_tags.size(); i++) {
 		if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
-			this->export_names.push_back((ExportNames){GetResID(this->export_tags.at(i).tag->tm_tag->header->res_id),length});
+			this->export_tags.at(i).name_offset = length;
 			length = length + strlen(this->export_tags.at(i).tag->name);
+		} else {
+			this->export_tags.at(i).name_offset = 0;
 		}
 	}
 	return length;

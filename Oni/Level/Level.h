@@ -78,8 +78,7 @@ class OniLevel {
 	
 	std::vector<OniTag *> tags;
 	
-	std::vector<ExportResID> export_tags;
-	std::vector<ExportNames> export_names;
+	std::vector<Exporter> export_tags;
 	
 	OniLevel();
 	~OniLevel();

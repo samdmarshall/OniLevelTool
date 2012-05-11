@@ -12,14 +12,11 @@
 #ifndef _Exporter
 #define _Exporter
 
-struct ExportResID {
+struct Exporter {
 	int32_t res_id;
-	OniTag *tag;	
-};
-
-struct ExportNames {
-	int32_t res_id;
+	OniTag *tag;
 	int32_t name_offset;
+	int32_t data_offset;
 };
 
 #endif

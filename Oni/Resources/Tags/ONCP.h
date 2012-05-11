@@ -36,7 +36,7 @@ public:
 	~ONCP();
 	void Load(char *data);
 	int32_t* GetInstanceIDs();
-	uint64_t DataSize();
+	int32_t DataSize();
 	char* ExportData();
 };
 
