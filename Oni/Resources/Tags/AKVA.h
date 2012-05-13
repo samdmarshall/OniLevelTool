@@ -53,5 +53,12 @@ class AKVA : public OniTM {
 public:
 	AKVAHeaderStruct *head;
 	AKVADataStruct *data;
+	
+	AKVA();
+	~AKVA();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

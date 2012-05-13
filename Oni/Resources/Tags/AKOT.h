@@ -22,6 +22,13 @@ struct AKOTDataStruct {
 
 class AKOT : public OniTM {
 public:
-	AKOTDataStruct *data;	
+	AKOTDataStruct *data;
+	
+	AKOT();
+	~AKOT();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif
