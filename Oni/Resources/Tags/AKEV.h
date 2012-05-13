@@ -42,5 +42,12 @@ struct AKEVDataStruct {
 class AKEV : public OniTM {
 public:
 	AKEVDataStruct *data;
+	
+	AKEV();
+	~AKEV();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

@@ -119,9 +119,9 @@ bool OniLevel::LoadPath(char *path) {
 
 void OniLevel::LoadTags() {
 	if (this->platform != OPundefined) {
-		if (!this->tags.empty()) {
+		if (!this->tags.empty())
 			this->tags.clear();
-		}
+			
 		for (int32_t i = 0; i < this->header->instance_count; i++) {
 			OniTag *a_tag = new OniTag;
 			a_tag->LoadFrom(&this->instance_descriptors[i], this->data_table, this->names_table);
@@ -264,7 +264,6 @@ int32_t OniLevel::GetInstanceCount(OniTag *tag) {
 		instance_ids = tag->tm_tag->GetInstanceIDs();
 		for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
 			for (int32_t j = 0; j < this->tags.size(); j++) {
-				printf("%i %i\n", instance_ids[i], CharToInt(this->tags.at(j)->tm_tag->header->res_id));
 				if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
 					printf("Found %i linked to %i\n",instance_ids[i],CharToInt(tag->tm_tag->header->res_id));
 					count = count + this->GetInstanceCount(this->tags.at(j));

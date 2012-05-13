@@ -138,8 +138,9 @@ void OniTag::FormatTag(char *i_data) {
 		case 95: { this->tm_tag = dynamic_cast<ONTA*>(new ONTA); break; }
 		case 96: { this->tm_tag = dynamic_cast<StNA*>(new StNA); break; }
 		case 97: { this->tm_tag = dynamic_cast<TStr*>(new TStr); break; }*/
-		default: { this->tm_tag = dynamic_cast<OniTM*>(new OniTM); break; }
+		default: { this->tm_tag = new OniTM; break; }
 	}
+	
 	this->tm_tag->Load(i_data);
 	this->tm_tag->remap = (ResIDMapper){GetResID(this->tm_tag->header->res_id), 0};
 }

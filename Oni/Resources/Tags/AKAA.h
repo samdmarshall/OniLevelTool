@@ -25,6 +25,13 @@ struct AKAADataStruct {
 class AKAA : public OniTM {
 public:
 	AKAAHeaderStruct *head;
-	AKAADataStruct *data;	
+	AKAADataStruct *data;
+	
+	AKAA();
+	~AKAA();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

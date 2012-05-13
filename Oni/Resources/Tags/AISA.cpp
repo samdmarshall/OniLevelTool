@@ -21,7 +21,7 @@ AISA::~AISA() {
 }
 
 void AISA::Load(char *data) {
-	memcpy(this->header, &data, sizeof(OniTMStruct));
+	memcpy(this->header, data, sizeof(OniTMStruct));
 	memcpy(this->head, &data[sizeof(OniTMStruct)], sizeof(AISAHeaderStruct));
 	
 	this->data = (AISADataStruct *)malloc(sizeof(AISADataStruct)*this->head->array_size);

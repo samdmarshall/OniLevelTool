@@ -26,5 +26,12 @@ class AKBP : public OniTM {
 public:
 	AKBPHeaderStruct *head;
 	AKBPDataStruct *data;	
+	
+	AKBP();
+	~AKBP();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

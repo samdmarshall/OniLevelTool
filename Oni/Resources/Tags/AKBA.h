@@ -32,5 +32,12 @@ class AKBA : public OniTM {
 public:
 	AKBAHeaderStruct *head;
 	AKBADataStruct *data;	
+	
+	AKBA();
+	~AKBA();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif
