@@ -34,5 +34,12 @@ struct CBPIDataStruct {
 class CBPI : public OniTM {
 public:
 	CBPIDataStruct *data;
+	
+	CBPI();
+	~CBPI();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

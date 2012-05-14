@@ -21,9 +21,7 @@ static inline int32_t CharToInt(char cnum[4]) {
 };
 
 static inline int32_t GetResID(char res[4]) {
-	int32_t res_id = CharToInt(res);
-	res_id = (res_id & 0x00FFFFFF);
-	return res_id;
+	return (CharToInt(res) & 0x00FFFFFF);
 }
 
 static inline uint64_t GetFileSizeDelta(int64_t num) {

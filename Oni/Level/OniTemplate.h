@@ -107,7 +107,7 @@ typedef enum OniTemplateTags {
 	tm_WMMB = 0x424d4d57, // "BMMW"
 	tm_WPge = 0x65675057, // "egPW"
 	
-	// Oni Engine does not use these tags
+	// Oni Engine does not use these tags, but they still exist and are referenced so we need them!
 	tm_AGDB = 0x42444741, // "BDGA"
 	tm_AITR = 0x52544941, // "RTIA"
 	tm_AKDA = 0x41444B41, // "ADKA"
