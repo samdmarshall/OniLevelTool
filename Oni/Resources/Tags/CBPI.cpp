@@ -30,9 +30,9 @@ void CBPI::Load(char *data) {
 int32_t* CBPI::GetInstanceIDs() {
 	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
 	for (int32_t i = 0; i < 19; i++) {
-		instances[(3*i)] = this->data->hit[i].Impt_link;
-		instances[(3*i)+1] = this->data->block[i].Impt_link;
-		instances[(3*i)+2] = this->data->killed[i].Impt_link;
+		instances[(3*i)] = ExtractLinkNumber(this->data->hit[i].Impt_link);
+		instances[(3*i)+1] = ExtractLinkNumber(this->data->block[i].Impt_link);
+		instances[(3*i)+2] = ExtractLinkNumber(this->data->killed[i].Impt_link);
 	}
 	return instances;
 }

@@ -29,23 +29,24 @@ void AKEV::Load(char *data) {
 
 int32_t* AKEV::GetInstanceIDs() {
 	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
-	instances[0] = this->data->PNTA_link;
-	instances[1] = this->data->PLEA_link;
-	instances[2] = this->data->TXCA_link;
-	instances[3] = this->data->AGQG_link;
-	instances[4] = this->data->AGQR_link;
-	instances[5] = this->data->AGQC_link;
-	instances[6] = this->data->AGDB_link;
-	instances[7] = this->data->TXMA_link;
-	instances[8] = this->data->AKVA_link;
-	instances[9] = this->data->AKBA_link;
-	instances[10] = this->data->IDXA_link1;
-	instances[11] = this->data->IDXA_link2;
-	instances[12] = this->data->AKBP_link;
-	instances[13] = this->data->ABNA_link;
-	instances[14] = this->data->AKOT_link;
-	instances[15] = this->data->AKAA_link;
-	instances[16] = this->data->AKDA_link;
+	printf("	link extract test: %i %i\n",this->data->PNTA_link,ExtractLinkNumber(this->data->PNTA_link));
+	instances[0] = ExtractLinkNumber(this->data->PNTA_link);
+	instances[1] = ExtractLinkNumber(this->data->PLEA_link);
+	instances[2] = ExtractLinkNumber(this->data->TXCA_link);
+	instances[3] = ExtractLinkNumber(this->data->AGQG_link);
+	instances[4] = ExtractLinkNumber(this->data->AGQR_link);
+	instances[5] = ExtractLinkNumber(this->data->AGQC_link);
+	instances[6] = ExtractLinkNumber(this->data->AGDB_link);
+	instances[7] = ExtractLinkNumber(this->data->TXMA_link);
+	instances[8] = ExtractLinkNumber(this->data->AKVA_link);
+	instances[9] = ExtractLinkNumber(this->data->AKBA_link);
+	instances[10] = ExtractLinkNumber(this->data->IDXA_link1);
+	instances[11] = ExtractLinkNumber(this->data->IDXA_link2);
+	instances[12] = ExtractLinkNumber(this->data->AKBP_link);
+	instances[13] = ExtractLinkNumber(this->data->ABNA_link);
+	instances[14] = ExtractLinkNumber(this->data->AKOT_link);
+	instances[15] = ExtractLinkNumber(this->data->AKAA_link);
+	instances[16] = ExtractLinkNumber(this->data->AKDA_link);
 	return instances;
 }
 

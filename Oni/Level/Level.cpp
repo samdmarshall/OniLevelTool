@@ -8,6 +8,7 @@
  */
 
 #include "Level.h"
+#include "Maths.h"
 
 OniLevel::OniLevel() {
 	this->header = (LevelHeader *)malloc(sizeof(LevelHeader));
@@ -257,17 +258,20 @@ LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 }
 
 int32_t OniLevel::GetInstanceCount(OniTag *tag) {
-	this->export_tags.push_back((Exporter){GetResID(tag->tm_tag->header->res_id), tag, (NameRemapper){0,0}, 0});
+	this->export_tags.push_back((Exporter){ExtractLinkNumber(tag->tm_tag->header->res_id), tag, (NameRemapper){0,0}, 0});
 	int32_t count = 1;
 	if (tag->tm_tag->instance_count) {
-		int32_t *instance_ids = (int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
-		instance_ids = tag->tm_tag->GetInstanceIDs();
+		int32_t *instance_ids = tag->tm_tag->GetInstanceIDs();//(int32_t *)malloc(sizeof(int32_t)*tag->tm_tag->instance_count);
+		//instance_ids = tag->tm_tag->GetInstanceIDs();
 		for (int32_t i = 0; i < tag->tm_tag->instance_count; i++) {
-			for (int32_t j = 0; j < this->tags.size(); j++) {
-				if (instance_ids[i] == CharToInt(this->tags.at(j)->tm_tag->header->res_id)) {
-					printf("Found %i linked to %i\n",instance_ids[i],CharToInt(tag->tm_tag->header->res_id));
-					count = count + this->GetInstanceCount(this->tags.at(j));
-					break;
+			if (instance_ids[i] != 0) {
+				printf("	looking for instance %i\n",instance_ids[i]);
+				for (int32_t j = 0; j < this->tags.size(); j++) {
+					if (instance_ids[i] == ExtractLinkNumber(this->tags.at(j)->tm_tag->header->res_id)) {
+						printf("Found %i linked to %i\n",instance_ids[i],ExtractLinkNumber(tag->tm_tag->header->res_id));
+						count = count + this->GetInstanceCount(this->tags.at(j));
+						break;
+					}
 				}
 			}
 		}

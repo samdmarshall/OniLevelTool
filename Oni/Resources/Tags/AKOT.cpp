@@ -29,11 +29,11 @@ void AKOT::Load(char *data) {
 
 int32_t* AKOT::GetInstanceIDs() {
 	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
-	instances[0] = this->data->OTIT_link;
-	instances[1] = this->data->OTLF_link;
-	instances[2] = this->data->QTNA_link;
-	instances[3] = this->data->IDXA_link1;
-	instances[4] = this->data->IDXA_link2;
+	instances[0] = ExtractLinkNumber(this->data->OTIT_link);
+	instances[1] = ExtractLinkNumber(this->data->OTLF_link);
+	instances[2] = ExtractLinkNumber(this->data->QTNA_link);
+	instances[3] = ExtractLinkNumber(this->data->IDXA_link1);
+	instances[4] = ExtractLinkNumber(this->data->IDXA_link2);
 	return instances;
 }
 

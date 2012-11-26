@@ -33,7 +33,7 @@ void AGQR::Load(char *data) {
 int32_t* AGQR::GetInstanceIDs() {
 	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
 	for (int32_t i = 0; i < this->head->array_size; i++) {
-		instances[i] = this->data[i].TXMA_id;
+		instances[i] = ExtractLinkNumber(this->data[i].TXMA_id);
 	}
 	return instances;
 }

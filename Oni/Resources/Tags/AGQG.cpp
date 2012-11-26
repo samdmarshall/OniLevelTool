@@ -33,17 +33,17 @@ void AGQG::Load(char *data) {
 int32_t* AGQG::GetInstanceIDs() {
 	int32_t* instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
 	for (int32_t i = 0; i < this->head->array_size; i++) {
-		instances[(9*i)] = this->data[i].PNTA_id_v1;
-		instances[(9*i)+1] = this->data[i].PNTA_id_v2;
-		instances[(9*i)+2] = this->data[i].PNTA_id_v3;
-		instances[(9*i)+3] = this->data[i].PNTA_id_v4;
+		instances[(9*i)] = ExtractLinkNumber(this->data[i].PNTA_id_v1);
+		instances[(9*i)+1] = ExtractLinkNumber(this->data[i].PNTA_id_v2);
+		instances[(9*i)+2] = ExtractLinkNumber(this->data[i].PNTA_id_v3);
+		instances[(9*i)+3] = ExtractLinkNumber(this->data[i].PNTA_id_v4);
 		
-		instances[(9*i)+4] = this->data[i].TXCA_id_v1;
-		instances[(9*i)+5] = this->data[i].TXCA_id_v2;
-		instances[(9*i)+6] = this->data[i].TXCA_id_v3;
-		instances[(9*i)+7] = this->data[i].TXCA_id_v4;
+		instances[(9*i)+4] = ExtractLinkNumber(this->data[i].TXCA_id_v1);
+		instances[(9*i)+5] = ExtractLinkNumber(this->data[i].TXCA_id_v2);
+		instances[(9*i)+6] = ExtractLinkNumber(this->data[i].TXCA_id_v3);
+		instances[(9*i)+7] = ExtractLinkNumber(this->data[i].TXCA_id_v4);
 		
-		instances[(9*i)+8] = this->data[i].object_id;
+		instances[(9*i)+8] = ExtractLinkNumber(this->data[i].object_id);
 	}
 	return instances;
 }

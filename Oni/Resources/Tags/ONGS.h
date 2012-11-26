@@ -24,13 +24,6 @@ struct ONGSSoundName {
 	char name[32];
 };
 
-struct ONGSDataStruct {
-	char notes[32];
-	int16_t first_level;
-	int16_t last_level;
-	char anchor_text[32];
-};
-
 struct ONGSHeaderStruct {
 	float max_overhealth_factor;
 	float normal_hypo_strength;
@@ -86,6 +79,13 @@ struct ONGSHeaderStruct {
 	float player_health_factor_normal;
 	float player_health_factor_hard;
 	int32_t array_size;
+};
+
+struct ONGSDataStruct {
+	char notes[32];
+	int16_t first_level;
+	int16_t last_level;
+	char anchor_text[32];
 };
 
 class ONGS : public OniTM {

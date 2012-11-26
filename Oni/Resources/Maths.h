@@ -12,6 +12,7 @@
 #ifndef _MathsHeader
 #define _MathsHeader
 static inline int32_t CharToInt(char cnum[4]) {
+	
 	int32_t num = 0;
 	num |= ( cnum[0] << 24 );
 	num |= ( cnum[1] << 16 );
@@ -26,6 +27,10 @@ static inline int32_t GetResID(char res[4]) {
 
 static inline uint64_t GetFileSizeDelta(int64_t num) {	
 	return (uint64_t)((num < 0) ? 0 : num);
+}
+
+static inline int32_t ExtractLinkNumber(int32_t link) {
+	return (link & 0x00FFFFFF) >> 8;
 }
 
 #endif

@@ -12,8 +12,8 @@
 #ifndef _OniTM
 #define _OniTM
 struct OniTMStruct {
-	char res_id[4];
-	char level_id[4];
+	int32_t res_id;
+	int32_t level_id;
 };
 
 struct ResIDMapper {

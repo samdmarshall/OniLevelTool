@@ -33,7 +33,7 @@ void AGQC::Load(char *data) {
 int32_t* AGQC::GetInstanceIDs() {
 	int32_t* instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
 	for (int32_t i = 0; i < this->head->array_size; i++) {
-		instances[i] = this->data[i].PLEA_id;
+		instances[i] = ExtractLinkNumber(this->data[i].PLEA_id);
 	}
 	return instances;
 }

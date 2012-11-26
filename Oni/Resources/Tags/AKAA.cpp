@@ -33,8 +33,8 @@ void AKAA::Load(char *data) {
 int32_t* AKAA::GetInstanceIDs() {
 	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
 	for (int32_t i = 0; i < this->head->array_size; i++) {
-		instances[(2*i)] = this->data[i].AKVA_id;
-		instances[(2*i)+1] = this->data[i].AGQG_id;
+		instances[(2*i)] = ExtractLinkNumber(this->data[i].AKVA_id);
+		instances[(2*i)+1] = ExtractLinkNumber(this->data[i].AGQG_id);
 	}
 	return instances;
 }
