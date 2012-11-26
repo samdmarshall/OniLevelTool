@@ -154,13 +154,13 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				std::cout << file_path << std::endl;
 				
 				LevelHeader *output_header = this->CreateOniHeader(tag);
-				int64_t file_size = (sizeof(LevelHeader));
-				file_size = file_size + GetFileSizeDelta((output_header->names_offset - file_size) + output_header->names_size);
+				int64_t file_size = (sizeof(LevelHeader));				
+				file_size = file_size + GetFileSizeDelta((output_header->names_offset - file_size) + output_header->names_size);				
 				file_size = file_size + GetFileSizeDelta((output_header->data_offset - file_size) + output_header->data_size);
 				file_size = file_size + GetFileSizeDelta((output_header->raw_offset - file_size) + output_header->raw_size);	
 				
 				uint64_t pos = 0;
-				
+								
 				char *write_out = (char *)malloc(sizeof(char)*file_size);
 				memcpy(write_out, output_header, sizeof(LevelHeader));
 				pos = pos + sizeof(LevelHeader);

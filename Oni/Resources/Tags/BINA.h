@@ -22,9 +22,9 @@ public:
 	BINAHeaderStruct *head;
 	char *data;
 	
-	BINA();
+	/*BINA();
 	~BINA();
 	void Load(char *data);
-	void SetDataPath(char *path);
+	void SetDataPath(char *path);*/
 };
 #endif

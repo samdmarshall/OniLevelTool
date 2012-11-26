@@ -9,7 +9,7 @@
 
 #include "BINA.h"
 
-BINA::BINA() {
+/*BINA::BINA() {
 	
 }
 
@@ -23,4 +23,4 @@ void BINA::Load(char *data) {
 
 void BINA::SetDataPath(char *path) {
 	
-}
+}*/
