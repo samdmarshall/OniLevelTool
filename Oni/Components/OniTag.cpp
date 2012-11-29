@@ -83,8 +83,8 @@ void OniTag::FormatTag(char *i_data) {
 		case 40: { this->tm_tag = dynamic_cast<ONIA*>(new ONIA); break; }
 		case 41: { this->tm_tag = dynamic_cast<ONLD*>(new ONLD); break; }
 		case 42: { this->tm_tag = dynamic_cast<ONLV*>(new ONLV); break; }
-		/*case 43: { this->tm_tag = dynamic_cast<ONOA*>(new ONOA); break; }
-		case 44: { this->tm_tag = dynamic_cast<ONSK*>(new ONSK); break; }
+		case 43: { this->tm_tag = dynamic_cast<ONOA*>(new ONOA); break; }
+		/*case 44: { this->tm_tag = dynamic_cast<ONSK*>(new ONSK); break; }
 		case 45: { this->tm_tag = dynamic_cast<ONVL*>(new ONVL); break; }
 		case 46: { this->tm_tag = dynamic_cast<ONWC*>(new ONWC); break; }
 		case 47: { this->tm_tag = dynamic_cast<OPge*>(new OPge); break; }

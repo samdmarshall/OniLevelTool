@@ -29,7 +29,6 @@ void AKEV::Load(char *data) {
 
 int32_t* AKEV::GetInstanceIDs() {
 	int32_t *instances = (int32_t *)malloc(sizeof(int32_t)*this->instance_count);
-	printf("	link extract test: %i %i\n",this->data->PNTA_link,ExtractLinkNumber(this->data->PNTA_link));
 	instances[0] = ExtractLinkNumber(this->data->PNTA_link);
 	instances[1] = ExtractLinkNumber(this->data->PLEA_link);
 	instances[2] = ExtractLinkNumber(this->data->TXCA_link);
