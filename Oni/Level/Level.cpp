@@ -155,10 +155,7 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				std::cout << file_path << std::endl;
 				
 				LevelHeader *output_header = this->CreateOniHeader(tag);
-				int64_t file_size = (sizeof(LevelHeader));				
-				file_size = file_size + GetFileSizeDelta((output_header->names_offset - file_size) + output_header->names_size);				
-				file_size = file_size + GetFileSizeDelta((output_header->data_offset - file_size) + output_header->data_size);
-				file_size = file_size + GetFileSizeDelta((output_header->raw_offset - file_size) + output_header->raw_size);	
+				int64_t file_size = this->ComputeFileSize(output_header);				
 				
 				uint64_t pos = 0;
 								
@@ -166,31 +163,32 @@ void OniLevel::ExportTagToPath(OniTag *tag, char *path) {
 				memcpy(write_out, output_header, sizeof(LevelHeader));
 				pos = pos + sizeof(LevelHeader);
 				
-				// we need to alphabetize the names.
-				
 				// write instance descriptors
-				/*for (int32_t i = 0; i < this->export_tags.size(); i++) {
+				for (int32_t i = 0; i < this->export_tags.size(); i++) {
 					OniInstanceStruct an_instance = {CharToInt(this->export_tags.at(i).tag->type), this->export_tags.at(i).data_offset, this->export_tags.at(i).names.new_offset, this->export_tags.at(i).tag->GetDataLength(), this->export_tags.at(i).tag->flags};
 					memcpy(&write_out[pos], &an_instance, sizeof(OniInstanceStruct));
 					pos = pos + sizeof(OniInstanceStruct);
 					this->export_tags.at(i).tag->tm_tag->remap.new_id = i+1;
 				}
 				
-				// write names table
-				if (pos <= output_header->names_offset) {
-					pos = output_header->names_offset;
-					for (int32_t i = 0; i < this->export_tags.size(); i++) {
-						if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
-							int32_t name_length = strlen(this->export_tags.at(i).tag->name);
-							memcpy(&write_out[pos], &this->export_tags.at(i).tag->name, name_length);
-							pos = pos + name_length;
-						}
-					}
-				}*/
+				// we need to alphabetize the names. write names descriptors
+				
+				// write template descriptors
 				
 				// write data table
 				//for (int32_t i = 0; i < this->export_tags.size(); i++) {	
 				//}
+				
+				// write names table
+				for (int32_t i = 0; i < this->export_tags.size(); i++) {
+					if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
+						int32_t name_length = strlen(this->export_tags.at(i).tag->name);
+						memcpy(&write_out[pos], &this->export_tags.at(i).tag->name, name_length);
+						pos = pos + name_length;
+						memcpy(&write_out[pos], "\0", 1);
+						pos++;
+					}
+				}
 				
 				// write raw
 				
@@ -239,22 +237,27 @@ LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 	new_header->signature = this->header->signature;
 	
 	new_header->instance_count = this->GetInstanceCount(tag);
-	new_header->name_count = 0; // always zero
+	new_header->name_count = this->GetNamedCount(tag);
 	new_header->template_count = 0; // always zero
 	
-	new_header->names_offset = this->ComputeNamesOffset();
-	new_header->names_size = this->ComputeNamesSize();
-	
-	new_header->data_offset = new_header->names_offset+new_header->names_size; 
+	new_header->data_offset = new_header->instance_count*20 + new_header->name_count*8 + new_header->template_count*16; 
 	new_header->data_size = this->ComputeDataSize(); 
-		
-	new_header->raw_offset = new_header->data_offset+new_header->data_size; // end of normal dat file
+	
+	new_header->names_offset = new_header->data_offset + new_header->data_size;
+	new_header->names_size = this->ComputeNamesSize();
+			
+	new_header->raw_offset = new_header->names_offset+new_header->names_size; // end of normal dat file
 	new_header->raw_size = this->ComputeRawSize();
 	
 	new_header->unused[0] = 0;
 	new_header->unused[1] = 0;
 	
 	return new_header;
+}
+
+int64_t OniLevel::ComputeFileSize(LevelHeader *level) {
+	int64_t total = sizeof(LevelHeader) + level->instance_count*20 + level->name_count*8 + level->template_count*16 + level->data_size + level->names_size + level->raw_size;
+	return total;
 }
 
 int32_t OniLevel::GetInstanceCount(OniTag *tag) {
@@ -280,8 +283,14 @@ int32_t OniLevel::GetInstanceCount(OniTag *tag) {
 	return count;
 }
 
-int32_t OniLevel::ComputeNamesOffset() {
-	return 20*this->export_tags.size();
+int32_t OniLevel::GetNamedCount(OniTag *tag) {
+	int32_t count = 0;
+	for (int32_t i = 0; i < this->export_tags.size(); i++) {
+		if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
+			count++;
+		}
+	}
+	return count;
 }
 
 int32_t OniLevel::ComputeDataSize() {
@@ -298,7 +307,7 @@ int32_t OniLevel::ComputeNamesSize() {
 	for (int32_t i = 0; i < this->export_tags.size(); i++) {
 		if (strcmp(this->export_tags.at(i).tag->name, "unnamed") != 0) {
 			this->export_tags.at(i).names.old_offset = length;
-			length = length + strlen(this->export_tags.at(i).tag->name);
+			length = length + strlen(this->export_tags.at(i).tag->name)+1;
 		} else {
 			this->export_tags.at(i).names.old_offset = 0;
 		}
