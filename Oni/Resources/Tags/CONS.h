@@ -12,7 +12,7 @@
 #ifndef _CONS
 #define _CONS
 
-struct CONSDataStruct {
+struct CONSHeaderStruct {
 	int32_t flags;
 	float point_x;
 	float point_y;
@@ -34,6 +34,13 @@ struct CONSDataStruct {
 
 class CONS : public OniTM {
 public:
-	CONSDataStruct *data;
+	CONSHeaderStruct *head;
+	
+	CONS();
+	~CONS();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

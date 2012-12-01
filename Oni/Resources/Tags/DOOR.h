@@ -12,7 +12,7 @@
 #ifndef _DOOR
 #define _DOOR
 
-struct DOORDataStruct {
+struct DOORHeaderStruct {
 	int32_t OFGA_link1;
 	int32_t OFGA_link2;
 	int32_t OBAN_link;
@@ -29,6 +29,6 @@ struct DOORDataStruct {
 
 class DOOR : public OniTM {
 public:
-	DOORDataStruct *data;
+	DOORHeaderStruct *head;
 };
 #endif
