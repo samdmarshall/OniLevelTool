@@ -257,9 +257,6 @@ LevelHeader* OniLevel::CreateOniHeader(OniTag *tag) {
 
 int64_t OniLevel::ComputeFileSize(LevelHeader *level) {
 	int64_t total = sizeof(LevelHeader) + level->instance_count*20 + level->name_count*8 + level->template_count*16 + level->data_size + level->names_size + level->raw_size;
-	printf("%d\n",level->data_size);
-	
-	
 	return total;
 }
 
