@@ -20,7 +20,7 @@ FILM::~FILM() {
 	free(this->data);
 }
 
-void FILM::LoadData(char *data) {
+void FILM::Load(char *data) {
 	memcpy(this->header, &data, sizeof(OniTMStruct));
 	memcpy(this->head, &data[sizeof(OniTMStruct)], sizeof(FILMHeaderStruct));
 	
