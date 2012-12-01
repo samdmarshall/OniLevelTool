@@ -12,7 +12,7 @@
 #ifndef _DPge
 #define _DPge
 
-struct DPgeDataStruct {
+struct DPgeHeaderStruct {
 	int16_t level;
 	int16_t page;
 	int8_t page_type;
@@ -24,6 +24,13 @@ struct DPgeDataStruct {
 
 class DPge : public OniTM {
 public:
-	DPgeDataStruct *data;
+	DPgeHeaderStruct *head;
+	
+	DPge();
+	~DPge();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

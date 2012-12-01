@@ -40,5 +40,12 @@ class FILM : public OniTM {
 public:
 	FILMHeaderStruct *head;
 	FILMDataStruct *data;
+	
+	FILM();
+	~FILM();
+	void LoadData(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif

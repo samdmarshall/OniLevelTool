@@ -50,5 +50,13 @@ class ENVP : public OniTM {
 public:
 	ENVPHeaderStruct *head;
 	ENVPDataStruct *data;
+	
+	ENVP();
+	~ENVP();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
+
 #endif

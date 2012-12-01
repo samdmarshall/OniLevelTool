@@ -30,5 +30,12 @@ struct DOORHeaderStruct {
 class DOOR : public OniTM {
 public:
 	DOORHeaderStruct *head;
+	
+	DOOR();
+	~DOOR();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif
