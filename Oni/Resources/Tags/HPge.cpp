@@ -9,3 +9,10 @@
 
 #include "HPge.h"
 
+HPge::HPge() {
+	this->header = (OniTMStruct *)malloc(sizeof(OniTMStruct));
+}
+
+HPge::~HPge() {
+	
+}

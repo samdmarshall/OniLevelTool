@@ -12,7 +12,7 @@
 #ifndef _HPge
 #define _HPge
 
-struct HPgeDataStruct {
+struct HPgeHeaderStruct {
 	char unused[4];
 	int32_t IGPG_link;
 	char dead[16];
@@ -20,6 +20,13 @@ struct HPgeDataStruct {
 
 class HPge : public OniTM {
 public:
-	HPgeDataStruct *data;
+	HPgeHeaderStruct *data;
+	
+	HPge();
+	~HPge();
+	void Load(char *data);
+	int32_t* GetInstanceIDs();
+	int32_t DataSize();
+	char* ExportData();
 };
 #endif
