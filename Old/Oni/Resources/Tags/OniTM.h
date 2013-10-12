@@ -20,7 +20,7 @@ struct ResIDMapper {
 	int32_t old_id;
 	int32_t new_id;
 };
-
+w
 class OniTM {
 public:
 	char type[4];
