@@ -1,0 +1,23 @@
+<plugin class="AGQG" checksum="1835986">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="10">
+		<byte2 name="dead" type="2" offset=0x0"/>
+	</array>
+	<vararray name="gunk quad general" type="8" offset="0x1c">
+		<byte4 name="PNTA element 1" type="8" offset="0x0"/>
+		<byte4 name="PNTA element 2" type="8" offset="0x4"/>
+		<byte4 name="PNTA element 3" type="8" offset="0x8"/>
+		<byte4 name="PNTA element 4" type="8" offset="0xc"/>
+		<byte4 name="TXCA element 1" type="8" offset="0x10"/>
+		<byte4 name="TXCA element 2" type="8" offset="0x14"/>
+		<byte4 name="TXCA element 3" type="8" offset="0x18"/>
+		<byte4 name="TXCA element 4" type="8" offset="0x1c"/>
+		<byte4 name="color 1" type="2" offset="0x20"/>
+		<byte4 name="color 2" type="2" offset="0x24"/>
+		<byte4 name="color 3" type="2" offset="0x28"/>
+		<byte4 name="color 4" type="2" offset="0x2c"/>
+		<byte4 name="flags" type="1" offset="0x30"/>
+		<byte4 name="object id" type="8" offset="0x34"/>
+	</vararray>
+</plugin>

@@ -12,6 +12,7 @@
 		2247A6181809A56300CDFB3C /* OLTLevel.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A6171809A56300CDFB3C /* OLTLevel.c */; };
 		2247A61D1809B83300CDFB3C /* OLTInstance.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A61C1809B83300CDFB3C /* OLTInstance.c */; };
 		2247A6201809BA0900CDFB3C /* OLTTemplate.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A61F1809BA0900CDFB3C /* OLTTemplate.c */; };
+		2247A6281809F36200CDFB3C /* OLTPlugin.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A6271809F36200CDFB3C /* OLTPlugin.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,12 @@
 		2247A61E1809B93C00CDFB3C /* OLTTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OLTTemplate.h; sourceTree = "<group>"; };
 		2247A61F1809BA0900CDFB3C /* OLTTemplate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OLTTemplate.c; sourceTree = "<group>"; };
 		2247A6211809BB4A00CDFB3C /* SDMPrint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMPrint.h; sourceTree = "<group>"; };
+		2247A6251809E67900CDFB3C /* ABNA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ABNA.otag; path = Plugins/ABNA.otag; sourceTree = SOURCE_ROOT; };
+		2247A6261809F34C00CDFB3C /* OLTPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OLTPlugin.h; sourceTree = "<group>"; };
+		2247A6271809F36200CDFB3C /* OLTPlugin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = OLTPlugin.c; sourceTree = "<group>"; };
+		2247A6291809FB9F00CDFB3C /* AGQC.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQC.otag; path = Plugins/AGQC.otag; sourceTree = SOURCE_ROOT; };
+		2247A62A180A006600CDFB3C /* AGQG.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQG.otag; path = Plugins/AGQG.otag; sourceTree = SOURCE_ROOT; };
+		2247A62C180A01B000CDFB3C /* AGQR.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQR.otag; path = Plugins/AGQR.otag; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				2247A6211809BB4A00CDFB3C /* SDMPrint.h */,
+				2247A6221809DF4000CDFB3C /* Plugins */,
 				2247A6161809A52600CDFB3C /* Source */,
 				2247A60D1809A51700CDFB3C /* main.c */,
 				2247A60F1809A51700CDFB3C /* OniLevelTool.1 */,
@@ -89,8 +97,21 @@
 				2247A61C1809B83300CDFB3C /* OLTInstance.c */,
 				2247A61E1809B93C00CDFB3C /* OLTTemplate.h */,
 				2247A61F1809BA0900CDFB3C /* OLTTemplate.c */,
+				2247A6261809F34C00CDFB3C /* OLTPlugin.h */,
+				2247A6271809F36200CDFB3C /* OLTPlugin.c */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		2247A6221809DF4000CDFB3C /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				2247A6251809E67900CDFB3C /* ABNA.otag */,
+				2247A6291809FB9F00CDFB3C /* AGQC.otag */,
+				2247A62A180A006600CDFB3C /* AGQG.otag */,
+				2247A62C180A01B000CDFB3C /* AGQR.otag */,
+			);
+			name = Plugins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +167,7 @@
 			files = (
 				2247A6181809A56300CDFB3C /* OLTLevel.c in Sources */,
 				2247A6201809BA0900CDFB3C /* OLTTemplate.c in Sources */,
+				2247A6281809F36200CDFB3C /* OLTPlugin.c in Sources */,
 				2247A61D1809B83300CDFB3C /* OLTInstance.c in Sources */,
 				2247A60E1809A51700CDFB3C /* main.c in Sources */,
 			);

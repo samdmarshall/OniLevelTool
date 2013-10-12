@@ -24,7 +24,7 @@ enum SDMPrintCodes {
 #pragma mark -
 #pragma mark Color Codes
 
-#define UseColorCodes 0
+#define UseColorCodes 0 // SDM: Xcode console doesn't like these, but they work fine in a terminal
 
 #define COLOR_NRM  "\x1B[0m"
 #define COLOR_RED  "\x1B[31m"

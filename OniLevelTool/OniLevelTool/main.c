@@ -8,6 +8,7 @@
 
 #include "OLTLevel.h"
 #include "OLTTemplate.h"
+#include "OLTPlugin.h"
 
 int main(int argc, const char * argv[]) {
 	struct OLTLevel *level = ParseLevelFromFile("/Applications/Oni/GameDataFolder/level1_Final.dat");
