@@ -39,16 +39,56 @@ enum OLTPluginPropertySubtypes {
 struct OLTPluginPropertyTypeName {
 	enum OLTPluginPropertyTypes type;
 	char *name;
+} ATR_PACK;
+
+const static struct OLTPluginPropertyTypeName OLTPluginPropertyType_names[7] = {
+	{OLTPluginPropertyType_byte8, "byte8"},
+	{OLTPluginPropertyType_byte4, "byte4"},
+	{OLTPluginPropertyType_byte2, "byte2"},
+	{OLTPluginPropertyType_byte1, "byte1"},
+	{OLTPluginPropertyType_array, "array"},
+	{OLTPluginPropertyType_vararray, "vararray"},
+	{OLTPluginPropertyType_template, "template"}
 };
 
 #define OLTPluginPropertySize(type) OLTPluginPropertySize_##type
 
-static uint32_t OLTPluginPropertySize_byte8 = 8;
-static uint32_t OLTPluginPropertySize_byte4 = 4;
-static uint32_t OLTPluginPropertySize_byte2 = 2;
-static uint32_t OLTPluginPropertySize_byte1 = 1;
-static uint32_t OLTPluginPropertySize_array = 0;
-static uint32_t OLTPluginPropertySize_vararray = 0;
-static uint32_t OLTPluginPropertySize_template = 4;
+const static uint32_t OLTPluginPropertySize_byte8 = 8;
+const static uint32_t OLTPluginPropertySize_byte4 = 4;
+const static uint32_t OLTPluginPropertySize_byte2 = 2;
+const static uint32_t OLTPluginPropertySize_byte1 = 1;
+const static uint32_t OLTPluginPropertySize_array = 0;
+const static uint32_t OLTPluginPropertySize_vararray = 0;
+const static uint32_t OLTPluginPropertySize_template = 0;
+
+struct OLTDataValue {
+	char *name;
+	uint32_t value;
+} ATR_PACK;
+
+struct OLTDataType {
+	char *name;
+	uint32_t offset;
+	struct OLTPluginPropertyTypeName *format;
+	struct OLTDataType *properties;
+	uint32_t propCount;
+	struct OLTDataValue *values;
+	uint32_t valueCount;
+} ATR_PACK;
+
+struct OLTPlugin {
+	char *class;
+	struct OLTDataType *types;
+	uint32_t count;
+} ATR_PACK;
+
+struct OLTKnownTypes {
+	struct OLTPlugin *tags;
+	uint32_t count;
+} ATR_PACK;
+
+struct OLTKnownTypes* LoadPluginsAtPath(char *path);
+struct OLTPlugin BuildTagFromPluginAtPath(char *path);
+bool VerifyPluginWithTemplate(struct OLTTemplateDefintion *templateDefinition, struct OLTPlugin *plugin);
 
 #endif

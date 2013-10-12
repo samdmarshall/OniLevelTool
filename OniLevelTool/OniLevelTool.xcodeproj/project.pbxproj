@@ -13,6 +13,7 @@
 		2247A61D1809B83300CDFB3C /* OLTInstance.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A61C1809B83300CDFB3C /* OLTInstance.c */; };
 		2247A6201809BA0900CDFB3C /* OLTTemplate.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A61F1809BA0900CDFB3C /* OLTTemplate.c */; };
 		2247A6281809F36200CDFB3C /* OLTPlugin.c in Sources */ = {isa = PBXBuildFile; fileRef = 2247A6271809F36200CDFB3C /* OLTPlugin.c */; };
+		2247A62E180A046500CDFB3C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2247A62D180A046500CDFB3C /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		2247A6291809FB9F00CDFB3C /* AGQC.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQC.otag; path = Plugins/AGQC.otag; sourceTree = SOURCE_ROOT; };
 		2247A62A180A006600CDFB3C /* AGQG.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQG.otag; path = Plugins/AGQG.otag; sourceTree = SOURCE_ROOT; };
 		2247A62C180A01B000CDFB3C /* AGQR.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQR.otag; path = Plugins/AGQR.otag; sourceTree = SOURCE_ROOT; };
+		2247A62D180A046500CDFB3C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2247A62E180A046500CDFB3C /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,7 @@
 		2247A6011809A51700CDFB3C = {
 			isa = PBXGroup;
 			children = (
+				2247A62D180A046500CDFB3C /* libxml2.dylib */,
 				2247A60C1809A51700CDFB3C /* OniLevelTool */,
 				2247A60B1809A51700CDFB3C /* Products */,
 			);
@@ -208,6 +212,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx10.8;
@@ -241,6 +250,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx10.8;
