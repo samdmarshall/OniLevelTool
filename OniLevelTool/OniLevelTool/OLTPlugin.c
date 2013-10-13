@@ -154,7 +154,10 @@ struct OLTKnownTypes* LoadPluginsAtPath(char *path) {
 		if (file_name[0x0] != '.') {
 			full_file_name = realloc(full_file_name, strlen(path)+strlen(file_name)+0x2);
 			strncpy(full_file_name, path, strlen(path));
-			strncpy(&full_file_name[strlen(path)], file_name, strlen(file_name)+0x1);
+			if (strncmp(&path[strlen(path)], "/", 0x1)!=0) {
+				strncpy(&full_file_name[strlen(path)], "/", 1);
+			}
+			strncpy(&full_file_name[strlen(path)+1], file_name, strlen(file_name)+0x1);
 			loadedTypes->tags = realloc(loadedTypes->tags, sizeof(struct OLTPlugin)*(loadedTypes->count+0x1));
 			loadedTypes->tags[loadedTypes->count] = BuildTagFromPluginAtPath(full_file_name);
 			loadedTypes->count++;
@@ -181,6 +184,7 @@ struct OLTPlugin BuildTagFromPluginAtPath(char *path) {
 		} else {
 			SDMPrint(PrintCode_ERR, "Failed to load plugin: %s",path);
 		}
+		printf("\n");
 		xmlFreeDoc(doc);
 	}
 	return loadedTag;
