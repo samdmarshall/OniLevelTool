@@ -13,22 +13,26 @@
 
 bool ValidTagType(struct OLTInstance *instance, struct OLTLevel *level) {
 	bool result = false;
-	uint32_t i;
-	for (i = 0; i < OLTTemplateCount; i++) {
-		result = IsTypeOfTag(instance->tagType, OLTTemplate_types[i].template);
-		if (result) {
-			break;
-		}
-	}
+	uint32_t index = TagTemplateIndex(instance);
 	if (result) {
-		for (uint32_t j = 0; j < level->header->templateCount; j++) {
-			result = (level->template[j].checkSum == OLTTemplate_types[i].checkSum);
+		for (uint32_t i = 0; i < level->header->templateCount; i++) {
+			result = (level->template[i].checkSum == OLTTemplate_types[index].checkSum);
 			if (result) {
 				break;
 			}
 		}
 	}
 	return result;
+}
+
+uint32_t TagTemplateIndex(struct OLTInstance *instance) {
+	uint32_t i;
+	for (i = 0; i < OLTTemplateCount; i++) {
+		if (IsTypeOfTag(instance->tagType, OLTTemplate_types[i].template)) {
+			break;
+		}
+	}
+	return i;
 }
 
 #endif

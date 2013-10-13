@@ -14,29 +14,35 @@
 bool VerifyTemplateWithPlugin(struct OLTTemplateDefinition *templateDefinition, struct OLTPlugin *plugin);
 
 uint32_t GetSizeForData(xmlAttr *node) {
-	uint32_t offset = 0x0;
+	uint32_t size = 0x0;
 	xmlAttr *nodeAttr = NULL;
-	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next)
-		if (strcmp((char *)nodeAttr->name, "size")==0x0)
-			offset = (uint32_t)strtol((char *)nodeAttr->children->content, NULL, 0xa);
-	return offset;
+	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next) {
+		if (strcmp((char *)nodeAttr->name, "size")==0x0) {
+			size = (uint32_t)strtol((char *)nodeAttr->children->content, NULL, 0xa);
+		}
+	}
+	return size;
 }
 
 uint32_t GetValueForData(xmlAttr *node) {
 	uint32_t value = 0x0;
 	xmlAttr *nodeAttr = NULL;
-	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next)
-		if (strcmp((char *)nodeAttr->name, "value")==0x0)
+	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next) {
+		if (strcmp((char *)nodeAttr->name, "value")==0x0) {
 			value = (uint32_t)strtol((char *)nodeAttr->children->content, NULL, 0xa);
+		}
+	}
 	return value;
 }
 
 uint32_t GetOffsetForData(xmlAttr *node) {
 	uint32_t offset = 0x0;
 	xmlAttr *nodeAttr = NULL;
-	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next)
-		if (strcmp((char *)nodeAttr->name, "offset")==0x0)
+	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next) {
+		if (strcmp((char *)nodeAttr->name, "offset")==0x0) {
 			offset = (uint32_t)strtol((char *)nodeAttr->children->content, NULL, 0x10);
+		}
+	}
 	return offset;
 }
 
@@ -54,11 +60,12 @@ char* GetNameForData(xmlAttr *node) {
 
 bool HasValidType(xmlNode *node) {
 	bool result = false;
-	for (uint32_t typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++)
+	for (uint32_t typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++) {
 		if (strcmp((char*)node->name, OLTPluginPropertyType_names[typeNum].name)==0x0) {
 			result = true;
 			break;
 		}
+	}
 	return result;
 }
 
@@ -74,8 +81,9 @@ struct OLTDataType BuildDataType(xmlNode *node) {
 	type.name = GetNameForData(node->properties);
 	type.offset = GetOffsetForData(node->properties);
 	uint32_t typeNum;
-	for (typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++)
+	for (typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++) {
 		if (strcmp((char*)node->name, OLTPluginPropertyType_names[typeNum].name)==0x0) break;
+	}
 	type.format = (struct OLTPluginPropertyTypeName*)&OLTPluginPropertyType_names[typeNum];
 	type.properties = calloc(sizeof(struct OLTDataType), 0x1);
 	type.propCount = 0x0;
@@ -113,13 +121,15 @@ struct OLTPlugin GenerateTagFromPlugin(xmlNode *root) {
 		tag.types = calloc(sizeof(struct OLTDataType), 0x1);
 		tag.count = 0x0;
 		xmlNode *cur_node = root->children;
-		while ((cur_node = cur_node->next))
-			if (cur_node->type == XML_ELEMENT_NODE)
+		while ((cur_node = cur_node->next)) {
+			if (cur_node->type == XML_ELEMENT_NODE) {
 				if (HasValidType(cur_node)) {
 					tag.types = realloc(tag.types, sizeof(struct OLTDataType)*(tag.count+1));
 					tag.types[tag.count] = BuildDataType(cur_node);
 					tag.count++;
 				}
+			}
+		}
 	}
 	return tag;
 }
@@ -158,8 +168,9 @@ struct OLTPlugin BuildTagFromPluginAtPath(char *path) {
 		doc = xmlReadFile(path, NULL, 0x0);
 		if (doc != NULL) {
 			xmlNode *root_element = xmlDocGetRootElement(doc);
-			if (strncmp(&path[strlen(path)-0x4], "otag", 0x4)==0)
+			if (strncmp(&path[strlen(path)-0x4], "otag", 0x4)==0) {
 				loadedTag = GenerateTagFromPlugin(root_element);
+			}
 			SDMPrint(PrintCode_OK, "Loaded plugin: %s",loadedTag.class);
 		} else {
 			SDMPrint(PrintCode_ERR, "Failed to load plugin: %s",path);
@@ -171,15 +182,9 @@ struct OLTPlugin BuildTagFromPluginAtPath(char *path) {
 
 bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugins) {
 	bool result = false;
-	uint32_t i;
-	for (i = 0; i < OLTTemplateCount; i++) {
-		result = IsTypeOfTag(instance->tagType, OLTTemplate_types[i].template);
-		if (result) {
-			break;
-		}
-	}
-	for (uint32_t j = 0; j < plugins->count; j++) {
-		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&OLTTemplate_types[i], &plugins->tags[j]);
+	uint32_t index = TagTemplateIndex(instance);
+	for (uint32_t i = 0; i < plugins->count; i++) {
+		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&OLTTemplate_types[index], &plugins->tags[i]);
 		if (result) {
 			break;
 		}

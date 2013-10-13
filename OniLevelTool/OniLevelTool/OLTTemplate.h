@@ -231,4 +231,6 @@ const static struct OLTTemplateDefinition OLTTemplate_types[OLTTemplateCount] = 
 
 bool ValidTagType(struct OLTInstance *instance, struct OLTLevel *level);
 
+uint32_t TagTemplateIndex(struct OLTInstance *instance);
+
 #endif
