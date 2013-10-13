@@ -1,0 +1,31 @@
+<plugin class="AKEV" checksum="584922226293">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<template name="PNTA link" type="8" offset="0x8"/>
+	<template name="PLEA link" type="8" offset="0xc"/>
+	<template name="TXCA link" type="8" offset="0x10"/>
+	<template name="AGQG link" type="8" offset="0x14"/>
+	<template name="AGQR link" type="8" offset="0x18"/>
+	<template name="AGQC link" type="8" offset="0x1c"/>
+	<template name="AGDB link" type="8" offset="0x20"/>
+	<template name="TXMA link" type="8" offset="0x24"/>
+	<template name="AKVA link" type="8" offset="0x28"/>
+	<template name="AKBA link" type="8" offset="0x2c"/>
+	<template name="IDXA link" type="8" offset="0x30"/>
+	<template name="IDXA link" type="8" offset="0x34"/>
+	<template name="AKBP link" type="8" offset="0x38"/>
+	<template name="ABNA link" type="8" offset="0x3c"/>
+	<template name="AKOT link" type="8" offset="0x40"/>
+	<template name="AKAA link" type="8" offset="0x44"/>
+	<template name="AKDA link" type="8" offset="0x48"/>
+	<byte4 name="min x" type="7" offset="0x4c"/>
+	<byte4 name="min y" type="7" offset="0x50"/>
+	<byte4 name="min z" type="7" offset="0x54"/>
+	<byte4 name="max x" type="7" offset="0x58"/>
+	<byte4 name="max y" type="7" offset="0x5c"/>
+	<byte4 name="max z" type="7" offset="0x60"/>
+	<array name="dead" offset="0x64" size="12">
+		<byte2 name="dead char" type="2" offset="0x0"/>
+	</array>
+	<byte4 name="ignored" type="7" offset="0x7c"/>
+</plugin>

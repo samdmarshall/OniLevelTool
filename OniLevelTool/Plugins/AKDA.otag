@@ -1,0 +1,22 @@
+<plugin class="AKDA" checksum="3036260">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="10">
+		<byte2 name="dead" type="2" offset="0x0"/>
+	</array>
+	<vararray name="door frame" type="8" offset="0x1c">
+		<byte4 name="AGQG element" type="8" offset="0x0"/>
+		<byte4 name="x-coor lower left" type="7" offset="0x4"/>
+		<byte4 name="y-coor lower left" type="7" offset="0x8"/>
+		<byte4 name="z-coor lower left" type="7" offset="0xc"/>
+		<byte4 name="x-coor upper right" type="7" offset="0x10"/>
+		<byte4 name="y-coor upper right" type="7" offset="0x14"/>
+		<byte4 name="z-coor upper right" type="7" offset="0x18"/>
+		<byte4 name="x-coor center" type="7" offset="0x1c"/>
+		<byte4 name="y-coor center" type="7" offset="0x20"/>
+		<byte4 name="z-coor center" type="7" offset="0x24"/>
+		<byte4 name="depth" type="7" offset="0x28"/>
+		<byte4 name="width" type="7" offset="0x2c"/>
+		<byte4 name="height" type="7" offset="0x30"/>
+	</vararray>
+</plugin>

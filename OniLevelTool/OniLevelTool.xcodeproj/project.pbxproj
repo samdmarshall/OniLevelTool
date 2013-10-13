@@ -53,6 +53,9 @@
 		2247A631180B073F00CDFB3C /* AKAA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKAA.otag; path = Plugins/AKAA.otag; sourceTree = SOURCE_ROOT; };
 		2247A632180B082D00CDFB3C /* AKBA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKBA.otag; path = Plugins/AKBA.otag; sourceTree = SOURCE_ROOT; };
 		2247A633180B099400CDFB3C /* AKBP.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKBP.otag; path = Plugins/AKBP.otag; sourceTree = SOURCE_ROOT; };
+		2247A634180B0BE900CDFB3C /* AKDA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKDA.otag; path = Plugins/AKDA.otag; sourceTree = SOURCE_ROOT; };
+		2247A635180B104200CDFB3C /* AKEV.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKEV.otag; path = Plugins/AKEV.otag; sourceTree = SOURCE_ROOT; };
+		2247A636180B120200CDFB3C /* AKOT.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKOT.otag; path = Plugins/AKOT.otag; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,9 @@
 				2247A631180B073F00CDFB3C /* AKAA.otag */,
 				2247A632180B082D00CDFB3C /* AKBA.otag */,
 				2247A633180B099400CDFB3C /* AKBP.otag */,
+				2247A634180B0BE900CDFB3C /* AKDA.otag */,
+				2247A635180B104200CDFB3C /* AKEV.otag */,
+				2247A636180B120200CDFB3C /* AKOT.otag */,
 			);
 			name = Plugins;
 			sourceTree = "<group>";

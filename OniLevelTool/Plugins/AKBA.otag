@@ -1,0 +1,16 @@
+<plugin class="AKBA" checksum="3811460">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="10">
+		<byte2 name="dead" type="2" offset="0x0"/>
+	</array>
+	<vararray name="side" type="8" offset="0x1c">
+		<byte4 name="plane index" type="8" offset="0x0"/>
+		<byte4 name="AKAA start" type="8" offset="0x4"/>
+		<byte4 name="AKAA end" type="8" offset="0x8"/>
+		<byte4 name="ignored" type="8" offset="0xc"/>
+		<byte4 name="ignored" type="8" offset="0x10"/>
+		<byte4 name="ignored" type="8" offset="0x14"/>
+		<byte4 name="ignored" type="8" offset="0x18"/>
+	</vararray>
+</plugin>

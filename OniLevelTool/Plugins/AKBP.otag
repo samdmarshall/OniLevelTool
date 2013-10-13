@@ -1,0 +1,12 @@
+<plugin class="AKBP" checksum="848969">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="11">
+		<byte2 name="dead" type="2" offset="0x0"/>
+	</array>
+	<vararray name="bsp node" type="5" offset="0x1e">
+		<byte4 name="plane index" type="8" offset="0x0"/>
+		<byte4 name="back AKBP number" type="8" offset="0x4"/>
+		<byte4 name="front AKBP number" type="8" offset="0x8"/>
+	</vararray>
+</plugin>

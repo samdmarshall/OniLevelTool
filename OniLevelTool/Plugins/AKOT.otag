@@ -1,0 +1,12 @@
+<plugin class="AKOT" checksum="76902095368">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<template name="OTIT link" type="8" offset="0x8"/>
+	<template name="OTLF link" type="8" offset="0xc"/>
+	<template name="QTNA link" type="8" offset="0x10"/>
+	<template name="IDXA link" type="8" offset="0x14"/>
+	<template name="IDXA link" type="8" offset="0x18"/>
+	<array name="dead" offset="0x1c" size="2">
+		<byte2 name="dead char" type="2" offset="0x0"/>
+	</array>
+</plugin>

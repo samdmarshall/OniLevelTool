@@ -1,0 +1,12 @@
+<plugin class="AKAA" checksum="1171063">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="10">
+		<byte2 name="dead" type="2" offset="0x0"/>
+	</array>
+	<vararray name="adjacency" type="8" offset="0x1c">
+		<byte4 name="AKVA element" type="8" offset="0x0"/>
+		<byte4 name="AGQG element" type="8" offset="0x4"/>
+		<byte4 name="ignored" type="8" offset="0x8"/>
+	</vararray>
+</plugin>

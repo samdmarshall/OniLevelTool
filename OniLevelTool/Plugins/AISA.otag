@@ -1,0 +1,53 @@
+<plugin class="AISA" checksum="180964060137">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="11">
+		<byte2 name="dead" type="2" offset="0x0"/>
+	</array>
+	<vararray name="AI character setup" type="5" offset="0x1e">
+		<array name="character name" offset="0x0" size="32">
+			<byte1 name="name char" type="2" offset="0x0"/>
+		</array>
+		<byte2 name="character id" type="5" offset="0x20"/>
+		<byte2 name="character spawn flag" type="5" offset="0x22"/>
+		<byte2 name="unused" type="5" offset="0x24"/>
+		<byte2 name="team id" type="5" offset="0x26"/>
+		<template name="ONCC link" type="8" offset="0x28"/>
+		<array name="unused" offset="0x2c" size="32">
+			<byte1 name="unused char" type="2" offset="0x0"/>
+		</array>
+		<byte4 name="unused" type="8" offset="0x4c"/>
+		<array name="script event: create" offset="0x50" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: die" offset="0x70" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: notice" offset="0x90" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: alarm" offset="0xb0" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: hurt" offset="0xd0" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: lethal" offset="0xf0" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: empty" offset="0x110" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<array name="script event: pathfind" offset="0x130" size="32">
+			<byte1 name="script char" type="2" offset="0x0"/>
+		</array>
+		<template name="ONWC link" type="8" offset="0x150"/>
+		<byte2 name="weapon ammo" type="5" offset="0x154"/>
+		<byte2 name="unused" type="5" offset="0x156"/>
+		<byte2 name="unused" type="5" offset="0x158"/>
+		<byte2 name="unused" type="5" offset="0x15a"/>
+		<byte2 name="unused" type="5" offset="0x15c"/>
+		<byte1 name="unused" type="3" offset="0x15e"/>
+		<byte1 name="unused" type="3" offset="0x15f"/>
+	</vararray>
+</plugin>
