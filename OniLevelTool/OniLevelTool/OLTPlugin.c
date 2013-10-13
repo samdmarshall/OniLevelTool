@@ -193,10 +193,10 @@ struct OLTKnownTypes* LoadPluginsAtPath(char *path) {
 		if (file_name[0x0] != '.') {
 			full_file_name = realloc(full_file_name, strlen(path)+strlen(file_name)+0x2);
 			strncpy(full_file_name, path, strlen(path));
-			if (strncmp(&path[strlen(path)], "/", 0x1)!=0) {
-				strncpy(&full_file_name[strlen(path)], "/", 1);
+			if (strncmp(&(path[strlen(path)]), "/", 0x1)!=0) {
+				strncpy(&(full_file_name[strlen(path)]), "/", 1);
 			}
-			strncpy(&full_file_name[strlen(path)+1], file_name, strlen(file_name)+0x1);
+			strncpy(&(full_file_name[strlen(path)+1]), file_name, strlen(file_name)+0x1);
 			loadedTypes->tags = realloc(loadedTypes->tags, sizeof(struct OLTPlugin)*(loadedTypes->count+0x1));
 			loadedTypes->tags[loadedTypes->count] = BuildTagFromPluginAtPath(full_file_name);
 			loadedTypes->count++;
@@ -216,7 +216,7 @@ struct OLTPlugin BuildTagFromPluginAtPath(char *path) {
 		doc = xmlReadFile(path, NULL, 0x0);
 		if (doc != NULL) {
 			xmlNode *root_element = xmlDocGetRootElement(doc);
-			if (strncmp(&path[strlen(path)-0x4], "otag", 0x4)==0) {
+			if (strncmp(&(path[strlen(path)-0x4]), "otag", 0x4)==0) {
 				loadedTag = GenerateTagFromPlugin(root_element);
 			}
 			SDMPrint(PrintCode_OK, "Loaded plugin: %s",loadedTag.class);
@@ -234,7 +234,7 @@ uint32_t TagPluginIndex(struct OLTInstance *instance, struct OLTKnownTypes *plug
 	uint32_t index = TagTemplateIndex(instance);
 	bool result = false;
 	for (i = 0; i < plugins->count; i++) {
-		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&OLTTemplate_types[index], &plugins->tags[i]);
+		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&(OLTTemplate_types[index]), &(plugins->tags[i]));
 		if (result) {
 			break;
 		}
@@ -246,7 +246,7 @@ bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugi
 	bool result = false;
 	uint32_t index = TagTemplateIndex(instance);
 	for (uint32_t i = 0; i < plugins->count; i++) {
-		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&OLTTemplate_types[index], &plugins->tags[i]);
+		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&(OLTTemplate_types[index]), &(plugins->tags[i]));
 		if (result) {
 			break;
 		}

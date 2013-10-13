@@ -16,11 +16,11 @@ struct OLTTagContainer OpenLevelWithPlugins(struct OLTLevel *level, struct OLTKn
 	container.tags = calloc(sizeof(struct OLTTag), 0x1);
 	container.tagCount = 0;
 	for (uint32_t i = 0; i < level->header->instanceCount; i++) {
-		if (ValidTagType(&level->instance[i], level)) {
-			if (VerifyTagTemplate(&level->instance[i], plugins)) {
+		if (ValidTagType(&(level->instance[i]), level)) {
+			if (VerifyTagTemplate(&(level->instance[i]), plugins)) {
 				container.tags = realloc(container.tags, container.tagCount+1);
-				container.tags[container.tagCount].instance = &level->instance[i];
-				container.tags[container.tagCount].plugin = &plugins->tags[TagPluginIndex(&level->instance[i], plugins)];
+				container.tags[container.tagCount].instance = &(level->instance[i]);
+				container.tags[container.tagCount].plugin = &(plugins->tags[TagPluginIndex(&(level->instance[i]), plugins)]);
 				container.tags[container.tagCount].level = level;
 				container.tagCount++;
 			}

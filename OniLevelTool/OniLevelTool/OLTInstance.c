@@ -16,7 +16,7 @@
 char* GetNameOfInstanceInLevel(struct OLTInstance *instance, struct OLTLevel *level) {
 	char *name = "unnamed";
 	if (!EVAL_INSTANCE_FLAG(instance->flags,OLTDescriptorFlags_Unique)) {
-		name = (&(level->data->buffer[level->header->nameTable.offset])+instance->nameOffset);
+		name = ((&(level->data->buffer[level->header->nameTable.offset]))+instance->nameOffset);
 	}
 	return name;
 }
