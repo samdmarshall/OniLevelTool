@@ -12,6 +12,7 @@
 #include "OLTTypes.h"
 #include "OLTInstance.h"
 #include "OLTLevel.h"
+#include "OLTPlugin.h"
 
 typedef enum OLTTemplates {
 	OLTTemplate_ABNA = 0x414e4241, // "ANBA"
@@ -118,12 +119,12 @@ typedef enum OLTTemplates {
 
 #define OLTTemplateCount 98
 
-struct OLTTemplateDefintion {
+struct OLTTemplateDefinition {
 	int64_t checkSum;
 	OLTTemplates template;
 } ATR_PACK;
 
-const static struct OLTTemplateDefintion OLTTemplate_types[OLTTemplateCount] = {
+const static struct OLTTemplateDefinition OLTTemplate_types[OLTTemplateCount] = {
 	{1207712, OLTTemplate_ABNA},
 	{1887121, OLTTemplate_AGQC},
 	{1835986, OLTTemplate_AGQG},

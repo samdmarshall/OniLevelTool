@@ -11,12 +11,16 @@
 #include "OLTPlugin.h"
 
 int main(int argc, const char * argv[]) {
+	struct OLTKnownTypes *tagTypes = LoadPluginsAtPath("/Volumes/Data/Users/sam/git Projects/OniLevelTool/OniLevelTool/Plugins/");
 	struct OLTLevel *level = ParseLevelFromFile("/Applications/Oni/GameDataFolder/level1_Final.dat");
 	for (uint32_t i = 0; i < level->header->instanceCount; i++) {
 		if (ValidTagType(&level->instance[i], level)) {
-			SDMPrint(PrintCode_OK, "Valid Tag!");
+			if (VerifyTagTemplate(&level->instance[i], tagTypes)) {
+				SDMPrint(PrintCode_OK, "Valid Tag!");
+			}
 		}
 	}
+
     return 0;
 }
 

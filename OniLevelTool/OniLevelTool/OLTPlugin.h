@@ -41,7 +41,9 @@ struct OLTPluginPropertyTypeName {
 	char *name;
 } ATR_PACK;
 
-const static struct OLTPluginPropertyTypeName OLTPluginPropertyType_names[7] = {
+#define OLTPluginPropertyTypeCount 7
+
+const static struct OLTPluginPropertyTypeName OLTPluginPropertyType_names[OLTPluginPropertyTypeCount] = {
 	{OLTPluginPropertyType_byte8, "byte8"},
 	{OLTPluginPropertyType_byte4, "byte4"},
 	{OLTPluginPropertyType_byte2, "byte2"},
@@ -78,6 +80,7 @@ struct OLTDataType {
 
 struct OLTPlugin {
 	char *class;
+	uint64_t checkSum;
 	struct OLTDataType *types;
 	uint32_t count;
 } ATR_PACK;
@@ -89,6 +92,6 @@ struct OLTKnownTypes {
 
 struct OLTKnownTypes* LoadPluginsAtPath(char *path);
 struct OLTPlugin BuildTagFromPluginAtPath(char *path);
-bool VerifyPluginWithTemplate(struct OLTTemplateDefintion *templateDefinition, struct OLTPlugin *plugin);
+bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugins);
 
 #endif

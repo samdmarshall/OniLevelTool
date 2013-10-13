@@ -11,6 +11,8 @@
 
 #include "OLTPlugin.h"
 
+bool VerifyTemplateWithPlugin(struct OLTTemplateDefinition *templateDefinition, struct OLTPlugin *plugin);
+
 uint32_t GetSizeForData(xmlAttr *node) {
 	uint32_t offset = 0x0;
 	xmlAttr *nodeAttr = NULL;
@@ -39,19 +41,20 @@ uint32_t GetOffsetForData(xmlAttr *node) {
 }
 
 char* GetNameForData(xmlAttr *node) {
-	char *name;
+	char *name = "unnamed";
 	xmlAttr *nodeAttr = NULL;
-	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next)
+	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next) {
 		if (strcmp((char *)nodeAttr->name, "name")==0x0) {
 			name = calloc(strlen((char *)nodeAttr->children->content), 0x1);
 			name = strncpy(name, (char *)nodeAttr->children->content, strlen((char *)nodeAttr->children->content));
 		}
+	}
 	return name;
 }
 
 bool HasValidType(xmlNode *node) {
 	bool result = false;
-	for (uint32_t typeNum = 0x0; typeNum < 7; typeNum++)
+	for (uint32_t typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++)
 		if (strcmp((char*)node->name, OLTPluginPropertyType_names[typeNum].name)==0x0) {
 			result = true;
 			break;
@@ -71,14 +74,14 @@ struct OLTDataType BuildDataType(xmlNode *node) {
 	type.name = GetNameForData(node->properties);
 	type.offset = GetOffsetForData(node->properties);
 	uint32_t typeNum;
-	for (typeNum = 0x0; typeNum < 7; typeNum++)
+	for (typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++)
 		if (strcmp((char*)node->name, OLTPluginPropertyType_names[typeNum].name)==0x0) break;
 	type.format = (struct OLTPluginPropertyTypeName*)&OLTPluginPropertyType_names[typeNum];
 	type.properties = calloc(sizeof(struct OLTDataType), 0x1);
 	type.propCount = 0x0;
 	type.values = calloc(sizeof(struct OLTDataValue), 0x1);
 	type.valueCount = 0x0;
-	if (node->children) {
+	/*if (node->children) {
 		xmlNode *props = NULL;
 		for (props = node->children; props; props = props->next) {
 			if (props->type == XML_ELEMENT_NODE) {
@@ -97,7 +100,7 @@ struct OLTDataType BuildDataType(xmlNode *node) {
 				}
 			}
 		}
-	}
+	}*/
 	return type;
 }
 
@@ -106,6 +109,7 @@ struct OLTPlugin GenerateTagFromPlugin(xmlNode *root) {
 	if (root->properties && root->properties->children) {
 		tag.class = calloc(strlen((char*)root->properties->children->content), 0x1);
 		tag.class = strncpy(tag.class, (char*)root->properties->children->content, strlen((char*)root->properties->children->content));
+		tag.checkSum = strtol((char*)root->properties->next->children->content,NULL,0xa);
 		tag.types = calloc(sizeof(struct OLTDataType), 0x1);
 		tag.count = 0x0;
 		xmlNode *cur_node = root->children;
@@ -147,22 +151,44 @@ struct OLTKnownTypes* LoadPluginsAtPath(char *path) {
 }
 
 struct OLTPlugin BuildTagFromPluginAtPath(char *path) {
-	struct OLTPlugin loadedTag = {0x0, 0x0};
+	struct OLTPlugin loadedTag = (struct OLTPlugin){0x0, 0x0};
 	if (path) {
+		SDMPrint(PrintCode_TRY, "Attempting to load plugin: %s",path);
 		xmlDoc *doc = NULL;
 		doc = xmlReadFile(path, NULL, 0x0);
 		if (doc != NULL) {
 			xmlNode *root_element = xmlDocGetRootElement(doc);
 			if (strncmp(&path[strlen(path)-0x4], "otag", 0x4)==0)
 				loadedTag = GenerateTagFromPlugin(root_element);
+			SDMPrint(PrintCode_OK, "Loaded plugin: %s",loadedTag.class);
+		} else {
+			SDMPrint(PrintCode_ERR, "Failed to load plugin: %s",path);
 		}
 		xmlFreeDoc(doc);
 	}
 	return loadedTag;
 }
 
-bool VerifyPluginWithTemplate(struct OLTTemplateDefintion *templateDefinition, struct OLTPlugin *plugin) {
-	return false;
+bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugins) {
+	bool result = false;
+	uint32_t i;
+	for (i = 0; i < OLTTemplateCount; i++) {
+		result = IsTypeOfTag(instance->tagType, OLTTemplate_types[i].template);
+		if (result) {
+			break;
+		}
+	}
+	for (uint32_t j = 0; j < plugins->count; j++) {
+		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&OLTTemplate_types[i], &plugins->tags[j]);
+		if (result) {
+			break;
+		}
+	}
+	return result;
+}
+
+bool VerifyTemplateWithPlugin(struct OLTTemplateDefinition *templateDefinition, struct OLTPlugin *plugin) {
+	return (templateDefinition->checkSum == plugin->checkSum);
 }
 
 #endif
