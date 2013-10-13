@@ -243,15 +243,9 @@ uint32_t TagPluginIndex(struct OLTInstance *instance, struct OLTKnownTypes *plug
 }
 
 bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugins) {
-	bool result = false;
-	uint32_t index = TagTemplateIndex(instance);
-	for (uint32_t i = 0; i < plugins->count; i++) {
-		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&(OLTTemplate_types[index]), &(plugins->tags[i]));
-		if (result) {
-			break;
-		}
-	}
-	return result;
+	uint32_t templateIndex = TagTemplateIndex(instance);
+	uint32_t pluginIndex = TagPluginIndex(instance, plugins);
+	return VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&(OLTTemplate_types[templateIndex]), &(plugins->tags[pluginIndex]));
 }
 
 bool VerifyTemplateWithPlugin(struct OLTTemplateDefinition *templateDefinition, struct OLTPlugin *plugin) {
