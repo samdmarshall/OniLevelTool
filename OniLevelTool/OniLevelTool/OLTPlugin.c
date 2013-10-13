@@ -12,6 +12,7 @@
 #include "OLTPlugin.h"
 
 bool VerifyTemplateWithPlugin(struct OLTTemplateDefinition *templateDefinition, struct OLTPlugin *plugin);
+struct OLTProperty BuildDataTypeWithOffset(xmlNode *node, uint32_t offset);
 
 uint32_t GetTypeForData(xmlAttr *node) {
 	uint32_t type = 0x0;
@@ -78,9 +79,13 @@ uint32_t PluginPropertyTypeIndexFromName(char *name) {
 }
 
 struct OLTProperty BuildDataType(xmlNode *node) {
+	return BuildDataTypeWithOffset(node, 0x0);
+}
+
+struct OLTProperty BuildDataTypeWithOffset(xmlNode *node, uint32_t offset) {
 	struct OLTProperty prop;
 	prop.name = GetNameForData(node->properties);
-	prop.offset = GetOffsetForData(node->properties);
+	prop.offset = GetOffsetForData(node->properties)+offset;
 	prop.type = PluginPropertyTypeIndexFromName((char*)node->name);
 	
 	prop.properties = calloc(sizeof(struct OLTProperty), 0x1);
@@ -105,6 +110,20 @@ struct OLTProperty BuildDataType(xmlNode *node) {
 			prop.valueCount = 1;
 			prop.value = realloc(prop.value, (sizeof(struct OLTPropertyValue)*prop.valueCount));
 			prop.value[0].subtype = GetTypeForData(node->properties);
+			for (uint32_t i = 0; i < size; i++) {
+				if (node->children) {
+					xmlNode *childProps = NULL;
+					for (childProps = node->children; childProps; childProps = childProps->next) {
+						if (childProps->type == XML_ELEMENT_NODE) {
+							if (HasValidType(childProps)) {
+								prop.properties = realloc(prop.properties, sizeof(struct OLTProperty)*(prop.propertyCount+0x1));
+								prop.properties[prop.propertyCount] = BuildDataTypeWithOffset(childProps, (OLTPluginPropertyType_names[prop.type].size*i));
+								prop.propertyCount++;
+							}
+						}
+					}
+				}
+			}
 			break;
 		};
 		case OLTPluginPropertyType_vararray: {

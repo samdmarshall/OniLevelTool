@@ -48,6 +48,11 @@
 		2247A62A180A006600CDFB3C /* AGQG.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQG.otag; path = Plugins/AGQG.otag; sourceTree = SOURCE_ROOT; };
 		2247A62C180A01B000CDFB3C /* AGQR.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AGQR.otag; path = Plugins/AGQR.otag; sourceTree = SOURCE_ROOT; };
 		2247A62D180A046500CDFB3C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		2247A62F180AFDF800CDFB3C /* AISA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AISA.otag; path = Plugins/AISA.otag; sourceTree = SOURCE_ROOT; };
+		2247A630180B055900CDFB3C /* AITR.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AITR.otag; path = Plugins/AITR.otag; sourceTree = SOURCE_ROOT; };
+		2247A631180B073F00CDFB3C /* AKAA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKAA.otag; path = Plugins/AKAA.otag; sourceTree = SOURCE_ROOT; };
+		2247A632180B082D00CDFB3C /* AKBA.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKBA.otag; path = Plugins/AKBA.otag; sourceTree = SOURCE_ROOT; };
+		2247A633180B099400CDFB3C /* AKBP.otag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AKBP.otag; path = Plugins/AKBP.otag; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +119,11 @@
 				2247A6291809FB9F00CDFB3C /* AGQC.otag */,
 				2247A62A180A006600CDFB3C /* AGQG.otag */,
 				2247A62C180A01B000CDFB3C /* AGQR.otag */,
+				2247A62F180AFDF800CDFB3C /* AISA.otag */,
+				2247A630180B055900CDFB3C /* AITR.otag */,
+				2247A631180B073F00CDFB3C /* AKAA.otag */,
+				2247A632180B082D00CDFB3C /* AKBA.otag */,
+				2247A633180B099400CDFB3C /* AKBP.otag */,
 			);
 			name = Plugins;
 			sourceTree = "<group>";
