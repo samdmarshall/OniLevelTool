@@ -35,17 +35,6 @@ uint32_t GetSizeForData(xmlAttr *node) {
 	return size;
 }
 
-uint32_t GetValueForData(xmlAttr *node) {
-	uint32_t value = 0x0;
-	xmlAttr *nodeAttr = NULL;
-	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next) {
-		if (strcmp((char *)nodeAttr->name, "value")==0x0) {
-			value = (uint32_t)strtol((char *)nodeAttr->children->content, NULL, 0xa);
-		}
-	}
-	return value;
-}
-
 uint32_t GetOffsetForData(xmlAttr *node) {
 	uint32_t offset = 0x0;
 	xmlAttr *nodeAttr = NULL;
@@ -80,42 +69,73 @@ bool HasValidType(xmlNode *node) {
 	return result;
 }
 
-struct OLTDataValue BuildDataValue(xmlNode *node) {
-	struct OLTDataValue value;
-	value.name = GetNameForData(node->properties);
-	value.value = GetValueForData(node->properties);
-	return value;
-}
-
-struct OLTDataType BuildDataType(xmlNode *node) {
-	struct OLTDataType type;
-	type.name = GetNameForData(node->properties);
-	type.offset = GetOffsetForData(node->properties);
+uint32_t PluginPropertyTypeIndexFromName(char *name) {
 	uint32_t typeNum;
 	for (typeNum = 0x0; typeNum < OLTPluginPropertyTypeCount; typeNum++) {
-		if (strcmp((char*)node->name, OLTPluginPropertyType_names[typeNum].name)==0x0) break;
+		if (strcmp((char*)name, OLTPluginPropertyType_names[typeNum].name)==0x0) break;
 	}
-	type.format = (struct OLTPluginPropertyTypeName*)&OLTPluginPropertyType_names[typeNum];
-	type.properties = calloc(sizeof(struct OLTDataType), 0x1);
-	type.propCount = 0x0;
-	type.values = calloc(sizeof(struct OLTDataValue), 0x1);
-	type.valueCount = 0x0;
+	return typeNum;
+}
+
+struct OLTProperty BuildDataType(xmlNode *node) {
+	struct OLTProperty prop;
+	prop.name = GetNameForData(node->properties);
+	prop.offset = GetOffsetForData(node->properties);
+	prop.type = PluginPropertyTypeIndexFromName((char*)node->name);
 	
-	// SDM: something something something blah
-	
-	if (node->children) {
-		xmlNode *props = NULL;
-		for (props = node->children; props; props = props->next) {
-			if (props->type == XML_ELEMENT_NODE) {
-				if (HasValidType(props)) {
-					type.properties = realloc(type.properties, sizeof(struct OLTDataType)*(type.propCount+0x1));
-					type.properties[type.propCount] = BuildDataType(props);
-					type.propCount++;
+	prop.properties = calloc(sizeof(struct OLTProperty), 0x1);
+	prop.propertyCount = 0x0;
+	prop.value = calloc(sizeof(struct OLTPropertyValue), 0x1);
+	prop.valueCount = 0x0;
+
+	switch (prop.type) {
+		case OLTPluginPropertyType_byte8:
+		case OLTPluginPropertyType_byte4:
+		case OLTPluginPropertyType_byte2:
+		case OLTPluginPropertyType_byte1: {
+			uint32_t subtypeNum = GetTypeForData(node->properties);
+			prop.valueCount = OLTPluginPropertyType_names[prop.type].size/OLTPluginPropertySubtype_names[subtypeNum].size;
+			for (uint8_t i = 0; i < prop.valueCount; i++) {
+				prop.value = realloc(prop.value, (sizeof(struct OLTPropertyValue)*(i+0x1)));
+				prop.value[i].subtype = subtypeNum;
+			}
+		};
+		case OLTPluginPropertyType_array: {
+			uint32_t size = GetSizeForData(node->properties);
+			prop.valueCount = 1;
+			prop.value = realloc(prop.value, (sizeof(struct OLTPropertyValue)*prop.valueCount));
+			prop.value[0].subtype = GetTypeForData(node->properties);
+			break;
+		};
+		case OLTPluginPropertyType_vararray: {
+			prop.valueCount = 1;
+			prop.value = realloc(prop.value, (sizeof(struct OLTPropertyValue)*prop.valueCount));
+			prop.value[0].subtype = GetTypeForData(node->properties);
+			if (node->children) {
+				xmlNode *childProps = NULL;
+				for (childProps = node->children; childProps; childProps = childProps->next) {
+					if (childProps->type == XML_ELEMENT_NODE) {
+						if (HasValidType(childProps)) {
+							prop.properties = realloc(prop.properties, sizeof(struct OLTProperty)*(prop.propertyCount+0x1));
+							prop.properties[prop.propertyCount] = BuildDataType(childProps);
+							prop.propertyCount++;
+						}
+					}
 				}
 			}
-		}
+			break;
+		};
+		case OLTPluginPropertyType_template: {
+			prop.valueCount = 1;
+			prop.value = realloc(prop.value, (sizeof(struct OLTPropertyValue)*prop.valueCount));
+			prop.value[0].subtype = GetTypeForData(node->properties);
+			break;
+		};
+		default: {
+			break;
+		};
 	}
-	return type;
+	return prop;
 }
 
 struct OLTPlugin GenerateTagFromPlugin(xmlNode *root) {
@@ -124,15 +144,15 @@ struct OLTPlugin GenerateTagFromPlugin(xmlNode *root) {
 		tag.class = calloc(strlen((char*)root->properties->children->content), 0x1);
 		tag.class = strncpy(tag.class, (char*)root->properties->children->content, strlen((char*)root->properties->children->content));
 		tag.checkSum = strtol((char*)root->properties->next->children->content,NULL,0xa);
-		tag.types = calloc(sizeof(struct OLTDataType), 0x1);
-		tag.count = 0x0;
+		tag.property = calloc(sizeof(struct OLTProperty), 0x1);
+		tag.propertyCount = 0x0;
 		xmlNode *cur_node = root->children;
 		while ((cur_node = cur_node->next)) {
 			if (cur_node->type == XML_ELEMENT_NODE) {
 				if (HasValidType(cur_node)) {
-					tag.types = realloc(tag.types, sizeof(struct OLTDataType)*(tag.count+1));
-					tag.types[tag.count] = BuildDataType(cur_node);
-					tag.count++;
+					tag.property = realloc(tag.property, sizeof(struct OLTProperty)*(tag.propertyCount+1));
+					tag.property[tag.propertyCount] = BuildDataType(cur_node);
+					tag.propertyCount++;
 				}
 			}
 		}

@@ -16,7 +16,7 @@ int main(int argc, const char * argv[]) {
 	for (uint32_t i = 0; i < level->header->instanceCount; i++) {
 		if (ValidTagType(&level->instance[i], level)) {
 			if (VerifyTagTemplate(&level->instance[i], tagTypes)) {
-				SDMPrint(PrintCode_OK, "Valid Tag!");
+				SDMPrint(PrintCode_OK, "Valid Plugin!");
 			}
 		}
 	}

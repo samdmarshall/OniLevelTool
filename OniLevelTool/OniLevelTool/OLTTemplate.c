@@ -14,12 +14,10 @@
 bool ValidTagType(struct OLTInstance *instance, struct OLTLevel *level) {
 	bool result = false;
 	uint32_t index = TagTemplateIndex(instance);
-	if (result) {
-		for (uint32_t i = 0; i < level->header->templateCount; i++) {
-			result = (level->template[i].checkSum == OLTTemplate_types[index].checkSum);
-			if (result) {
-				break;
-			}
+	for (uint32_t i = 0; i < level->header->templateCount; i++) {
+		result = (level->template[i].checkSum == OLTTemplate_types[index].checkSum);
+		if (result) {
+			break;
 		}
 	}
 	return result;
