@@ -13,6 +13,17 @@
 
 bool VerifyTemplateWithPlugin(struct OLTTemplateDefinition *templateDefinition, struct OLTPlugin *plugin);
 
+uint32_t GetTypeForData(xmlAttr *node) {
+	uint32_t type = 0x0;
+	xmlAttr *nodeAttr = NULL;
+	for (nodeAttr = node; nodeAttr; nodeAttr = nodeAttr->next) {
+		if (strcmp((char *)nodeAttr->name, "type")==0x0) {
+			type = (uint32_t)strtol((char *)nodeAttr->children->content, NULL, 0xa);
+		}
+	}
+	return type;
+}
+
 uint32_t GetSizeForData(xmlAttr *node) {
 	uint32_t size = 0x0;
 	xmlAttr *nodeAttr = NULL;
@@ -89,26 +100,21 @@ struct OLTDataType BuildDataType(xmlNode *node) {
 	type.propCount = 0x0;
 	type.values = calloc(sizeof(struct OLTDataValue), 0x1);
 	type.valueCount = 0x0;
-	/*if (node->children) {
+	
+	// SDM: something something something blah
+	
+	if (node->children) {
 		xmlNode *props = NULL;
 		for (props = node->children; props; props = props->next) {
 			if (props->type == XML_ELEMENT_NODE) {
-				if (typeNum == 0x16) {
-					if (HasValidType(props)) {
-						type.properties = realloc(type.properties, sizeof(struct OLTDataType)*(type.propCount+0x1));
-						type.properties[type.propCount] = BuildDataType(props);
-						type.propCount++;
-					}
-				} else if (typeNum == 0x4 || typeNum == 0x5 || typeNum == 0x6 || typeNum == 0xe || typeNum == 0xf || typeNum == 0x10) {
-					if (strcmp((char*)props->name, "option")==0x0) {
-						type.values = realloc(type.values, sizeof(struct OLTDataValue)*(type.valueCount+0x1));
-						type.values[type.valueCount] = BuildDataValue(props);
-						type.valueCount++;
-					}
+				if (HasValidType(props)) {
+					type.properties = realloc(type.properties, sizeof(struct OLTDataType)*(type.propCount+0x1));
+					type.properties[type.propCount] = BuildDataType(props);
+					type.propCount++;
 				}
 			}
 		}
-	}*/
+	}
 	return type;
 }
 

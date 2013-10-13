@@ -26,13 +26,13 @@ bool ValidTagType(struct OLTInstance *instance, struct OLTLevel *level) {
 }
 
 uint32_t TagTemplateIndex(struct OLTInstance *instance) {
-	uint32_t i;
-	for (i = 0; i < OLTTemplateCount; i++) {
-		if (IsTypeOfTag(instance->tagType, OLTTemplate_types[i].template)) {
+	uint32_t index;
+	for (index = 0; index < OLTTemplateCount; index++) {
+		if (IsTypeOfTag(instance->tagType, OLTTemplate_types[index].template)) {
 			break;
 		}
 	}
-	return i;
+	return index;
 }
 
 #endif
