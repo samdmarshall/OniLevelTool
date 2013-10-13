@@ -229,6 +229,19 @@ struct OLTPlugin BuildTagFromPluginAtPath(char *path) {
 	return loadedTag;
 }
 
+uint32_t TagPluginIndex(struct OLTInstance *instance, struct OLTKnownTypes *plugins) {
+	uint32_t i;
+	uint32_t index = TagTemplateIndex(instance);
+	bool result = false;
+	for (i = 0; i < plugins->count; i++) {
+		result = VerifyTemplateWithPlugin((struct OLTTemplateDefinition*)&OLTTemplate_types[index], &plugins->tags[i]);
+		if (result) {
+			break;
+		}
+	}
+	return i;
+}
+
 bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugins) {
 	bool result = false;
 	uint32_t index = TagTemplateIndex(instance);

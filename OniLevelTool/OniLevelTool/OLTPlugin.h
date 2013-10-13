@@ -120,6 +120,7 @@ struct OLTKnownTypes {
 
 struct OLTKnownTypes* LoadPluginsAtPath(char *path);
 struct OLTPlugin BuildTagFromPluginAtPath(char *path);
+uint32_t TagPluginIndex(struct OLTInstance *instance, struct OLTKnownTypes *plugins);
 bool VerifyTagTemplate(struct OLTInstance *instance, struct OLTKnownTypes *plugins);
 
 #endif
