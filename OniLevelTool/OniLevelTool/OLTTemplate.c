@@ -14,7 +14,7 @@
 bool ValidTagType(struct OLTInstance *instance, struct OLTLevel *level) {
 	bool result = false;
 	uint32_t index = TagTemplateIndex(instance);
-	for (uint32_t i = 0; i < level->header->templateCount; i++) {
+	for (uint32_t i = 0x0; i < level->header->templateCount; i++) {
 		result = (level->template[i].checkSum == OLTTemplate_types[index].checkSum);
 		if (result) {
 			break;
@@ -25,7 +25,7 @@ bool ValidTagType(struct OLTInstance *instance, struct OLTLevel *level) {
 
 uint32_t TagTemplateIndex(struct OLTInstance *instance) {
 	uint32_t index;
-	for (index = 0; index < OLTTemplateCount; index++) {
+	for (index = 0x0; index < OLTTemplateCount; index++) {
 		if (IsTypeOfTag(instance->tagType, OLTTemplate_types[index].template)) {
 			break;
 		}

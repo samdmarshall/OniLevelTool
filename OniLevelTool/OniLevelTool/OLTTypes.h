@@ -19,6 +19,7 @@
 #include <dirent.h>
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
+#include <libxml/xmlschemas.h>
 
 #include "SDMPrint.h"
 

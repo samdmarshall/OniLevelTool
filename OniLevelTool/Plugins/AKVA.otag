@@ -1,0 +1,13 @@
+<plugin class="AKVA" checksum="14616032">
+	<byte4 name="res_id" type="8" offset="0x0"/>
+	<byte4 name="level_id" type="8" offset="0x4"/>
+	<array name="dead" offset="0x8" size="10">
+		<byte2 name="dead" type="2" offset="0x0"/>
+	</array>
+	<vararray name="BNV node" type="8" offset="0x1c">
+		<byte4 name="AKBP index" type="8" offset="0x0"/>
+		<byte4 name="BNV identifier" type="8" offset="0x4"/>
+		<byte4 name="AKBP index (range start)" type="8" offset="0x8"/>
+		<byte4 name="AKBP index (range end)" type="8" offset="0xc"/>
+	</vararray>
+</plugin>
